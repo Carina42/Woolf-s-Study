@@ -102,6 +102,113 @@
 .record-player.needle-down #record-arm{transform:rotate(-142deg)}
 /* The record's fine surface marks turn around the spindle inside the fixed platter edge. */
 @media(max-width:600px){.case-complete{gap:6px;padding:4px 6px}.case-complete strong{font-size:8px}.case-complete small{font-size:6px}.pixel-trophy{width:20px;height:20px;flex-basis:20px}.case-feedback{font-size:7px}}
+
+/* ============================================================
+   手机适配补丁（仅追加样式，不改动原有 HTML / CSS / JS）
+   ============================================================ */
+
+/* 安全区 + 触摸按钮稍微放大 */
+@media (max-width: 760px) {
+  body {
+    padding:
+      max(8px, env(safe-area-inset-top, 0px))
+      max(8px, env(safe-area-inset-right, 0px))
+      max(8px, env(safe-area-inset-bottom, 0px))
+      max(8px, env(safe-area-inset-left, 0px));
+  }
+  .sound-toggle { font-size: 9px; padding: 5px 7px; }
+}
+
+/* 手机竖屏：卷宗改为上下布局，阅读区更宽、字更好读 */
+@media (max-width: 600px) {
+  .opened-case { inset: 3% 2%; }
+  .case-spread { padding: 10px 11px; }
+  .case-body {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto minmax(0, 1fr);
+    gap: 10px;
+    padding-top: 10px;
+  }
+  .case-index {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 14px;
+    border-right: 0;
+    border-bottom: 1px solid rgba(118, 91, 52, .3);
+    padding: 0 0 9px;
+  }
+  .case-index b { font-size: 11px; }
+  .case-index span { font-size: 10px; }
+  .case-tree { flex: 0 0 auto; min-height: 0; }
+  .case-tree svg { height: 46px; }
+  .case-page { font-size: 13px; line-height: 1.95; }
+  .case-page h3 { font-size: 15px; margin: 10px 0 8px; }
+  .case-head { gap: 8px; padding-bottom: 7px; }
+  .case-head h2 { font-size: clamp(15px, 4.2vw, 20px); }
+  .case-head small, .case-head span, .folio-line { font-size: 7px; }
+  .case-head button#close-dossier {
+    width: 36px;
+    height: 36px;
+    flex-basis: 36px;
+    font-size: 24px;
+    line-height: 32px;
+  }
+  .case-controls button {
+    font-size: 11px;
+    padding: 8px 6px;
+    min-width: 44px;
+  }
+  .case-controls span { font-size: 9px; }
+  .case-feedback { font-size: 8px; }
+  .case-complete { gap: 6px; padding: 4px 6px; }
+  .case-complete strong { font-size: 9px; }
+  .case-complete small { font-size: 7px; }
+
+  /* 返回按钮更容易点按 */
+  #desk[open] > .desk-hotspot,
+  #bookshelf[open] > .shelf-hotspot {
+    width: 38px !important;
+    height: 36px !important;
+    min-width: 38px;
+    min-height: 36px;
+  }
+
+  /* 植物标本提示稍大一点 */
+  .plant-target:before { font-size: 8px; padding: 4px 6px; }
+}
+
+/* 超小屏：再缩一点字，避免撑破 */
+@media (max-width: 420px) {
+  .caption h1 { font-size: 16px; }
+  .caption small { display: none; }
+  .next { font-size: 8px; }
+  .case-page { font-size: 12px; }
+  .case-page h3 { font-size: 14px; }
+  .case-head h2 { font-size: 14px; }
+  .case-index span { font-size: 9px; }
+  .case-tree svg { height: 38px; }
+}
+
+/* 触屏设备：关键提示常显，不依赖 hover；减少点按延迟 */
+@media (hover: none) and (pointer: coarse) {
+  .desk-hotspot .enter-label { opacity: .92; }
+  .shelf-enter-label { opacity: .92; }
+  .plant-target:before { opacity: .95; top: 86%; }
+  .case-reopen:after { opacity: .9; }
+  .folio-hover { display: none; }
+  .room-gramophone-hit:after { display: none; }
+  summary, button, .sentence-target, .plant-target {
+    touch-action: manipulation;
+  }
+}
+
+/* 手机横屏矮窗口：给卷宗更多阅读高度 */
+@media (max-height: 500px) and (orientation: landscape) {
+  .opened-case { inset: 2% 2%; }
+  .case-spread { padding: 8px 10px; }
+  .case-tree svg { height: min(100px, 24vh); }
+}
 </style></head>
 <body><main class="frame"><section class="stage" aria-label="像素风伦敦书房场景">
 <svg viewBox="0 0 960 540" role="img" aria-label="雨夜里的1920年代伦敦书房：书架、窗户、矮壁炉、台灯和写字桌" shape-rendering="crispEdges">
