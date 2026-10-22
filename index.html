@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>植物探案所 · 伍尔夫的书房</title>
 <style>
 *{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#111c18;color:#eadbb7;font-family:"Songti SC","Noto Serif SC",serif}body{display:grid;place-items:center;padding:24px}.frame{width:min(1240px,100%);border:8px solid #101612;box-shadow:0 0 0 3px #b5965f,0 24px 70px #070b09;background:#202a24}.stage{position:relative;aspect-ratio:16/9;overflow:hidden;background:#25312b}.stage svg{display:block;width:100%;height:100%;image-rendering:pixelated}.wash{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(5,10,8,.05),transparent 52%,rgba(5,10,8,.28))}.meta{position:absolute;left:20px;top:17px;font:11px "Courier New",monospace;letter-spacing:.18em;color:#ddc88e;text-shadow:2px 2px #121713}.caption{display:flex;align-items:end;justify-content:space-between;gap:20px;padding:16px 20px 18px;background:#17221d;border-top:2px solid #9e8352}.caption small{font:10px "Courier New",monospace;letter-spacing:.15em;color:#baa878}.caption h1{margin:5px 0 0;font-size:clamp(20px,3vw,30px);font-weight:400;letter-spacing:.12em;color:#eee0bd}.next{max-width:330px;text-align:right;font:11px/1.7 "Courier New",monospace;color:#b5b59b}.next b{color:#dfc27e;font-weight:400}@media(max-width:600px){body{padding:12px}.frame{border-width:5px}.meta{left:10px;top:9px;font-size:8px}.caption{display:block;padding:12px}.next{text-align:left;margin-top:10px}.stage{min-height:230px;aspect-ratio:4/3}.stage svg{height:100%;object-fit:cover}}
@@ -104,7 +104,7 @@
 @media(max-width:600px){.case-complete{gap:6px;padding:4px 6px}.case-complete strong{font-size:8px}.case-complete small{font-size:6px}.pixel-trophy{width:20px;height:20px;flex-basis:20px}.case-feedback{font-size:7px}}
 
 /* ============================================================
-   手机适配补丁（仅追加样式，不改动原有 HTML / CSS / JS）
+   手机适配补丁 v2（仅追加样式，不改动原有 HTML / CSS / JS）
    ============================================================ */
 
 /* 安全区 + 触摸按钮稍微放大 */
@@ -208,6 +208,207 @@
   .opened-case { inset: 2% 2%; }
   .case-spread { padding: 8px 10px; }
   .case-tree svg { height: min(100px, 24vh); }
+}
+
+/* ============================================================
+   手机全屏沉浸适配 v3 —— 追加于最后，覆盖前面规则
+   ============================================================ */
+
+/* 全屏按钮 */
+.fs-toggle{
+  position:absolute; left:10px; bottom:10px; z-index:60;
+  width:38px; height:38px; border-radius:50%;
+  border:1px solid rgba(205,174,111,.7);
+  background:rgba(16,23,19,.85); color:#eadbb9;
+  font:18px/1 system-ui, -apple-system, sans-serif; cursor:pointer;
+  display:none; place-items:center;
+  box-shadow:0 2px 10px rgba(0,0,0,.45);
+  touch-action:manipulation;
+}
+@media (max-width:900px){ .fs-toggle{ display:grid; } }
+
+/* ---------- 窄屏 / 触屏：全出血布局 ---------- */
+@media (max-width:900px), (max-height:520px){
+  html, body{
+    margin:0 !important;
+    padding:0 !important;
+    width:100%;
+    height:100%;
+    min-height:100%;
+    min-height:100svh;
+    min-height:100dvh;
+    background:#111c18;
+    overflow-x:hidden;
+    overscroll-behavior:none;
+  }
+  body{
+    display:flex !important;
+    flex-direction:column;
+    align-items:stretch;
+    justify-content:center;
+    place-items:unset;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .frame{
+    width:100% !important;
+    max-width:none !important;
+    min-height:100svh;
+    min-height:100dvh;
+    margin:0 !important;
+    border:0 !important;
+    box-shadow:none !important;
+    background:#111c18;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+  .stage{
+    width:100% !important;
+    min-height:0 !important;
+    max-height:none;
+    aspect-ratio:16 / 9 !important;
+    flex:0 0 auto;
+  }
+  .stage > svg{ width:100%; height:100%; }
+
+  .caption{
+    flex:0 0 auto;
+    padding:8px 12px calc(10px + env(safe-area-inset-bottom, 0px));
+    background:#111c18;
+    border-top:1px solid rgba(158,131,82,.45);
+  }
+  .caption h1{ font-size:clamp(15px,4.2vw,20px); margin:2px 0 0; }
+  .caption small{ font-size:8px; }
+  .next{ font-size:8px; line-height:1.5; max-width:none; text-align:left; margin-top:4px; }
+
+  /* 声音按钮与安全区 */
+  .sound-controls{
+    position:fixed !important;
+    z-index:9550 !important;
+    top:max(6px, env(safe-area-inset-top)) !important;
+    right:max(6px, env(safe-area-inset-right)) !important;
+  }
+
+  /* 打开书桌/书架时禁止页面滚动 */
+  body:has(#desk[open]),
+  body:has(#bookshelf[open]){
+    overflow:hidden;
+  }
+
+  /* ---------- 书桌 / 书架：全屏舞台 ---------- */
+  .desk-ui, .shelf-ui{
+    position:fixed !important;
+    inset:0 !important;
+    z-index:9000 !important;
+    background:#0d1210;
+    pointer-events:auto;
+  }
+  .desk-top-view, .shelf-view{
+    position:absolute !important;
+    inset:0 !important;
+    margin:auto !important;
+    width:min(100vw, calc(100dvh * 16 / 9)) !important;
+    height:min(100dvh, calc(100vw * 9 / 16)) !important;
+    max-width:100vw;
+    max-height:100dvh;
+    aspect-ratio:auto !important;
+    animation:none !important;
+    box-shadow:0 0 0 1px rgba(181,150,95,.25);
+  }
+  .desk-top-view > svg, .shelf-view > svg{
+    width:100% !important;
+    height:100% !important;
+  }
+
+  /* 返回按钮固定到屏幕左上角，避免被全屏层遮挡 */
+  #desk[open] > .desk-hotspot,
+  #bookshelf[open] > .shelf-hotspot{
+    position:fixed !important;
+    z-index:9500 !important;
+    top:max(10px, env(safe-area-inset-top)) !important;
+    left:max(10px, env(safe-area-inset-left)) !important;
+  }
+
+  /* ---------- 卷宗：全屏阅读 ---------- */
+  .opened-case{
+    position:fixed !important;
+    inset:0 !important;
+    z-index:9600 !important;
+    padding:max(6px, env(safe-area-inset-top)) 6px max(6px, env(safe-area-inset-bottom));
+    background:rgba(10,8,5,.97);
+    perspective:none !important;
+  }
+  .opened-case .case-spread{
+    height:100% !important;
+    padding:10px 11px !important;
+    border-width:3px !important;
+  }
+  .opened-case .case-body{
+    grid-template-columns:1fr !important;
+    grid-template-rows:auto minmax(0,1fr) !important;
+    gap:8px !important;
+    padding-top:8px !important;
+  }
+  .opened-case .case-index{
+    flex-direction:row !important;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:5px 14px !important;
+    border-right:0 !important;
+    border-bottom:1px solid rgba(118,91,52,.3);
+    padding:0 0 7px !important;
+  }
+  .opened-case .case-tree{ flex:0 0 auto; min-height:0; }
+  .opened-case .case-tree svg{ height:46px !important; }
+  .opened-case .case-page{
+    font-size:14px !important;
+    line-height:1.9 !important;
+    padding:0 !important;
+    -webkit-overflow-scrolling:touch;
+  }
+  .opened-case .case-page h3{ font-size:15px !important; margin:8px 0 6px !important; }
+  .opened-case .case-page p{ margin:8px 0 !important; line-height:1.9 !important; }
+  .opened-case .case-head button#close-dossier{
+    width:40px !important;
+    height:40px !important;
+    flex-basis:40px !important;
+    font-size:26px !important;
+    line-height:36px !important;
+  }
+  .opened-case .case-controls button{
+    font-size:12px !important;
+    padding:10px 8px !important;
+    min-width:48px;
+  }
+  .opened-case .case-controls span{ font-size:9px !important; }
+  .opened-case .case-feedback{ font-size:9px !important; }
+}
+
+/* ---------- 手机横屏：画面最大化，隐藏说明 ---------- */
+@media (orientation: landscape) and (max-height: 560px){
+  .frame{
+    min-height:0;
+    height:100svh;
+    height:100dvh;
+    justify-content:center;
+    align-items:center;
+    background:#0b110e;
+  }
+  .stage{
+    width:min(100vw, calc(100dvh * 16 / 9)) !important;
+    aspect-ratio:16 / 9 !important;
+    max-height:100dvh;
+  }
+  .caption{ display:none !important; }
+}
+
+/* ---------- 超小屏 ---------- */
+@media (max-width:420px){
+  .caption h1{ font-size:16px; }
+  .caption small{ display:none; }
+  .next{ font-size:7.5px; }
+  .opened-case .case-page{ font-size:13px !important; }
+  .opened-case .case-page h3{ font-size:14px !important; }
 }
 </style></head>
 <body><main class="frame"><section class="stage" aria-label="像素风伦敦书房场景">
@@ -454,7 +655,7 @@
 <g fill="#ddc17f" font-family="monospace" font-size="10" letter-spacing="2" text-anchor="middle"><text x="602" y="276">OAK</text><text x="772" y="276">ROSE</text><text x="602" y="435">JUDAS TREE</text><text x="772" y="435">POPPY</text></g><path d="M487 118v344" stroke="#cfaa66" stroke-width="8"/><path d="M482 126v326" stroke="#34251a" stroke-width="3"/>
 </svg>
 <div class="plant-hover-tip" id="plant-tip" aria-live="polite"></div><div class="plant-select-dialog" id="plant-dialog" aria-live="polite"><b>植物目标已选定</b><span>橡树已登记入卷。您现在可以查看卷宗。<br>请退出书架后，回到书房点击书桌。</span><button type="button" id="confirm-plant">确认</button></div>
-<button class="plant-target oak-target" type="button" data-plant="oak" aria-label="选择橡树目标"></button><button class="plant-target rose-target" type="button" data-plant="rose" aria-label="玫瑰档案，待开放"></button><button class="plant-target judas-target" type="button" data-plant="judas" aria-label="紫荆树"></button><button class="plant-target poppy-target" type="button" data-plant="poppy" aria-label="虞美人档案，待开放"></button>
+<button class="plant-target oak-target" type="button" data-plant="oak" aria-label="选择橡树目标"></button><button class="plant-target rose-target" type="button" data-plant="rose" aria-label="玫瑰档案，待开放"></button><button class="plant-target judas-target" type="button" data-plant="judas" aria-label="紫荆树档案，待开放"></button><button class="plant-target poppy-target" type="button" data-plant="poppy" aria-label="虞美人档案，待开放"></button>
 </div></div></details></section>
 </main><script>
 (()=>{
@@ -575,4 +776,37 @@
  document.getElementById('record-player-hit').addEventListener('click',()=>{if(music.paused&&!player.classList.contains('needle-down')&&!player.classList.contains('record-spinning'))startPlayback();else stopPlayback();});
  music.addEventListener('ended',stopPlayback);
 })();
-</script></body></html>
+</script>
+<script>
+/* 手机全屏增强：仅追加，不影响原有逻辑 */
+(function(){
+  var stage=document.querySelector('.stage');
+  if(!stage) return;
+  var btn=document.createElement('button');
+  btn.type='button';
+  btn.className='fs-toggle';
+  btn.textContent='⛶';
+  btn.setAttribute('aria-label','全屏游玩');
+  btn.title='全屏游玩（建议横屏）';
+  stage.appendChild(btn);
+  function sync(){ btn.textContent = document.fullscreenElement ? '⤫' : '⛶'; }
+  btn.addEventListener('click', async function(){
+    try{
+      if(!document.fullscreenElement){
+        var el=document.documentElement;
+        if(el.requestFullscreen) await el.requestFullscreen();
+        else if(el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+        if(screen.orientation && screen.orientation.lock){
+          try{ await screen.orientation.lock('landscape'); }catch(e){}
+        }
+      } else {
+        if(document.exitFullscreen) await document.exitFullscreen();
+        else if(document.webkitExitFullscreen) document.webkitExitFullscreen();
+      }
+    }catch(e){}
+    sync();
+  });
+  document.addEventListener('fullscreenchange', sync);
+})();
+</script>
+</body></html>
