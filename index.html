@@ -94,27 +94,50 @@
 @media(max-width:600px){.case-complete{gap:6px;padding:4px 6px}.case-complete strong{font-size:8px}.case-complete small{font-size:6px}.pixel-trophy{width:20px;height:20px;flex-basis:20px}.case-feedback{font-size:7px}}
 
 /* ============================================================
-   v7 补丁：温馨雨夜色调 + 做旧木地板 + 提示自动消失 + 留声机提示缩小 + 按钮/印章定位
+   v8 补丁：印章进绿垫、留声机提示居中、唱针落点在唱片纹路
    ============================================================ */
 
-/* ① 整体调色：暖色 wash，强化壁炉和台灯的 cozy 光晕 */
-.wash{
-  background:
-    radial-gradient(ellipse at 15% 72%, rgba(246,168,92,.075), transparent 55%),
-    radial-gradient(ellipse at 78% 58%, rgba(245,180,105,.055), transparent 55%),
-    linear-gradient(180deg,rgba(12,7,3,.06),transparent 50%,rgba(9,4,1,.30)) !important;
+/* ① 橡树印章移到绿色桌垫右上角内部 */
+.target-stamp{
+  top: 14.5% !important;
+  right: 12% !important;
 }
-/* 壁炉和台灯光晕升级，用暖橙色，更浓 */
-#fireGlow stop:first-child{ stop-color:#f7a854 !important; stop-opacity:.50 !important; }
-#fireGlow stop:last-child{ stop-color:#c76a35 !important; }
-#lampGlow stop:first-child{ stop-color:#f8cf82 !important; stop-opacity:.52 !important; }
-#lampGlow stop:last-child{ stop-color:#d18b46 !important; }
 
-/* ② 木地板：更做旧、更细腻的横向木板（patterns 定义在原 SVG 内） */
-/* 用更深、更多纹理的木地板底色覆盖旧样式 */
-rect[fill="url(#woodFloorPattern)"]{ fill:url(#woodFloorPattern) !important; }
+/* ② 留声机提示居中于留声机，与书桌提示一致，小巧不越界 */
+.room-gramophone-hit{
+  left: 88.5% !important;
+  top: 51% !important;
+  width: 11.5% !important;
+  height: 43% !important;
+}
+.room-gramophone-hit:after{
+  content: attr(data-tip);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  right: auto;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  padding: 5px 9px;
+  white-space: nowrap;
+  background: rgba(18,25,21,.94);
+  border: 1px solid #b99a5e;
+  color: #e8d9b6;
+  font: 9px/1.4 "Courier New", monospace;
+  letter-spacing: .06em;
+  box-shadow: 2px 2px rgba(8,11,9,.6);
+  pointer-events: none;
+  transition: opacity .22s;
+  z-index: 2;
+  max-width: none;
+}
 
-/* ③ 触屏：中和所有悬停状态，让提示和金色方框真正自动消失 */
+/* ③ 唱针落点：沿唱片椭圆纹路中部偏下 */
+.record-player.needle-down #record-arm{
+  transform: rotate(-149deg);
+}
+
+/* ④ 保留此前所有提示自动消失 / 温暖色调 / 做旧地板规则 */
 @media (hover: none) and (pointer: coarse){
   .desk-hotspot:hover,
   .shelf-hotspot:hover,
@@ -130,7 +153,6 @@ rect[fill="url(#woodFloorPattern)"]{ fill:url(#woodFloorPattern) !important; }
   .room-gramophone-hit:hover:after{
     opacity: 0 !important;
   }
-  /* 书桌 / 书架 / 植物目标：点击后显示提示（由 JS 添加 tip-force-show），3 秒后由 JS 自动移除 */
   .desk-hotspot.tip-force-show .enter-label,
   .shelf-hotspot.tip-force-show .shelf-enter-label,
   .plant-target.tip-force-show:before{
@@ -139,57 +161,27 @@ rect[fill="url(#woodFloorPattern)"]{ fill:url(#woodFloorPattern) !important; }
   .plant-target:before{
     top: 50% !important;
   }
+  .room-gramophone-hit.tip-show:after{
+    opacity: 1 !important;
+  }
 }
-
-/* ④ 留声机提示：小巧、居中、与书桌提示一致，绝不超出屏幕 */
-.room-gramophone-hit{
-  left: 88.5% !important;
-  top: 51% !important;
-  width: 11.5% !important;
-  height: 43% !important;
-}
-.room-gramophone-hit:after{
-  content: attr(data-tip);
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  right: auto;
-  transform: translate(-50%,-50%);
-  opacity: 0;
-  padding: 5px 9px;
-  min-width: 0;
-  max-width: 120px;
-  white-space: nowrap;
-  background: rgba(18,25,21,.96);
-  border: 1px solid #b99a5e;
-  color: #e8d9b6;
-  font: 9px/1.4 "Courier New", monospace;
-  letter-spacing: .06em;
-  box-shadow: 2px 2px rgba(8,11,9,.6);
-  pointer-events: none;
-  transition: opacity .22s;
-  z-index: 2;
-}
-/* 触屏上禁用 hover 提示（由 JS 点击时通过 .tip-show 显示） */
-@media (hover: none) and (pointer: coarse){
-  .room-gramophone-hit:hover:after{ opacity: 0 !important; }
-  .room-gramophone-hit.tip-show:after{ opacity: 1 !important; }
-}
-/* 桌面悬停：留声机靠近右边时，提示从右向左展开避免越界 */
 @media (hover: hover) and (pointer: fine){
   .room-gramophone-hit:hover:after{ opacity: 1; }
 }
-/* 桌面悬停：留声机靠近右边时，提示从右向左展开避免越界 */
-.room-gramophone-hit::after{
-  left: auto;
-  right: calc(100% + 6px);
-  transform: translateY(-50%);
-  top: 50%;
-}
-/* 覆盖：让提示继续按 data-tip 文字显示，但位置从热点左侧弹出 */
-.room-gramophone-hit[data-tip]::after{ content: attr(data-tip); }
 
-/* ⑤ 雨声/留声机按钮：保持在书房场景之内，不做 fixed 定位 */
+/* ⑤ 温暖色调覆盖 */
+.wash{
+  background:
+    radial-gradient(ellipse at 15% 72%, rgba(246,168,92,.075), transparent 55%),
+    radial-gradient(ellipse at 78% 58%, rgba(245,180,105,.055), transparent 55%),
+    linear-gradient(180deg,rgba(12,7,3,.06),transparent 50%,rgba(9,4,1,.30)) !important;
+}
+#fireGlow stop:first-child{ stop-color:#f7a854 !important; stop-opacity:.50 !important; }
+#fireGlow stop:last-child{ stop-color:#c76a35 !important; }
+#lampGlow stop:first-child{ stop-color:#f8cf82 !important; stop-opacity:.52 !important; }
+#lampGlow stop:last-child{ stop-color:#d18b46 !important; }
+
+/* ⑥ 手机横屏：声音按钮维持在场景内 */
 @media (orientation: landscape) and (max-height: 560px) and (pointer: coarse){
   .sound-controls{
     position: absolute !important;
@@ -197,12 +189,6 @@ rect[fill="url(#woodFloorPattern)"]{ fill:url(#woodFloorPattern) !important; }
     right: 14px !important;
     z-index: 40 !important;
   }
-}
-
-/* ⑥ 橡树印章：移到书桌右上角 */
-.target-stamp{
-  top: 7.5% !important;
-  right: 6% !important;
 }
 
 /* ⑦ 奖杯弹窗 */
@@ -285,12 +271,10 @@ rect[fill="url(#woodFloorPattern)"]{ fill:url(#woodFloorPattern) !important; }
 <main class="frame">
 <section class="stage" aria-label="像素风伦敦书房场景">
 
-<!-- ===== 做旧木地板纹理 ===== -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
     <pattern id="woodFloorPattern" width="120" height="60" patternUnits="userSpaceOnUse">
       <rect width="120" height="60" fill="#3e2c1a"/>
-      <!-- 第一行 -->
       <rect x="0" y="0" width="120" height="27" fill="#4d3a26"/>
       <rect x="0" y="0" width="120" height="5" fill="#5a4530" opacity=".75"/>
       <rect x="0" y="22" width="120" height="5" fill="#3e2d1a" opacity=".85"/>
@@ -313,7 +297,6 @@ rect[fill="url(#woodFloorPattern)"]{ fill:url(#woodFloorPattern) !important; }
       <circle cx="52" cy="8" r="5.5" fill="none" stroke="#5c4a35" stroke-width=".5" opacity=".35"/>
       <rect x="8" y="19" width="14" height=".5" fill="#7a614b" opacity=".55"/>
       <rect x="72" y="6" width="20" height=".5" fill="#7a614b" opacity=".5"/>
-      <!-- 第二行 -->
       <rect x="0" y="28" width="120" height="28" fill="#523c28"/>
       <rect x="0" y="28" width="120" height="5" fill="#5e4832" opacity=".75"/>
       <rect x="0" y="51" width="120" height="5" fill="#42301e" opacity=".85"/>
@@ -333,7 +316,6 @@ rect[fill="url(#woodFloorPattern)"]{ fill:url(#woodFloorPattern) !important; }
       <circle cx="16" cy="45" r="2.5" fill="#5a4630" opacity=".35"/>
       <circle cx="16" cy="45" r="4" fill="none" stroke="#5a4630" stroke-width=".4" opacity=".3"/>
       <rect x="88" y="41" width="18" height=".5" fill="#7d644e" opacity=".5"/>
-      <!-- 细节点 -->
       <rect x="4" y="2" width="1" height="1" fill="#6d543d" opacity=".8"/>
       <rect x="46" y="16" width="1" height="1" fill="#6d543d" opacity=".7"/>
       <rect x="106" y="10" width="1" height="1" fill="#6d543d" opacity=".75"/>
@@ -683,12 +665,10 @@ rect[fill="url(#woodFloorPattern)"]{ fill:url(#woodFloorPattern) !important; }
 })();
 </script>
 <script>
-/* v7 补丁：触屏提示 3 秒自动消失、留声机提示、奖杯弹窗 */
 (function(){
   const touch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
   const TIP_MS = 3000;
 
-  /* ① 书桌 / 书架：点击显示提示，3 秒自动消失，然后进入场景 */
   if (touch){
     ['desk','bookshelf'].forEach(function(id){
       const details = document.getElementById(id);
@@ -711,7 +691,6 @@ rect[fill="url(#woodFloorPattern)"]{ fill:url(#woodFloorPattern) !important; }
       }, true);
     });
 
-    /* 植物目标：点击显示提示，短暂延迟后触发打开，提示随后由 JS 计时器移除 */
     document.querySelectorAll('.plant-target').forEach(function(btn){
       let bypass = false;
       btn.addEventListener('click', function(e){
@@ -729,7 +708,6 @@ rect[fill="url(#woodFloorPattern)"]{ fill:url(#woodFloorPattern) !important; }
     });
   }
 
-  /* ② 留声机提示：点击显示文字 + 金色边框，3 秒后一起消失 */
   const hit = document.getElementById('record-player-hit');
   const music = document.getElementById('music-audio');
   if (hit && music){
@@ -764,7 +742,6 @@ rect[fill="url(#woodFloorPattern)"]{ fill:url(#woodFloorPattern) !important; }
     });
   }
 
-  /* ③ 奖杯弹窗 */
   const counter = document.getElementById('clue-count');
   const modal = document.getElementById('trophy-modal');
   if (counter && modal){
