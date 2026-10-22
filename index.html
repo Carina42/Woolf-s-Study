@@ -28,7 +28,7 @@
 @keyframes ribbon-release{0%{opacity:1;transform:scaleX(1)}100%{opacity:0;transform:scaleX(.08)}}
 @keyframes cover-open{0%{transform:perspective(900px) rotateY(0deg) scaleX(1);opacity:1}70%{transform:perspective(900px) rotateY(-75deg) scaleX(.45);opacity:.85}100%{transform:perspective(900px) rotateY(-88deg) scaleX(.12);opacity:0}}
 @keyframes pages-rise{0%{opacity:0;transform:translateY(12px) scale(.94)}100%{opacity:1;transform:translateY(0) scale(1)}}
-.desk-top-view #book-pages-underlay{display:none}.desk-top-view.unlocking #case-lock{transform-box:fill-box;transform-origin:center;animation:lock-turn .58s ease-in forwards}.desk-top-view.unlocked #book-pages-underlay{display:block}.desk-top-view.unlocked #closed-book{transform-box:fill-box;transform-origin:0% 50%;animation:cover-open .85s cubic-bezier(.2,.75,.15,1) .30s forwards}.desk-top-view.unlocked #file-ribbon{transform-box:fill-box;transform-origin:center;animation:ribbon-release .48s ease-in .2s forwards}.opened-case{position:absolute;z-index:6;inset:6% 5%;display:none;perspective:1200px;pointer-events:auto}.desk-top-view.unlocked .opened-case{display:block;opacity:0;animation:pages-rise .5s ease-out 1.05s both}.opened-case.case-hidden{display:none!important}.case-spread{height:100%;padding:16px 18px;background:linear-gradient(90deg,#b69c70 0 1%,#ece0c3 1.5% 49.5%,#c4ac7b 50%,#e8ddc1 51% 98.5%,#b79e70 99%);border:5px solid #33251a;box-shadow:inset 0 0 0 2px #d0b472,0 14px 32px #0d0b08;display:flex;flex-direction:column;color:#392d1d;overflow:hidden}.case-head{display:flex;align-items:flex-start;justify-content:space-between;border-bottom:1px solid #a58a5a;padding:0 2px 9px}.case-head small,.case-head span,.folio-line{font:8px "Courier New",monospace;letter-spacing:.12em;color:#796445}.case-head h2{font:clamp(18px,2.2vw,25px) "Songti SC","Noto Serif SC",serif;letter-spacing:.18em;font-weight:400;margin:4px 0}.case-head button{width:27px;height:27px;border:1px solid #998053;background:transparent;color:#675332;font-size:20px;line-height:20px;cursor:pointer}.case-body{display:grid;grid-template-columns:minmax(150px,25%) 1fr;gap:18px;min-height:0;flex:1;padding-top:13px}.case-index{border-right:1px solid rgba(118,91,52,.3);padding-right:14px;display:flex;flex-direction:column;gap:9px;font:10px/1.5 "Songti SC","Noto Serif SC",serif}.case-index b{font-size:12px;letter-spacing:.12em;font-weight:400}.case-index em{font-style:normal;color:#795c32}.case-tree{flex:1;display:grid;place-items:center;min-height:100px}.case-tree svg{height:min(27vh,190px);width:auto;image-rendering:pixelated;filter:drop-shadow(3px 4px 1px rgba(63,46,27,.2))}.case-reading{display:grid;grid-template-rows:minmax(0,1fr) auto auto;min-width:0;min-height:0;position:relative}.case-page{display:none;overflow-y:auto;overscroll-behavior:contain;scrollbar-color:#aa8c59 rgba(91,71,43,.12);scrollbar-width:thin;min-height:0;flex:1;font:clamp(12px,1.4vw,15px)/2 "Songti SC","Noto Serif SC",serif;color:#392d1d;padding:2px 5px}.case-page.active{display:block;height:100%;box-sizing:border-box}.case-page h3{font-size:clamp(14px,1.7vw,19px);font-weight:400;letter-spacing:.14em;margin:16px 0 12px}.case-page p{margin:12px 0;line-height:2.1}.folio-line{display:flex;justify-content:space-between}.clue-word{border-bottom:1px dashed #a58550;cursor:pointer;transition:background .18s,color .18s}.clue-word:hover{background:rgba(190,153,89,.19)}.clue-word.found{background:linear-gradient(transparent 55%,rgba(201,164,92,.38) 55%);color:#76571f;border:0}.case-controls{display:flex;flex:0 0 auto;justify-content:space-between;align-items:center;padding-top:8px;border-top:1px solid rgba(118,91,52,.28)}.case-controls button{border:0;background:transparent;color:#775e37;font:10px "Courier New",monospace;cursor:pointer;padding:4px}.case-controls button:disabled{opacity:.3;cursor:default}.case-controls span{font:9px "Courier New",monospace;color:#806b48}.case-complete{display:none;margin-top:6px;text-align:center;color:#76603a;font:9px "Courier New",monospace;letter-spacing:.08em}.case-complete.visible{display:block}
+.desk-top-view #book-pages-underlay{display:none}.desk-top-view.unlocking #case-lock{transform-box:fill-box;transform-origin:center;animation:lock-turn .58s ease-in forwards}.desk-top-view.unlocked #book-pages-underlay{display:block}.desk-top-view.unlocked #closed-book{transform-box:fill-box;transform-origin:0% 50%;animation:cover-open .85s cubic-bezier(.2,.75,.15,1) .30s forwards}.desk-top-view.unlocked #file-ribbon{transform-box:fill-box;transform-origin:center;animation:ribbon-release .48s ease-in .2s forwards}.opened-case{position:absolute;z-index:6;inset:6% 5%;display:none;perspective:1200px;pointer-events:auto}.desk-top-view.unlocked .opened-case{display:block;opacity:0;animation:pages-rise .5s ease-out 1.05s both}.opened-case.case-hidden{display:none!important}.case-spread{height:100%;padding:16px 18px;background:linear-gradient(90deg,#b69c70 0 1%,#ece0c3 1.5% 49.5%,#c4ac7b 50%,#e8ddc1 51% 98.5%,#b79e70 99%);border:5px solid #33251a;box-shadow:inset 0 0 0 2px #d0b472,0 14px 32px #0d0b08;display:flex;flex-direction:column;color:#392d1d;overflow:hidden}.case-head{display:flex;align-items:flex-start;justify-content:space-between;border-bottom:1px solid #a58a5a;padding:0 2px 9px}.case-head small,.case-head span,.folio-line{font:8px "Courier New",monospace;letter-spacing:.12em;color:#796445}.case-head h2{font:clamp(18px,2.2vw,25px) "Songti SC","Noto Serif SC",serif;letter-spacing:.18em;font-weight:400;margin:4px 0}.case-head button{width:27px;height:27px;border:1px solid #998053;background:transparent;color:#675332;font-size:20px;line-height:20px;cursor:pointer}.case-body{display:grid;grid-template-columns:minmax(150px,25%) 1fr;gap:18px;min-height:0;flex:1;padding-top:13px}.case-index{border-right:1px solid rgba(118,91,52,.3);padding-right:14px;display:flex;flex-direction:column;gap:9px;font:10px/1.5 "Songti SC","Noto Serif SC",serif}.case-index b{font-size:12px;letter-spacing:.12em;font-weight:400}.case-index em{font-style:normal;color:#795c32}.case-tree{flex:1;display:grid;place-items:center;min-height:100px}.case-tree svg{height:min(27vh,190px);width:auto;image-rendering:pixelated;filter:drop-shadow(3px 4px 1px rgba(63,46,27,.2))}.case-reading{display:grid;grid-template-rows:minmax(0,1fr) auto auto;min-width:0;min-height:0;position:relative}.case-page{display:none;overflow-y:auto;overscroll-behavior:contain;scrollbar-color:#aa8c59 rgba(91,71,43,.12);scrollbar-width:thin;min-height:0;flex:1;font:clamp(12px,1.4vw,15px)/2 "Songti SC","Noto Serif SC",serif;color:#392d1d;padding:2px 5px}.case-page.active{display:block;height:100%;box-sizing:border-box}.case-page h3{font-size:clamp(14px,1.7vw,19px);font-weight:400;letter-spacing:.14em;margin:16px 0 12px}.case-page p{margin:12px 0;line-height:2.1;text-indent:2em}.folio-line{display:flex;justify-content:space-between}.clue-word{border-bottom:1px dashed #a58550;cursor:pointer;transition:background .18s,color .18s}.clue-word:hover{background:rgba(190,153,89,.19)}.clue-word.found{background:linear-gradient(transparent 55%,rgba(201,164,92,.38) 55%);color:#76571f;border:0}.case-controls{display:flex;flex:0 0 auto;justify-content:space-between;align-items:center;padding-top:8px;border-top:1px solid rgba(118,91,52,.28)}.case-controls button{border:0;background:transparent;color:#775e37;font:10px "Courier New",monospace;cursor:pointer;padding:4px}.case-controls button:disabled{opacity:.3;cursor:default}.case-controls span{font:9px "Courier New",monospace;color:#806b48}.case-complete{display:none;margin-top:6px;text-align:center;color:#76603a;font:9px "Courier New",monospace;letter-spacing:.08em}.case-complete.visible{display:block}
 #folio-hover{min-width:145px}.desk-top-view.unlocked .folio-target{display:none}
 .plant-select-dialog button{font-size:9px;padding:5px 10px}.stage:has(#desk[open]) .desk-heading{opacity:.8}
 @media(max-width:600px){.opened-case{inset:4% 3%}.case-spread{padding:9px 10px}.case-body{grid-template-columns:110px 1fr;gap:9px;padding-top:8px}.case-index{font-size:8px;gap:5px;padding-right:7px}.case-index b{font-size:10px}.case-page{font-size:11px;line-height:1.85;padding:0}.case-page h3{font-size:13px;margin:9px 0}.case-page p{line-height:1.85;margin:8px 0}.case-head small,.case-head span,.folio-line{font-size:6px}.case-tree svg{height:112px}.case-complete{font-size:7px}}
@@ -56,8 +56,8 @@
 .desk-top-view.unlocked .case-reopen:not([hidden]){display:block}.case-reopen[hidden]{display:none!important}
 .case-reopen:hover{border-color:rgba(211,177,111,.45);background:rgba(232,196,124,.035)}
 .case-reopen:after{content:"查看卷宗";position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);opacity:0;padding:5px 8px;background:rgba(18,25,21,.9);border:1px solid #b99a5e;color:#e8d9b6;white-space:nowrap;font:9px "Courier New",monospace}.case-reopen:hover:after{opacity:1}
-.sound-controls{position:absolute;z-index:40;right:14px;top:12px;display:flex;gap:5px}.sound-toggle{position:relative;inset:auto;padding:5px 8px}
-@media(max-width:600px){.sound-controls{right:8px;top:8px;gap:4px}.sound-toggle{font-size:7px;padding:4px 6px}.case-head button#close-dossier{width:30px;height:30px;flex-basis:30px;font-size:22px}}
+.sound-controls{position:absolute;z-index:40;right:10px;top:10px;display:flex;gap:12px}.sound-toggle{position:relative;inset:auto;padding:5px 8px}
+@media(max-width:600px){.sound-controls{right:6px;top:6px;gap:8px}.sound-toggle{font-size:7px;padding:4px 6px}.case-head button#close-dossier{width:30px;height:30px;flex-basis:30px;font-size:22px}}
 #record-arm{transform-box:view-box;transform-origin:84.5% 55.2%;transition:transform .85s ease}
 .record-player.playing #record-arm{transform:rotate(130deg)}
 
@@ -71,7 +71,7 @@
 @media(max-width:600px){.room-gramophone-hit{left:88%;top:54%;width:12%;height:40%}}
 @media (min-width:761px){body{min-height:100dvh;padding:clamp(8px,2vw,24px)}.frame{width:min(1240px,calc(100vw - 48px),calc((100dvh - 55px)*16/9))}}
 @media (max-width:760px){body{min-height:100dvh;padding:8px}.frame{width:100%;border-width:4px}.stage{min-height:0;aspect-ratio:16/9}.meta{left:9px;top:8px;font-size:7px}.caption{display:block;padding:9px 12px}.caption h1{font-size:19px}.caption small{font-size:8px}.next{text-align:left;margin-top:6px;font-size:9px}}
-@media (max-width:900px) and (orientation:landscape){body{min-height:100dvh;padding:4px;align-content:center}.frame{width:min(calc(100vw - 8px),calc((100dvh - 16px)*16/9));border-width:3px}.stage{min-height:0;aspect-ratio:16/9}.caption{display:none}.meta{left:8px;top:7px;font-size:7px}.sound-controls{right:7px;top:7px;gap:3px}.sound-toggle{font-size:7px;padding:3px 5px}}
+@media (max-width:900px) and (orientation:landscape){body{min-height:100dvh;padding:4px;align-content:center}.frame{width:min(calc(100vw - 8px),calc((100dvh - 16px)*16/9));border-width:3px}.stage{min-height:0;aspect-ratio:16/9}.caption{display:none}.meta{left:8px;top:7px;font-size:7px}.sound-controls{right:8px;top:8px;gap:8px}.sound-toggle{font-size:7px;padding:3px 5px}}
 @media (max-height:500px) and (orientation:landscape){.opened-case{inset:3% 3%}.case-spread{padding:8px 10px}.case-head{padding-bottom:5px}.case-body{padding-top:6px}.case-tree svg{height:min(100px,24vh)}.plant-select-dialog{top:50%;min-width:210px;padding:10px 14px}}
 .fireplace-flames{transform-box:fill-box;transform-origin:50% 100%;animation:hearth-flicker .72s steps(4,end) infinite alternate}
 .fire-glow{animation:firelight-pulse 1.3s steps(3,end) infinite alternate}
@@ -94,89 +94,138 @@
 @media(max-width:600px){.case-complete{gap:6px;padding:4px 6px}.case-complete strong{font-size:8px}.case-complete small{font-size:6px}.pixel-trophy{width:20px;height:20px;flex-basis:20px}.case-feedback{font-size:7px}}
 
 /* ============================================================
-   v10 补丁：留声机提示与书桌/书架完全统一
+   v12：声音按钮更贴边 / 光晕更强 / 修饰纹理 / 手机卷宗排版整理
    ============================================================ */
-.target-stamp{
-  top: 18% !important;
-  right: 14.5% !important;
+
+/* ① 声音按钮：贴近右上角，彼此分离更清晰 */
+.sound-controls{
+  position:absolute;
+  z-index:40;
+  right:8px;
+  top:8px;
+  display:flex;
+  gap:14px;
 }
-.room-gramophone-hit{
-  left: 88.5% !important;
-  top: 51% !important;
-  width: 11.5% !important;
-  height: 43% !important;
+@media(max-width:600px){
+  .sound-controls{ right:5px; top:5px; gap:10px; }
 }
-.room-gramophone-hit:after{
-  content: attr(data-tip);
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  right: auto;
-  transform: translate(-50%, -50%);
-  opacity: 0;
-  padding: 5px 9px;
-  white-space: nowrap;
-  background: rgba(20,27,22,.91);
-  border: 1px solid rgba(201,164,92,.65);
-  color: rgba(230,215,178,.88);
-  font: 9px/1.4 "Courier New", monospace;
-  letter-spacing: .06em;
-  box-shadow: 2px 2px rgba(8,11,9,.6);
-  pointer-events: none;
-  transition: opacity .14s;
-  z-index: 2;
-}
-@media (hover: none) and (pointer: coarse){
-  .desk-hotspot:hover,
-  .shelf-hotspot:hover,
-  .room-gramophone-hit:hover,
-  .plant-target:hover{
-    border-color: transparent !important;
-    background: transparent !important;
-    box-shadow: none !important;
-  }
-  .desk-hotspot:hover .enter-label,
-  .shelf-hotspot:hover .shelf-enter-label,
-  .plant-target:hover:before,
-  .room-gramophone-hit:hover:after{
-    opacity: 0 !important;
-  }
-  .desk-hotspot.tip-force-show .enter-label,
-  .shelf-hotspot.tip-force-show .shelf-enter-label,
-  .plant-target.tip-force-show:before{
-    opacity: 1 !important;
-  }
-  .plant-target:before{
-    top: 50% !important;
-  }
-  .room-gramophone-hit.tip-show:after{
-    opacity: 1 !important;
-  }
-}
-@media (hover: hover) and (pointer: fine){
-  .room-gramophone-hit:hover:after{ opacity: 1; }
-}
-.record-player.needle-down #record-arm{
-  transform: rotate(-149deg);
-}
-.wash{
-  background:
-    radial-gradient(ellipse at 15% 72%, rgba(246,168,92,.075), transparent 55%),
-    radial-gradient(ellipse at 78% 58%, rgba(245,180,105,.055), transparent 55%),
-    linear-gradient(180deg,rgba(12,7,3,.06),transparent 50%,rgba(9,4,1,.30)) !important;
-}
-#fireGlow stop:first-child{ stop-color:#f7a854 !important; stop-opacity:.50 !important; }
-#fireGlow stop:last-child{ stop-color:#c76a35 !important; }
-#lampGlow stop:first-child{ stop-color:#f8cf82 !important; stop-opacity:.52 !important; }
-#lampGlow stop:last-child{ stop-color:#d18b46 !important; }
 @media (orientation: landscape) and (max-height: 560px) and (pointer: coarse){
   .sound-controls{
-    position: absolute !important;
-    top: 12px !important;
-    right: 14px !important;
-    z-index: 40 !important;
+    position:absolute !important;
+    top:8px !important;
+    right:8px !important;
+    gap:14px !important;
   }
 }
+
+/* ② 壁炉、台灯光晕加大，亮度提升 */
+#fireGlow stop:first-child{ stop-color:#f7a854 !important; stop-opacity:.70 !important; }
+#fireGlow stop:last-child{ stop-color:#c76a35 !important; }
+#lampGlow stop:first-child{ stop-color:#f8cf82 !important; stop-opacity:.70 !important; }
+#lampGlow stop:last-child{ stop-color:#d18b46 !important; }
+
+/* ③ 卷宗正文中文排版：首行缩进（全端） */
+.case-page p{ text-indent:2em; }
+
+/* ④ 手机横屏卷宗排版整理：更整齐、不挤、字号合适 */
+@media (orientation: landscape) and (max-height: 560px) and (pointer: coarse){
+  .opened-case .case-spread{
+    padding:12px 16px !important;
+    border-width:3px !important;
+  }
+  .opened-case .case-head{
+    padding-bottom:8px !important;
+    margin-bottom:4px !important;
+  }
+  .opened-case .case-head h2{
+    font-size:17px !important;
+    margin:2px 0 4px !important;
+  }
+  .opened-case .case-body{
+    grid-template-columns: minmax(100px, 22%) 1fr !important;
+    grid-template-rows: 1fr !important;
+    gap:14px !important;
+    padding-top:10px !important;
+  }
+  .opened-case .case-index{
+    flex-direction:column !important;
+    border-right:1px solid rgba(118,91,52,.3) !important;
+    border-bottom:0 !important;
+    padding:0 12px 0 0 !important;
+    gap:9px !important;
+    font-size:11px !important;
+    line-height:1.6 !important;
+  }
+  .opened-case .case-index b{ font-size:12px !important; }
+  .opened-case .case-page{
+    font-size:15px !important;
+    line-height:2.15 !important;
+    padding:2px 6px !important;
+  }
+  .opened-case .case-page p{
+    margin:14px 0 !important;
+    line-height:2.15 !important;
+    text-indent:2em;
+  }
+  .opened-case .case-page h3{
+    font-size:16px !important;
+    margin:0 0 12px !important;
+    padding:0 0 8px !important;
+    border-bottom:1px dotted rgba(118,91,52,.4) !important;
+    letter-spacing:.18em !important;
+  }
+  .opened-case .folio-line{
+    padding-bottom:4px !important;
+    margin-bottom:2px !important;
+    border-bottom:1px dashed rgba(118,91,52,.22) !important;
+  }
+  .opened-case .case-controls{
+    padding-top:10px !important;
+    margin-top:2px !important;
+  }
+  .opened-case .case-controls button{
+    font-size:12px !important;
+    padding:8px 10px !important;
+    min-width:48px;
+  }
+  .opened-case .case-controls span{ font-size:10px !important; }
+  .opened-case .case-feedback{ font-size:10px !important; }
+}
+
+/* ⑤ 书架木纹高光修饰（叠加在书架面板上） */
+.shelf-art::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    repeating-linear-gradient(0deg, transparent 0 26px, rgba(215,180,120,.035) 26px 27px),
+    repeating-linear-gradient(90deg, transparent 0 118px, rgba(0,0,0,.05) 118px 119px);
+  mix-blend-mode:overlay;
+}
+
+/* ⑥ 书桌俯视图：再加一层细腻布纹装饰 */
+.topdown-art::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background-image:
+    repeating-linear-gradient(45deg, transparent 0 22px, rgba(255,225,170,.02) 22px 23px),
+    repeating-linear-gradient(-45deg, transparent 0 22px, rgba(0,0,0,.02) 22px 23px);
+  mix-blend-mode:soft-light;
+}
+
+/* ⑦ 壁炉砖缝（在壁炉面板上加装饰） */
+.fireplace-bricks{
+  opacity:.32;
+  stroke:#5d4a3a;
+  stroke-width:.55;
+  fill:none;
+  shape-rendering:crispEdges;
+}
+
+/* ⑧ 奖杯弹窗、全屏按钮等保持原有 */ 
 .trophy-modal{
   position: fixed; inset: 0; z-index: 9800;
   display: grid; place-items: center; padding: 20px;
@@ -249,34 +298,19 @@
 }
 @media (pointer: coarse){ .fs-toggle{ display: grid; } }
 
-/* ============================================================
-   v11 补丁：桌面端 / 手机横屏 分别适配字号
-   ============================================================ */
-
-/* ---- A. 桌面端（鼠标设备）：整体放大字号 ---- */
+/* ⑨ 桌面端字号放大（沿用 v11） */
 @media (hover: hover) and (pointer: fine) {
-  /* 房间层：顶部元信息 / 底部说明 / 声音按钮 */
   .meta { font-size: 13px !important; padding: 8px 11px !important; letter-spacing: .2em !important; }
   .caption small { font-size: 12px !important; letter-spacing: .18em !important; }
   .caption h1 { font-size: clamp(24px, 3.2vw, 38px) !important; }
   .next { font-size: 13px !important; line-height: 1.8 !important; }
   .sound-toggle { font-size: 11px !important; padding: 6px 11px !important; letter-spacing: .1em !important; }
-
-  /* 房间层：走近 / 查看 / 播放 提示 */
   .desk-hotspot .enter-label,
   .shelf-enter-label,
   .plant-target:before,
-  .room-gramophone-hit:after {
-    font-size: 11px !important;
-    padding: 6px 11px !important;
-  }
-  /* 返回按钮 */
+  .room-gramophone-hit:after { font-size: 11px !important; padding: 6px 11px !important; }
   #desk[open] > .desk-hotspot .leave-label,
-  #bookshelf[open] > .shelf-hotspot .shelf-leave-label {
-    font-size: 10px !important;
-  }
-
-  /* 书桌俯视层 */
+  #bookshelf[open] > .shelf-hotspot .shelf-leave-label { font-size: 10px !important; }
   .desk-heading { font-size: clamp(22px, 3.2vw, 42px) !important; }
   .desk-heading small { font-size: 11px !important; }
   .desk-caption { font-size: 11px !important; line-height: 1.7 !important; }
@@ -285,17 +319,10 @@
   .folio-hover { font-size: 12px !important; padding: 8px 12px !important; }
   .case-reopen:after { font-size: 11px !important; padding: 6px 10px !important; }
   .target-stamp { font-size: 10px !important; padding: 6px 10px !important; }
-
-  /* 卷宗阅读层 */
-  .case-page {
-    font-size: clamp(14px, 1.55vw, 17px) !important;
-    line-height: 2 !important;
-  }
+  .case-page { font-size: clamp(14px, 1.55vw, 17px) !important; line-height: 2.1 !important; }
   .case-page h3 { font-size: clamp(16px, 1.9vw, 22px) !important; }
   .case-head h2 { font-size: clamp(20px, 2.4vw, 28px) !important; }
-  .case-head small,
-  .case-head span,
-  .folio-line { font-size: 10px !important; }
+  .case-head small, .case-head span, .folio-line { font-size: 10px !important; }
   .case-index { font-size: 12px !important; }
   .case-index b { font-size: 14px !important; }
   .case-controls button { font-size: 12px !important; padding: 6px 8px !important; }
@@ -303,46 +330,9 @@
   .case-feedback { font-size: 10px !important; }
   .case-complete strong { font-size: 12px !important; }
   .case-complete small { font-size: 10px !important; }
-
-  /* 植物目标选择弹窗 */
   .plant-select-dialog b { font-size: 15px !important; }
   .plant-select-dialog span { font-size: 12px !important; }
   .plant-select-dialog button { font-size: 12px !important; padding: 8px 16px !important; }
-}
-
-/* ---- B. 手机横屏：字号适度放大，不撑破阅读区 ---- */
-@media (orientation: landscape) and (max-height: 560px) and (pointer: coarse) {
-  .case-page {
-    font-size: 15px !important;
-    line-height: 1.95 !important;
-  }
-  .case-page h3 { font-size: 16px !important; }
-  .case-head h2 { font-size: 17px !important; }
-  .case-head small,
-  .case-head span,
-  .folio-line { font-size: 8px !important; }
-  .case-index { font-size: 11px !important; }
-  .case-index b { font-size: 12px !important; }
-  .case-controls button { font-size: 12px !important; }
-  .case-controls span { font-size: 10px !important; }
-  .case-feedback { font-size: 10px !important; }
-  .case-complete strong { font-size: 10px !important; }
-  .case-complete small { font-size: 8px !important; }
-
-  .desk-hotspot .enter-label,
-  .shelf-enter-label,
-  .plant-target:before,
-  .room-gramophone-hit:after {
-    font-size: 10px !important;
-    padding: 6px 10px !important;
-  }
-  .sound-toggle { font-size: 9px !important; padding: 5px 8px !important; }
-  .target-stamp { font-size: 8px !important; }
-  .file-label { font-size: 10px !important; }
-  .file-label b { font-size: 14px !important; }
-  .desk-heading { font-size: 22px !important; }
-  .desk-heading small { font-size: 8px !important; }
-  .desk-caption { font-size: 9px !important; }
 }
 </style>
 </head>
@@ -409,8 +399,8 @@
 <defs>
  <pattern id="wallpaper" width="32" height="32" patternUnits="userSpaceOnUse"><rect width="32" height="32" fill="#455244"/><path d="M8 6h4v4H8zM22 21h4v4h-4z" fill="#596348"/><path d="M10 16h2v5h-2zM23 5h2v5h-2z" fill="#35453b"/></pattern>
  <linearGradient id="windowNight" x2="0" y2="1"><stop stop-color="#273d48"/><stop offset="1" stop-color="#14272e"/></linearGradient>
- <radialGradient id="lampGlow"><stop stop-color="#f8cf82" stop-opacity=".52"/><stop offset="1" stop-color="#d18b46" stop-opacity="0"/></radialGradient>
- <radialGradient id="fireGlow"><stop stop-color="#f7a854" stop-opacity=".50"/><stop offset="1" stop-color="#c76a35" stop-opacity="0"/></radialGradient>
+ <radialGradient id="lampGlow"><stop stop-color="#f8cf82" stop-opacity=".70"/><stop offset="1" stop-color="#d18b46" stop-opacity="0"/></radialGradient>
+ <radialGradient id="fireGlow"><stop stop-color="#f7a854" stop-opacity=".70"/><stop offset="1" stop-color="#c76a35" stop-opacity="0"/></radialGradient>
  <clipPath id="windowClip"><rect x="668" y="82" width="202" height="232"/></clipPath>
 </defs>
 <rect width="960" height="540" fill="url(#wallpaper)"/><rect y="326" width="960" height="214" fill="#29352e"/><path d="M0 330H960v12H0z" fill="#b18d55"/><path d="M0 346H960v5H0z" fill="#18251f"/>
@@ -437,8 +427,10 @@
 <path d="M731 84v230M800 82v232M669 195h202" stroke="#a98b55" stroke-width="7"/><path d="M735 88v224M804 86v226M672 200h195" stroke="#594b35" stroke-width="2"/>
 <path d="M640 64h25v270h-25zM872 64h25v270h-25z" fill="#78483d"/><path d="M646 73h14v8h-14zM646 120h14v8h-14zM646 169h14v8h-14zM646 218h14v8h-14zM646 267h14v8h-14zM879 73h13v8h-13zM879 120h13v8h-13zM879 169h13v8h-13zM879 218h13v8h-13zM879 267h13v8h-13z" fill="#a56a51"/><path d="M657 321h236v12H657z" fill="#d2b272"/></g>
 <g clip-path="url(#windowClip)"><g class="rain-sheet rain-far" fill="#b9ced1" opacity=".62"><path d="M651 52h3l-3 22h-2l3 -22z"/><path d="M684 52h3l-3 26h-2l3 -26z"/><path d="M710 52h3l-3 22h-2l3 -22z"/><path d="M743 52h3l-3 26h-2l3 -26z"/><path d="M769 52h3l-3 22h-2l3 -22z"/><path d="M802 52h3l-3 26h-2l3 -26z"/><path d="M828 52h3l-3 22h-2l3 -22z"/><path d="M854 52h3l-3 26h-2l3 -26z"/><path d="M887 52h3l-3 22h-2l3 -22z"/><path d="M665 80h3l-3 24h-2l3 -24z"/><path d="M698 80h3l-3 28h-2l3 -28z"/><path d="M724 80h3l-3 24h-2l3 -24z"/><path d="M757 80h3l-3 28h-2l3 -28z"/><path d="M783 80h3l-3 24h-2l3 -24z"/><path d="M816 80h3l-3 28h-2l3 -28z"/><path d="M842 80h3l-3 24h-2l3 -24z"/><path d="M868 80h3l-3 28h-2l3 -28z"/><path d="M651 103h3l-3 26h-2l3 -26z"/><path d="M684 103h3l-3 22h-2l3 -22z"/><path d="M710 103h3l-3 26h-2l3 -26z"/><path d="M743 103h3l-3 22h-2l3 -22z"/><path d="M769 103h3l-3 26h-2l3 -26z"/><path d="M802 103h3l-3 22h-2l3 -22z"/><path d="M828 103h3l-3 26h-2l3 -26z"/><path d="M854 103h3l-3 22h-2l3 -22z"/><path d="M887 103h3l-3 26h-2l3 -26z"/><path d="M665 131h3l-3 28h-2l3 -28z"/><path d="M698 131h3l-3 24h-2l3 -24z"/><path d="M724 131h3l-3 28h-2l3 -28z"/><path d="M757 131h3l-3 24h-2l3 -24z"/><path d="M783 131h3l-3 28h-2l3 -28z"/><path d="M816 131h3l-3 24h-2l3 -24z"/><path d="M842 131h3l-3 28h-2l3 -28z"/><path d="M868 131h3l-3 24h-2l3 -24z"/><path d="M651 154h3l-3 22h-2l3 -22z"/><path d="M684 154h3l-3 26h-2l3 -26z"/><path d="M710 154h3l-3 22h-2l3 -22z"/><path d="M743 154h3l-3 26h-2l3 -26z"/><path d="M769 154h3l-3 22h-2l3 -22z"/><path d="M802 154h3l-3 26h-2l3 -26z"/><path d="M828 154h3l-3 22h-2l3 -22z"/><path d="M854 154h3l-3 26h-2l3 -26z"/><path d="M887 154h3l-3 22h-2l3 -22z"/><path d="M665 177h3l-3 24h-2l3 -24z"/><path d="M698 177h3l-3 28h-2l3 -28z"/><path d="M724 177h3l-3 24h-2l3 -24z"/><path d="M757 177h3l-3 28h-2l3 -28z"/><path d="M783 177h3l-3 24h-2l3 -24z"/><path d="M816 177h3l-3 28h-2l3 -28z"/><path d="M842 177h3l-3 24h-2l3 -24z"/><path d="M868 177h3l-3 28h-2l3 -28z"/><path d="M651 205h3l-3 26h-2l3 -26z"/><path d="M684 205h3l-3 22h-2l3 -22z"/><path d="M710 205h3l-3 26h-2l3 -26z"/><path d="M743 205h3l-3 22h-2l3 -22z"/><path d="M769 205h3l-3 26h-2l3 -26z"/><path d="M802 205h3l-3 22h-2l3 -22z"/><path d="M828 205h3l-3 26h-2l3 -26z"/><path d="M854 205h3l-3 22h-2l3 -22z"/><path d="M887 205h3l-3 26h-2l3 -26z"/><path d="M665 228h3l-3 28h-2l3 -28z"/><path d="M698 228h3l-3 24h-2l3 -24z"/><path d="M724 228h3l-3 28h-2l3 -28z"/><path d="M757 228h3l-3 24h-2l3 -24z"/><path d="M783 228h3l-3 28h-2l3 -28z"/><path d="M816 228h3l-3 24h-2l3 -24z"/><path d="M842 228h3l-3 28h-2l3 -28z"/><path d="M868 228h3l-3 24h-2l3 -24z"/><path d="M651 256h3l-3 22h-2l3 -22z"/><path d="M684 256h3l-3 26h-2l3 -26z"/><path d="M710 256h3l-3 22h-2l3 -22z"/><path d="M743 256h3l-3 26h-2l3 -26z"/><path d="M769 256h3l-3 22h-2l3 -22z"/><path d="M802 256h3l-3 26h-2l3 -26z"/><path d="M828 256h3l-3 22h-2l3 -22z"/><path d="M854 256h3l-3 26h-2l3 -26z"/><path d="M887 256h3l-3 22h-2l3 -22z"/><path d="M665 279h3l-3 24h-2l3 -24z"/><path d="M698 279h3l-3 28h-2l3 -28z"/><path d="M724 279h3l-3 24h-2l3 -24z"/><path d="M757 279h3l-3 28h-2l3 -28z"/><path d="M783 279h3l-3 24h-2l3 -24z"/><path d="M816 279h3l-3 28h-2l3 -28z"/><path d="M842 279h3l-3 24h-2l3 -24z"/><path d="M868 279h3l-3 28h-2l3 -28z"/><path d="M651 302h3l-3 26h-2l3 -26z"/><path d="M684 302h3l-3 22h-2l3 -22z"/><path d="M710 302h3l-3 26h-2l3 -26z"/><path d="M743 302h3l-3 22h-2l3 -22z"/><path d="M769 302h3l-3 26h-2l3 -26z"/><path d="M802 302h3l-3 22h-2l3 -22z"/><path d="M828 302h3l-3 26h-2l3 -26z"/><path d="M854 302h3l-3 22h-2l3 -22z"/><path d="M887 302h3l-3 26h-2l3 -26z"/><path d="M665 330h3l-3 28h-2l3 -28z"/><path d="M698 330h3l-3 24h-2l3 -24z"/><path d="M724 330h3l-3 28h-2l3 -28z"/><path d="M757 330h3l-3 24h-2l3 -24z"/><path d="M783 330h3l-3 28h-2l3 -28z"/><path d="M816 330h3l-3 24h-2l3 -24z"/><path d="M842 330h3l-3 28h-2l3 -28z"/><path d="M868 330h3l-3 24h-2l3 -24z"/><path d="M651 353h3l-3 22h-2l3 -22z"/><path d="M684 353h3l-3 26h-2l3 -26z"/><path d="M710 353h3l-3 22h-2l3 -22z"/><path d="M743 353h3l-3 26h-2l3 -26z"/><path d="M769 353h3l-3 22h-2l3 -22z"/><path d="M802 353h3l-3 26h-2l3 -26z"/><path d="M828 353h3l-3 22h-2l3 -22z"/><path d="M854 353h3l-3 26h-2l3 -26z"/><path d="M887 353h3l-3 22h-2l3 -22z"/></g><g class="rain-sheet rain-mid" fill="#c6d8d9" opacity=".78"><path d="M665 63h4l-3 30h-2l3 -30z"/><path d="M691 63h4l-3 34h-2l3 -34z"/><path d="M724 63h4l-3 30h-2l3 -30z"/><path d="M750 63h4l-3 34h-2l3 -34z"/><path d="M776 63h4l-3 30h-2l3 -30z"/><path d="M809 63h4l-3 34h-2l3 -34z"/><path d="M835 63h4l-3 30h-2l3 -30z"/><path d="M868 63h4l-3 34h-2l3 -34z"/><path d="M679 91h4l-3 32h-2l3 -32z"/><path d="M705 91h4l-3 28h-2l3 -28z"/><path d="M738 91h4l-3 32h-2l3 -32z"/><path d="M764 91h4l-3 28h-2l3 -28z"/><path d="M790 91h4l-3 32h-2l3 -32z"/><path d="M823 91h4l-3 28h-2l3 -28z"/><path d="M849 91h4l-3 32h-2l3 -32z"/><path d="M882 91h4l-3 28h-2l3 -28z"/><path d="M665 114h4l-3 34h-2l3 -34z"/><path d="M691 114h4l-3 30h-2l3 -30z"/><path d="M724 114h4l-3 34h-2l3 -34z"/><path d="M750 114h4l-3 30h-2l3 -30z"/><path d="M776 114h4l-3 34h-2l3 -34z"/><path d="M809 114h4l-3 30h-2l3 -30z"/><path d="M835 114h4l-3 34h-2l3 -34z"/><path d="M868 114h4l-3 30h-2l3 -30z"/><path d="M679 137h4l-3 28h-2l3 -28z"/><path d="M705 137h4l-3 32h-2l3 -32z"/><path d="M738 137h4l-3 28h-2l3 -28z"/><path d="M764 137h4l-3 32h-2l3 -32z"/><path d="M790 137h4l-3 28h-2l3 -28z"/><path d="M823 137h4l-3 32h-2l3 -32z"/><path d="M849 137h4l-3 28h-2l3 -28z"/><path d="M882 137h4l-3 32h-2l3 -32z"/><path d="M665 165h4l-3 30h-2l3 -30z"/><path d="M691 165h4l-3 34h-2l3 -34z"/><path d="M724 165h4l-3 30h-2l3 -30z"/><path d="M750 165h4l-3 34h-2l3 -34z"/><path d="M776 165h4l-3 30h-2l3 -30z"/><path d="M809 165h4l-3 34h-2l3 -34z"/><path d="M835 165h4l-3 30h-2l3 -30z"/><path d="M868 165h4l-3 34h-2l3 -34z"/><path d="M679 188h4l-3 32h-2l3 -32z"/><path d="M705 188h4l-3 28h-2l3 -28z"/><path d="M738 188h4l-3 32h-2l3 -32z"/><path d="M764 188h4l-3 28h-2l3 -28z"/><path d="M790 188h4l-3 32h-2l3 -32z"/><path d="M823 188h4l-3 28h-2l3 -28z"/><path d="M849 188h4l-3 32h-2l3 -32z"/><path d="M882 188h4l-3 28h-2l3 -28z"/><path d="M665 216h4l-3 34h-2l3 -34z"/><path d="M691 216h4l-3 30h-2l3 -30z"/><path d="M724 216h4l-3 34h-2l3 -34z"/><path d="M750 216h4l-3 30h-2l3 -30z"/><path d="M776 216h4l-3 34h-2l3 -34z"/><path d="M809 216h4l-3 30h-2l3 -30z"/><path d="M835 216h4l-3 34h-2l3 -34z"/><path d="M868 216h4l-3 30h-2l3 -30z"/><path d="M679 239h4l-3 28h-2l3 -28z"/><path d="M705 239h4l-3 32h-2l3 -32z"/><path d="M738 239h4l-3 28h-2l3 -28z"/><path d="M764 239h4l-3 32h-2l3 -32z"/><path d="M790 239h4l-3 28h-2l3 -28z"/><path d="M823 239h4l-3 32h-2l3 -32z"/><path d="M849 239h4l-3 28h-2l3 -28z"/><path d="M882 239h4l-3 32h-2l3 -32z"/><path d="M665 262h4l-3 30h-2l3 -30z"/><path d="M691 262h4l-3 34h-2l3 -34z"/><path d="M724 262h4l-3 30h-2l3 -30z"/><path d="M750 262h4l-3 34h-2l3 -34z"/><path d="M776 262h4l-3 30h-2l3 -30z"/><path d="M809 262h4l-3 34h-2l3 -34z"/><path d="M835 262h4l-3 30h-2l3 -30z"/><path d="M868 262h4l-3 34h-2l3 -34z"/><path d="M679 290h4l-3 32h-2l3 -32z"/><path d="M705 290h4l-3 28h-2l3 -28z"/><path d="M738 290h4l-3 32h-2l3 -32z"/><path d="M764 290h4l-3 28h-2l3 -28z"/><path d="M790 290h4l-3 32h-2l3 -32z"/><path d="M823 290h4l-3 28h-2l3 -28z"/><path d="M849 290h4l-3 32h-2l3 -32z"/><path d="M882 290h4l-3 28h-2l3 -28z"/><path d="M665 313h4l-3 34h-2l3 -34z"/><path d="M691 313h4l-3 30h-2l3 -30z"/><path d="M724 313h4l-3 34h-2l3 -34z"/><path d="M750 313h4l-3 30h-2l3 -30z"/><path d="M776 313h4l-3 34h-2l3 -34z"/><path d="M809 313h4l-3 30h-2l3 -30z"/><path d="M835 313h4l-3 34h-2l3 -34z"/><path d="M868 313h4l-3 30h-2l3 -30z"/><path d="M679 341h4l-3 28h-2l3 -28z"/><path d="M705 341h4l-3 32h-2l3 -32z"/><path d="M738 341h4l-3 28h-2l3 -28z"/><path d="M764 341h4l-3 32h-2l3 -32z"/><path d="M790 341h4l-3 28h-2l3 -28z"/><path d="M823 341h4l-3 32h-2l3 -32z"/><path d="M849 341h4l-3 28h-2l3 -28z"/><path d="M882 341h4l-3 32h-2l3 -32z"/><path d="M665 364h4l-3 30h-2l3 -30z"/><path d="M691 364h4l-3 34h-2l3 -34z"/><path d="M724 364h4l-3 30h-2l3 -30z"/><path d="M750 364h4l-3 34h-2l3 -34z"/><path d="M776 364h4l-3 30h-2l3 -30z"/><path d="M809 364h4l-3 34h-2l3 -34z"/><path d="M835 364h4l-3 30h-2l3 -30z"/><path d="M868 364h4l-3 34h-2l3 -34z"/></g><g class="rain-sheet rain-near" fill="#d9e6e4" opacity=".84"><path d="M671 59h4l-3 38h-2l3 -38z"/><path d="M697 59h4l-3 34h-2l3 -34z"/><path d="M730 59h4l-3 38h-2l3 -38z"/><path d="M756 59h4l-3 34h-2l3 -34z"/><path d="M789 59h4l-3 38h-2l3 -38z"/><path d="M815 59h4l-3 34h-2l3 -34z"/><path d="M848 59h4l-3 38h-2l3 -38z"/><path d="M874 59h4l-3 34h-2l3 -34z"/><path d="M685 82h4l-3 40h-2l3 -40z"/><path d="M711 82h4l-3 36h-2l3 -36z"/><path d="M744 82h4l-3 40h-2l3 -40z"/><path d="M770 82h4l-3 36h-2l3 -36z"/><path d="M803 82h4l-3 40h-2l3 -40z"/><path d="M829 82h4l-3 36h-2l3 -36z"/><path d="M862 82h4l-3 40h-2l3 -40z"/><path d="M888 82h4l-3 36h-2l3 -36z"/><path d="M671 110h4l-3 34h-2l3 -34z"/><path d="M697 110h4l-3 38h-2l3 -38z"/><path d="M730 110h4l-3 34h-2l3 -34z"/><path d="M756 110h4l-3 38h-2l3 -38z"/><path d="M789 110h4l-3 34h-2l3 -34z"/><path d="M815 110h4l-3 38h-2l3 -38z"/><path d="M848 110h4l-3 34h-2l3 -34z"/><path d="M874 110h4l-3 38h-2l3 -38z"/><path d="M685 133h4l-3 36h-2l3 -36z"/><path d="M711 133h4l-3 40h-2l3 -40z"/><path d="M744 133h4l-3 36h-2l3 -36z"/><path d="M770 133h4l-3 40h-2l3 -40z"/><path d="M803 133h4l-3 36h-2l3 -36z"/><path d="M829 133h4l-3 40h-2l3 -40z"/><path d="M862 133h4l-3 36h-2l3 -36z"/><path d="M888 133h4l-3 40h-2l3 -40z"/><path d="M671 161h4l-3 38h-2l3 -38z"/><path d="M697 161h4l-3 34h-2l3 -34z"/><path d="M730 161h4l-3 38h-2l3 -38z"/><path d="M756 161h4l-3 34h-2l3 -34z"/><path d="M789 161h4l-3 38h-2l3 -38z"/><path d="M815 161h4l-3 34h-2l3 -34z"/><path d="M848 161h4l-3 38h-2l3 -38z"/><path d="M874 161h4l-3 34h-2l3 -34z"/><path d="M685 184h4l-3 40h-2l3 -40z"/><path d="M711 184h4l-3 36h-2l3 -36z"/><path d="M744 184h4l-3 40h-2l3 -40z"/><path d="M770 184h4l-3 36h-2l3 -36z"/><path d="M803 184h4l-3 40h-2l3 -40z"/><path d="M829 184h4l-3 36h-2l3 -36z"/><path d="M862 184h4l-3 40h-2l3 -40z"/><path d="M888 184h4l-3 36h-2l3 -36z"/><path d="M671 207h4l-3 34h-2l3 -34z"/><path d="M697 207h4l-3 38h-2l3 -38z"/><path d="M730 207h4l-3 34h-2l3 -34z"/><path d="M756 207h4l-3 38h-2l3 -38z"/><path d="M789 207h4l-3 34h-2l3 -34z"/><path d="M815 207h4l-3 38h-2l3 -38z"/><path d="M848 207h4l-3 34h-2l3 -34z"/><path d="M874 207h4l-3 38h-2l3 -38z"/><path d="M685 235h4l-3 36h-2l3 -36z"/><path d="M711 235h4l-3 40h-2l3 -40z"/><path d="M744 235h4l-3 36h-2l3 -36z"/><path d="M770 235h4l-3 40h-2l3 -40z"/><path d="M803 235h4l-3 36h-2l3 -36z"/><path d="M829 235h4l-3 40h-2l3 -40z"/><path d="M862 235h4l-3 36h-2l3 -36z"/><path d="M888 235h4l-3 40h-2l3 -40z"/><path d="M671 258h4l-3 38h-2l3 -38z"/><path d="M697 258h4l-3 34h-2l3 -34z"/><path d="M730 258h4l-3 38h-2l3 -38z"/><path d="M756 258h4l-3 34h-2l3 -34z"/><path d="M789 258h4l-3 38h-2l3 -38z"/><path d="M815 258h4l-3 34h-2l3 -34z"/><path d="M848 258h4l-3 38h-2l3 -38z"/><path d="M874 258h4l-3 34h-2l3 -34z"/><path d="M685 286h4l-3 40h-2l3 -40z"/><path d="M711 286h4l-3 36h-2l3 -36z"/><path d="M744 286h4l-3 40h-2l3 -40z"/><path d="M770 286h4l-3 36h-2l3 -36z"/><path d="M803 286h4l-3 40h-2l3 -40z"/><path d="M829 286h4l-3 36h-2l3 -36z"/><path d="M862 286h4l-3 40h-2l3 -40z"/><path d="M888 286h4l-3 36h-2l3 -36z"/><path d="M671 309h4l-3 34h-2l3 -34z"/><path d="M697 309h4l-3 38h-2l3 -38z"/><path d="M730 309h4l-3 34h-2l3 -34z"/><path d="M756 309h4l-3 38h-2l3 -38z"/><path d="M789 309h4l-3 34h-2l3 -34z"/><path d="M815 309h4l-3 38h-2l3 -38z"/><path d="M848 309h4l-3 34h-2l3 -34z"/><path d="M874 309h4l-3 38h-2l3 -38z"/><path d="M685 332h4l-3 36h-2l3 -36z"/><path d="M711 332h4l-3 40h-2l3 -40z"/><path d="M744 332h4l-3 36h-2l3 -36z"/><path d="M770 332h4l-3 40h-2l3 -40z"/><path d="M803 332h4l-3 36h-2l3 -36z"/><path d="M829 332h4l-3 40h-2l3 -40z"/><path d="M862 332h4l-3 36h-2l3 -36z"/><path d="M888 332h4l-3 40h-2l3 -40z"/><path d="M671 360h4l-3 38h-2l3 -38z"/><path d="M697 360h4l-3 34h-2l3 -34z"/><path d="M730 360h4l-3 38h-2l3 -38z"/><path d="M756 360h4l-3 34h-2l3 -34z"/><path d="M789 360h4l-3 38h-2l3 -38z"/><path d="M815 360h4l-3 34h-2l3 -34z"/><path d="M848 360h4l-3 38h-2l3 -38z"/><path d="M874 360h4l-3 34h-2l3 -34z"/></g></g>
-<ellipse class="fire-glow" cx="110" cy="387" rx="160" ry="155" fill="url(#fireGlow)"/><ellipse cx="738" cy="364" rx="250" ry="180" fill="url(#lampGlow)"/>
-<g transform="translate(-302 32) scale(.9 1.2)"><rect x="371" y="239" width="174" height="103" fill="#655242"/><rect x="380" y="248" width="156" height="92" fill="#9a8060"/><path d="M362 236h192v13H362z" fill="#c6a76c"/><path d="M354 228h209v10H354z" fill="#a77f4c"/><rect x="397" y="260" width="122" height="78" fill="#221f1b"/><rect x="406" y="270" width="104" height="61" fill="#151916"/><path d="M419 327h80v8h-80z" fill="#b79c69"/>
+<ellipse class="fire-glow" cx="110" cy="387" rx="185" ry="175" fill="url(#fireGlow)"/><ellipse cx="738" cy="364" rx="290" ry="215" fill="url(#lampGlow)"/>
+<g transform="translate(-302 32) scale(.9 1.2)"><rect x="371" y="239" width="174" height="103" fill="#655242"/><rect x="380" y="248" width="156" height="92" fill="#9a8060"/>
+<g class="fireplace-bricks"><path d="M380 262h156M380 276h156M380 290h156M380 304h156M380 318h156"/><path d="M420 248v14M460 248v14M500 248v14M400 262v14M440 262v14M480 262v14M520 262v14M420 276v14M460 276v14M500 276v14M400 290v14M440 290v14M480 290v14M520 290v14M420 304v14M460 304v14M500 304v14M400 318v14M440 318v14M480 318v14M520 318v14"/></g>
+<path d="M362 236h192v13H362z" fill="#c6a76c"/><path d="M354 228h209v10H354z" fill="#a77f4c"/><rect x="397" y="260" width="122" height="78" fill="#221f1b"/><rect x="406" y="270" width="104" height="61" fill="#151916"/><path d="M419 327h80v8h-80z" fill="#b79c69"/>
 <g aria-label="壁炉台上的小型蕨类花瓶"><path d="M445 237h28l-3 11h-22z" transform="translate(-302 32) scale(.9 1.2)" fill="#76453a" stroke="#33241b" stroke-width="2"/><path d="M455 238v-15m0 9-9-7m9 3 8-10m-8 14 11-5m-11-1-1-10" transform="translate(-302 32) scale(.9 1.2)" fill="none" stroke="#83906a" stroke-width="3" stroke-linecap="square"/><path d="M447 231h6v3h-6zM459 224h6v3h-6zM463 232h6v3h-6zM451 219h6v3h-6z" transform="translate(-302 32) scale(.9 1.2)" fill="#a5aa76"/></g>
 <g class="fireplace-flames"><path d="M442 325q-15-25 3-42 2 18 9 23-2-29 19-46 0 23 11 33 15 16-1 32z" fill="#ad5433"/><path d="M455 326q-9-17 2-29 3 10 7 14-2-21 12-32 0 16 8 23 9 12-2 24z" fill="#e18139"/><path d="M468 327q-5-14 4-23 3 7 5 11-1-13 7-20 2 11 6 17 4 9-3 15z" fill="#f3c35d"/><path d="M477 326q-2-9 4-14 1 7 4 10v4z" fill="#fff0a2"/></g>
 </g>
