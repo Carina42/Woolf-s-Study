@@ -6,19 +6,17 @@
 <style>
 *{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#111c18;color:#eadbb7;font-family:"Songti SC","Noto Serif SC",serif}body{display:grid;place-items:center;padding:24px}.frame{width:min(1240px,100%);border:8px solid #101612;box-shadow:0 0 0 3px #b5965f,0 24px 70px #070b09;background:#202a24}.stage{position:relative;aspect-ratio:16/9;overflow:hidden;background:#25312b}.stage svg{display:block;width:100%;height:100%;image-rendering:pixelated}.wash{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(5,10,8,.05),transparent 52%,rgba(5,10,8,.28))}.meta{position:absolute;left:20px;top:17px;font:11px "Courier New",monospace;letter-spacing:.18em;color:#ddc88e;text-shadow:2px 2px #121713}.caption{display:flex;align-items:end;justify-content:space-between;gap:20px;padding:16px 20px 18px;background:#17221d;border-top:2px solid #9e8352}.caption small{font:10px "Courier New",monospace;letter-spacing:.15em;color:#baa878}.caption h1{margin:5px 0 0;font-size:clamp(20px,3vw,30px);font-weight:400;letter-spacing:.12em;color:#eee0bd}.next{max-width:330px;text-align:right;font:11px/1.7 "Courier New",monospace;color:#b5b59b}.next b{color:#dfc27e;font-weight:400}@media(max-width:600px){body{padding:12px}.frame{border-width:5px}.meta{left:10px;top:9px;font-size:8px}.caption{display:block;padding:12px}.next{text-align:left;margin-top:10px}.stage{min-height:230px;aspect-ratio:4/3}.stage svg{height:100%;object-fit:cover}}
 .stage:has(#desk[open])>svg{opacity:0;transform:scale(.96);transition:opacity .22s steps(3),transform .32s steps(4)}.stage:has(#desk[open])>.wash,.stage:has(#desk[open])>.meta,.stage:has(#desk[open])>.room-instruction{display:none}.room-instruction{position:absolute;left:50%;top:18%;transform:translateX(-50%);z-index:3;padding:9px 14px;background:rgba(18,28,23,.88);border:2px solid #b99a5e;color:#f0dfb5;white-space:nowrap;font:12px "Courier New",monospace;letter-spacing:.1em;box-shadow:4px 4px #101612}.stage:has(#desk[open]) .room-instruction{display:none}.explore{position:absolute;inset:0;z-index:4}.desk-hotspot{position:absolute;left:12%;right:8%;top:61%;height:31%;display:block;cursor:pointer;list-style:none;border:2px dashed rgba(228,194,122,.12);background:transparent;color:transparent}.desk-hotspot::-webkit-details-marker{display:none}.desk-hotspot:hover{border-color:rgba(239,207,141,.72);background:rgba(235,190,104,.08)}.leave-label{display:none}.explore[open] .desk-hotspot{left:16px;right:auto;top:16px;width:auto;height:auto;padding:8px 11px;border:2px solid #b99a5e;background:rgba(18,28,23,.93);color:#ecdbb4;font:10px "Courier New",monospace;box-shadow:3px 3px #101612}.explore[open] .enter-label{display:none}.explore[open] .leave-label{display:inline}.desk-ui{position:absolute;inset:0;pointer-events:none;display:none}.explore[open] .desk-ui{display:block}.desk-top-view{position:absolute;inset:0;overflow:hidden;background:#35251c;animation:deskReveal .5s steps(5) both}.desk-top-view:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 34px,rgba(21,13,10,.28) 35px 38px,rgba(217,166,99,.09) 39px 41px,transparent 42px 86px),repeating-linear-gradient(90deg,rgba(246,202,132,.025) 0 2px,transparent 2px 91px),linear-gradient(135deg,#735033,#4e3627 46%,#725033);box-shadow:inset 0 0 0 16px #261b15,inset 0 0 0 21px #b48b52,inset 0 0 0 25px #39271c}.desk-edge{position:absolute;inset:4.5%;border:2px solid rgba(222,180,111,.38);pointer-events:none}.desk-heading{position:absolute;left:5.5%;top:7%;color:#f0dfb9;text-shadow:2px 2px #261c15;font-size:clamp(19px,3vw,34px);letter-spacing:.16em}.desk-heading small{display:block;margin-top:7px;color:#d1b77f;font:9px "Courier New",monospace;letter-spacing:.2em}.desk-lamp-glow{position:absolute;right:8%;top:-15%;width:43%;height:76%;background:radial-gradient(ellipse,rgba(245,194,102,.22),rgba(222,164,82,.09) 44%,transparent 73%);pointer-events:none}.blotter{position:absolute;left:12%;top:24%;width:75%;height:65%;background:linear-gradient(135deg,#6c3b31,#482a25 60%,#58352c);border:5px solid #211b16;box-shadow:inset 0 0 0 3px #a8794a,9px 10px 0 rgba(20,13,10,.55);transform:rotate(-1.2deg)}.blotter:before{content:"";position:absolute;inset:13px;border:1px solid rgba(205,163,100,.42)}.folio{position:absolute;left:28%;top:32%;width:40%;height:51%;transform:rotate(-2deg);filter:drop-shadow(7px 9px 0 rgba(24,15,10,.45));cursor:pointer;pointer-events:auto}.folio-cover{position:absolute;inset:0;border:4px solid #241b15;background:linear-gradient(145deg,#80613a,#67482d 52%,#4c3423);box-shadow:inset 0 0 0 3px #bd9b5e,inset 0 0 0 9px #67482f}.folio-cover:before{content:"";position:absolute;inset:9%;border:1px solid #d1b67a}.folio-cover:after{content:"";position:absolute;left:50%;top:0;bottom:0;width:6px;background:rgba(31,23,17,.46);box-shadow:1px 0 #c3a06a}.file-label{position:absolute;left:18%;right:18%;top:28%;padding:13px 8px;text-align:center;background:#e6d8b5;color:#493824;border:2px solid #927345;box-shadow:3px 3px #34271b;font:clamp(9px,1.15vw,13px)/1.65 "Courier New",monospace;letter-spacing:.1em}.file-label b{display:block;font:clamp(13px,1.7vw,20px) "Songti SC","Noto Serif SC",serif;letter-spacing:.18em;margin:8px 0}.wax-seal{position:absolute;left:47%;bottom:12%;width:42px;height:42px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#bd6748,#7e3328 68%);border:3px solid #d0a365;box-shadow:2px 3px #372419;display:grid;place-items:center;color:#e6c68a;font:14px Georgia,serif}.dip-pen{position:absolute;left:73%;top:31%;width:10px;height:44%;transform:rotate(25deg);background:linear-gradient(90deg,#38261b 0 25%,#bd9354 27% 42%,#503723 45% 75%,#c5a067 78% 100%);border:1px solid #201811;border-radius:4px;box-shadow:4px 5px 0 rgba(25,14,8,.36)}.dip-pen:before{content:"";position:absolute;top:auto;bottom:-16px;left:-2px;width:12px;height:18px;background:linear-gradient(90deg,#8d6c39,#e2c275,#98703a);clip-path:polygon(50% 100%,100% 0,58% 35%,50% 0,42% 35%,0 0)}.dip-pen:after{content:"";position:absolute;top:4%;left:2px;width:5px;height:27%;border-radius:2px;background:#d9bb73}.inkwell{position:absolute;left:17%;top:54%;width:9%;aspect-ratio:1;background:radial-gradient(circle at 34% 28%,#889190 0 8%,#333b38 28%,#111714 70%);border:4px solid #c1a369;border-radius:22% 22% 30% 30%;box-shadow:3px 5px #211813}.inkwell:before{content:"";position:absolute;left:20%;top:-20%;width:60%;height:22%;background:#c4a36a;border:2px solid #38271a}.paper-scrap{position:absolute;left:10%;top:27%;width:19%;height:20%;background:#ded1b1;color:#756246;transform:rotate(5deg);box-shadow:3px 4px #291b13;font:8px/1.7 "Courier New",monospace;padding:10px;clip-path:polygon(0 0,100% 0,100% 92%,82% 100%,64% 94%,45% 100%,23% 94%,0 100%)}.paper-scrap:after{content:"Q. 1925\A  rain / oak / time";white-space:pre}.tea-ring{position:absolute;right:13%;bottom:9%;width:70px;height:70px;border:4px solid rgba(194,140,72,.38);border-radius:50%;transform:rotate(-15deg)}.desk-caption{position:absolute;right:5.5%;bottom:5%;color:#eadbb9;background:rgba(31,23,17,.84);border-left:3px solid #d0aa62;padding:8px 11px;font:9px/1.7 "Courier New",monospace}.desk-ui .desk-hotspot{pointer-events:auto}.desk-ui .desk-hotspot{z-index:7}.desk-note{display:none}@keyframes deskReveal{0%{opacity:0;transform:scale(.92) rotateX(7deg)}100%{opacity:1;transform:scale(1) rotateX(0)}}@media(max-width:600px){.desk-heading{top:10%;font-size:clamp(17px,5vw,24px)}.desk-heading small{font-size:7px}.blotter{left:8%;top:28%;width:84%;height:61%}.folio{left:28%;top:38%;width:44%;height:43%}.file-label{padding:7px 4px;font-size:7px}.file-label b{font-size:12px;margin:5px 0}.wax-seal{width:30px;height:30px;font-size:10px}.paper-scrap{font-size:6px;padding:5px}.inkwell{width:10%}.tea-ring{width:45px;height:45px}.desk-caption{right:4%;bottom:4%;font-size:7px;padding:5px 7px}}.topdown-art{position:absolute;inset:0;width:100%;height:100%;display:block;image-rendering:pixelated}.desk-top-view{background:#493323}.desk-heading{z-index:2;left:6.5%;top:7.5%;padding:8px 12px;background:rgba(26,32,26,.84);border-left:3px solid #d2ad66}.desk-heading small{font-size:9px}.desk-caption{z-index:2;max-width:42%;text-align:right;box-shadow:3px 3px rgba(17,12,9,.55)}.room-instruction{border-style:double;box-shadow:4px 4px #101612,0 0 28px rgba(243,190,95,.2)}.meta{padding:7px 9px;background:rgba(17,25,21,.72);border-left:2px solid #c4a262}.stage svg{image-rendering:pixelated}@media(max-width:600px){.desk-heading{left:7%;top:9%;font-size:17px;padding:6px 8px}.desk-heading small{font-size:6px}.desk-caption{max-width:53%;font-size:6px;padding:5px 7px}.topdown-art{object-fit:cover}}.room-instruction{display:none;z-index:6;top:57%;left:50%;font-size:11px;padding:8px 13px;background:rgba(18,25,20,.95);border-color:#d5b571;pointer-events:none}.stage:has(.desk-hotspot:hover) .room-instruction{display:block}.desk-hotspot{left:8%;right:4%;top:57%;height:39%;border:2px solid transparent;background:transparent;z-index:8}.desk-hotspot:hover{border:2px solid rgba(230,190,112,.78);background:linear-gradient(180deg,transparent 46%,rgba(233,185,94,.10));box-shadow:inset 0 0 0 3px rgba(20,19,14,.45),0 0 20px rgba(233,185,94,.14)}.desk-hotspot .enter-label{opacity:0;position:absolute;left:50%;top:54%;transform:translate(-50%,-50%);padding:8px 12px;background:#18231d;color:#f0ddb0;border:2px solid #d1ad69;box-shadow:3px 3px #0e1411;font:10px "Courier New",monospace;letter-spacing:.12em;white-space:nowrap;transition:opacity .12s}.desk-hotspot:hover .enter-label{opacity:1}.explore[open] .desk-hotspot{left:14px;top:14px;width:38px;height:34px;padding:0;border:2px solid transparent;background:transparent;box-shadow:none}.explore[open] .desk-hotspot:hover{width:auto;height:auto;padding:7px 10px;border:2px solid #d1ad69;background:rgba(18,28,23,.96);box-shadow:3px 3px #101612}.explore[open] .desk-hotspot .leave-label{opacity:0;font:10px "Courier New",monospace;white-space:nowrap}.explore[open] .desk-hotspot:hover .leave-label{opacity:1}.explore[open] .desk-hotspot:hover{width:auto}.desk-top-view:before{display:none}.folio-hover,.desk-hover-prompt{position:absolute;z-index:3;opacity:0;pointer-events:none;transition:opacity .12s;background:rgba(21,29,24,.95);color:#f0dfb9;border:2px solid #cba867;padding:7px 10px;box-shadow:3px 3px #17120e;font:10px/1.6 "Courier New",monospace;text-align:center}.folio-hover{left:38%;top:28%;}.folio-target{position:absolute;left:36%;top:23%;width:29%;height:59%;z-index:4;pointer-events:auto;cursor:help}.folio-target:hover~.folio-hover{opacity:1;left:36%;top:19%}.desk-hover-prompt{opacity:0}.stage:has(#desk[open]) .desk-hotspot .enter-label{display:none}@media(max-width:600px){.room-instruction{top:58%;font-size:9px}.desk-hotspot{left:20%;right:17%;top:61%;height:34%}.desk-hotspot .enter-label{font-size:8px}.explore[open] .desk-hotspot{left:8px;top:8px}.folio-hover{font-size:8px;padding:5px}.folio-target{left:36%;top:24%;width:29%;height:58%}}
-/* room hit areas: keep the desk above the shelf hotspot */
 #desk{z-index:6!important}
 #bookshelf{z-index:5!important}
 #desk>.desk-hotspot{z-index:10!important}
 #bookshelf>.shelf-hotspot{z-index:8!important}
-/* rain has individual, staggered motion so it reads as falling water */
 .rain-sheet path{transform-box:fill-box;transform-origin:center;animation:rain-flicker .46s steps(2,end) infinite alternate}
 .rain-far path:nth-child(3n){animation-delay:-.19s}.rain-far path:nth-child(3n+1){animation-delay:-.34s}
 .rain-mid path:nth-child(4n){animation-delay:-.27s}.rain-mid path:nth-child(4n+1){animation-delay:-.11s}.rain-mid path:nth-child(4n+2){animation-delay:-.39s}
 .rain-near path:nth-child(3n){animation-delay:-.22s}.rain-near path:nth-child(3n+1){animation-delay:-.41s}
 @keyframes rain-flicker{0%{opacity:.42;transform:translate(1px,-2px)}100%{opacity:1;transform:translate(-1px,3px)}}
 @media(prefers-reduced-motion:reduce){.rain-sheet path{animation:none!important}}
-/* bookshelf step, hover-only affordances */.explore,.shelf-explore{pointer-events:none}.explore>summary,.shelf-explore>summary{pointer-events:auto}.desk-hotspot,.shelf-hotspot{pointer-events:auto}.desk-ui,.shelf-ui{pointer-events:none}.folio-target,.opened-case,.plant-target,.plant-select-dialog{pointer-events:auto}.explore[open] .desk-hotspot{right:auto;width:35px;height:32px;padding:0!important;border:1px solid transparent!important;background:transparent!important;color:transparent!important;box-shadow:none!important;font-size:0!important}.explore[open] .desk-hotspot .leave-label{display:inline;opacity:0;font:9px "Courier New",monospace;white-space:nowrap}.explore[open] .desk-hotspot:hover{width:auto;height:auto;padding:5px 8px!important;border:1px solid rgba(201,164,92,.65)!important;background:rgba(20,27,22,.91)!important;box-shadow:2px 2px rgba(8,11,9,.6)!important}.explore[open] .desk-hotspot:hover .leave-label{opacity:1}
+.explore,.shelf-explore{pointer-events:none}.explore>summary,.shelf-explore>summary{pointer-events:auto}.desk-hotspot,.shelf-hotspot{pointer-events:auto}.desk-ui,.shelf-ui{pointer-events:none}.folio-target,.opened-case,.plant-target,.plant-select-dialog{pointer-events:auto}.explore[open] .desk-hotspot{right:auto;width:35px;height:32px;padding:0!important;border:1px solid transparent!important;background:transparent!important;color:transparent!important;box-shadow:none!important;font-size:0!important}.explore[open] .desk-hotspot .leave-label{display:inline;opacity:0;font:9px "Courier New",monospace;white-space:nowrap}.explore[open] .desk-hotspot:hover{width:auto;height:auto;padding:5px 8px!important;border:1px solid rgba(201,164,92,.65)!important;background:rgba(20,27,22,.91)!important;box-shadow:2px 2px rgba(8,11,9,.6)!important}.explore[open] .desk-hotspot:hover .leave-label{opacity:1}
 .room-instruction{display:none!important}.desk-hotspot .enter-label{opacity:0;position:absolute;left:50%;top:55%;transform:translate(-50%,-50%);padding:5px 9px;background:rgba(20,27,22,.91);border:1px solid rgba(201,164,92,.65);color:rgba(230,215,178,.88);box-shadow:2px 2px rgba(8,11,9,.6);font:9px "Courier New",monospace;letter-spacing:.08em;white-space:nowrap;transition:opacity .14s}.desk-hotspot:hover .enter-label{opacity:1}.desk-hotspot{left:20%;right:17%;top:61%;height:34%;border-color:transparent}.desk-hotspot:hover{border:1px solid rgba(230,190,112,.52);background:rgba(233,185,94,.035);box-shadow:none}.shelf-explore{position:absolute;inset:0;z-index:4}.shelf-hotspot{position:absolute;left:33.5%;top:8%;width:29%;height:48%;list-style:none;cursor:pointer;color:transparent;border:1px solid transparent;background:transparent}.shelf-hotspot::-webkit-details-marker{display:none}.shelf-hotspot:hover{border-color:rgba(218,182,112,.42);background:rgba(230,190,112,.025)}.shelf-enter-label{opacity:0;position:absolute;left:50%;top:54%;transform:translate(-50%,-50%);padding:5px 9px;color:rgba(232,216,179,.86);background:rgba(20,27,22,.9);border:1px solid rgba(201,164,92,.65);font:9px "Courier New",monospace;white-space:nowrap;transition:opacity .14s}.shelf-hotspot:hover .shelf-enter-label{opacity:1}.shelf-leave-label{display:none}.shelf-explore[open] .shelf-hotspot{left:14px;top:14px;width:35px;height:32px}.shelf-explore[open] .shelf-hotspot:hover{width:auto;height:auto;padding:6px 9px;background:rgba(20,27,22,.95);border-color:#cba867;box-shadow:3px 3px #101612}.shelf-explore[open] .shelf-enter-label{display:none}.shelf-explore[open] .shelf-leave-label{display:block;opacity:0;font:9px "Courier New",monospace;color:#eee0bd;white-space:nowrap}.shelf-explore[open] .shelf-hotspot:hover .shelf-leave-label{opacity:1}.shelf-ui{position:absolute;inset:0;display:none;pointer-events:none}.shelf-explore[open] .shelf-ui{display:block}.shelf-view{position:absolute;inset:0;overflow:hidden;background:#211a13;animation:deskReveal .45s steps(5) both}.shelf-art{position:absolute;inset:0;width:100%;height:100%;image-rendering:pixelated}.plant-target{position:absolute;width:12%;height:23%;padding:0;border:1px solid transparent;border-radius:2px;background:transparent;cursor:pointer;pointer-events:auto;color:transparent}.plant-target:hover{border-color:rgba(224,190,123,.7);background:rgba(228,193,122,.075);box-shadow:0 0 12px rgba(225,186,104,.13)}.plant-target:before{content:attr(aria-label);position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);opacity:0;white-space:nowrap;padding:5px 8px;background:rgba(19,27,22,.94);border:1px solid rgba(201,164,92,.68);color:#e9d9b4;font:9px "Courier New",monospace;box-shadow:2px 2px rgba(8,11,9,.6)}.plant-target:hover:before{opacity:1}.oak-target{left:56%;top:27%;width:12%;height:23%}.rose-target{left:73%;top:27%;width:12%;height:23%}.judas-target{left:56%;top:57%;width:12%;height:23%}.poppy-target{left:73%;top:57%;width:12%;height:23%}.plant-select-dialog{position:absolute;z-index:5;left:50%;top:41%;transform:translate(-50%,-50%);display:none;min-width:230px;padding:15px 18px;background:rgba(22,30,24,.96);border:2px solid #c9a45c;box-shadow:4px 4px #12110d;color:#eadbb7;text-align:center;pointer-events:auto}.plant-select-dialog.visible{display:flex;flex-direction:column;align-items:center;gap:9px}.plant-select-dialog b{font-weight:400;letter-spacing:.12em;color:#e8d5a8}.plant-select-dialog span{font:10px/1.6 "Courier New",monospace;color:#c3b690}.plant-select-dialog button{margin-top:5px;padding:6px 12px;border:1px solid #c9a45c;background:#29271d;color:#e8d5a8;font:10px "Courier New",monospace;cursor:pointer}.target-stamp{position:absolute;right:6%;top:19%;z-index:2;padding:5px 8px;border:1px solid rgba(205,169,99,.6);background:rgba(22,30,24,.86);color:#e5cd91;font:8px "Courier New",monospace;letter-spacing:.1em;pointer-events:none}.target-stamp[hidden]{display:none}.stage:has(#bookshelf[open])>svg,.stage:has(#bookshelf[open])>.wash,.stage:has(#bookshelf[open])>.meta{display:none}.stage:has(#bookshelf[open]) #desk{display:none}.stage:has(#bookshelf[open]) .room-instruction{display:none!important}.stage:has(#desk[open]) #bookshelf{display:none}
 @media(max-width:600px){.shelf-art{object-fit:cover}.shelf-hotspot{left:33%;width:30%;height:48%}.shelf-enter-label,.plant-target:before{font-size:7px;padding:4px 6px}.oak-target,.judas-target{left:54%;width:15%}.rose-target,.poppy-target{left:72%;width:15%}.plant-select-dialog{min-width:190px;padding:10px}.target-stamp{font-size:6px}}
 
@@ -36,7 +34,6 @@
 @media(max-width:600px){.opened-case{inset:4% 3%}.case-spread{padding:9px 10px}.case-body{grid-template-columns:110px 1fr;gap:9px;padding-top:8px}.case-index{font-size:8px;gap:5px;padding-right:7px}.case-index b{font-size:10px}.case-page{font-size:11px;line-height:1.85;padding:0}.case-page h3{font-size:13px;margin:9px 0}.case-page p{line-height:1.85;margin:8px 0}.case-head small,.case-head span,.folio-line{font-size:6px}.case-tree svg{height:112px}.case-complete{font-size:7px}}
 @media(prefers-reduced-motion:reduce){.rain-sheet{animation-duration:2s!important}.desk-top-view.unlocked #closed-book{animation-duration:.2s!important}.desk-top-view.unlocked .opened-case{animation-delay:.2s!important}}
 
-/* immersion polish: clear way out, ordered pixel rain, quiet audio control */
 #desk[open]>.desk-hotspot,#bookshelf[open]>.shelf-hotspot{left:12px!important;top:12px!important;right:auto!important;width:34px!important;height:32px!important;min-width:34px;min-height:32px;padding:0!important;display:grid;place-items:center;border:1px solid rgba(205,174,111,.62)!important;background:rgba(18,25,21,.88)!important;box-shadow:2px 2px rgba(7,10,8,.55)!important;color:#e8d7ad!important;z-index:30!important;text-align:center}
 #desk[open]>.desk-hotspot:before,#bookshelf[open]>.shelf-hotspot:before{content:"‹";display:block;color:#eadbb9;font:25px/24px Georgia,serif;text-shadow:1px 1px #111;transform:translateY(-1px)}
 #desk[open]>.desk-hotspot:hover,#bookshelf[open]>.shelf-hotspot:hover{width:auto!important;height:32px!important;padding:0 9px!important;grid-auto-flow:column;gap:5px;border-color:#d4b36f!important}
@@ -51,10 +48,8 @@
 .rain-sheet path{animation:none!important;opacity:1!important;transform:none!important}
 .sound-toggle{position:absolute;z-index:40;right:14px;top:12px;padding:5px 9px;border:1px solid rgba(205,174,111,.55);background:rgba(16,23,19,.78);color:#e2d4b1;font:9px "Courier New",monospace;letter-spacing:.08em;cursor:pointer;box-shadow:2px 2px rgba(7,10,8,.35);opacity:.78;transition:opacity .15s,border-color .15s}
 .sound-toggle:hover,.sound-toggle[aria-pressed="true"]{opacity:1;border-color:#d2b16d;color:#f0dfb9}
-.audio-credit{margin-top:8px;color:#8e8b73;font:8px/1.5 "Courier New",monospace;letter-spacing:.02em}.audio-credit a{color:#b5a77e;text-decoration:underline;text-decoration-color:rgba(181,167,126,.35);text-underline-offset:2px}
 @media(max-width:600px){.sound-toggle{right:8px;top:8px;font-size:7px;padding:4px 6px}#desk[open]>.desk-hotspot,#bookshelf[open]>.shelf-hotspot{left:8px!important;top:8px!important}}
 
-/* dossier now closes to the desktop; it can be opened again from the book */
 #opened-case{z-index:8}.case-head button#close-dossier{position:relative;z-index:20;width:34px;height:34px;flex:0 0 34px;background:#e6d8b5;border:2px solid #826b43;color:#493824;font:24px/27px Georgia,serif;cursor:pointer;pointer-events:auto;box-shadow:2px 2px rgba(34,26,16,.3)}
 .case-head button#close-dossier:hover{background:#fff0ca;transform:translateY(-1px)}
 .case-reopen{position:absolute;z-index:7;left:35%;top:22%;width:31%;height:58%;display:none;border:1px solid transparent;background:transparent;color:transparent;cursor:pointer;pointer-events:auto}
@@ -63,11 +58,9 @@
 .case-reopen:after{content:"查看卷宗";position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);opacity:0;padding:5px 8px;background:rgba(18,25,21,.9);border:1px solid #b99a5e;color:#e8d9b6;white-space:nowrap;font:9px "Courier New",monospace}.case-reopen:hover:after{opacity:1}
 .sound-controls{position:absolute;z-index:40;right:14px;top:12px;display:flex;gap:5px}.sound-toggle{position:relative;inset:auto;padding:5px 8px}
 @media(max-width:600px){.sound-controls{right:8px;top:8px;gap:4px}.sound-toggle{font-size:7px;padding:4px 6px}.case-head button#close-dossier{width:30px;height:30px;flex-basis:30px;font-size:22px}}
-/* the shellac record turns while its tonearm lowers onto the groove */
 #record-arm{transform-box:view-box;transform-origin:84.5% 55.2%;transition:transform .85s ease}
 .record-player.playing #record-arm{transform:rotate(130deg)}
 
-/* Separate room furnishing: a narrow hit area beside the original desk hotspot. */
 .room-gramophone-hit{position:absolute;left:88.5%;top:51%;width:11.5%;height:43%;z-index:12;border:2px solid transparent;background:transparent;cursor:pointer;color:transparent}
 .room-gramophone-hit:hover{border-color:rgba(225,194,128,.58);background:rgba(230,194,123,.05);box-shadow:0 0 18px rgba(240,190,93,.18)}
 .room-gramophone-hit:after{content:"播放留声机";position:absolute;right:0;top:50%;transform:none;opacity:0;padding:6px 9px;white-space:nowrap;background:rgba(18,25,21,.94);border:1px solid #b99a5e;color:#e8d9b6;font:10px "Courier New",monospace}
@@ -76,7 +69,6 @@
 .stage:has(#bookshelf[open]) .room-gramophone-hit{display:none}
 #desk:not([open])>.desk-hotspot{right:11%!important}
 @media(max-width:600px){.room-gramophone-hit{left:88%;top:54%;width:12%;height:40%}}
-/* Browser and phone sizing: preserve the 16:9 pixel-art composition. */
 @media (min-width:761px){body{min-height:100dvh;padding:clamp(8px,2vw,24px)}.frame{width:min(1240px,calc(100vw - 48px),calc((100dvh - 55px)*16/9))}}
 @media (max-width:760px){body{min-height:100dvh;padding:8px}.frame{width:100%;border-width:4px}.stage{min-height:0;aspect-ratio:16/9}.meta{left:9px;top:8px;font-size:7px}.caption{display:block;padding:9px 12px}.caption h1{font-size:19px}.caption small{font-size:8px}.next{text-align:left;margin-top:6px;font-size:9px}}
 @media (max-width:900px) and (orientation:landscape){body{min-height:100dvh;padding:4px;align-content:center}.frame{width:min(calc(100vw - 8px),calc((100dvh - 16px)*16/9));border-width:3px}.stage{min-height:0;aspect-ratio:16/9}.caption{display:none}.meta{left:8px;top:7px;font-size:7px}.sound-controls{right:7px;top:7px;gap:3px}.sound-toggle{font-size:7px;padding:3px 5px}}
@@ -87,7 +79,6 @@
 @keyframes firelight-pulse{0%{opacity:.63}50%{opacity:.9}100%{opacity:.7}}
 @media(prefers-reduced-motion:reduce){.fireplace-flames,.fire-glow{animation:none}}
 
-/* Sentence-level reading, gradual pixel oak, grounded groove motion, and the stage badge. */
 .sentence-target{display:inline;cursor:pointer;border-bottom:1px dotted rgba(119,91,52,.48);transition:background .15s,color .15s,box-shadow .15s}
 .sentence-target:hover,.sentence-target:focus-visible{background:rgba(190,153,89,.22);outline:none;box-shadow:0 2px 0 rgba(146,109,56,.28)}
 .sentence-target.found{color:#72511f;background:linear-gradient(transparent 56%,rgba(201,164,92,.34) 56%);border:0}
@@ -100,216 +91,23 @@
 .tree-ghost{opacity:.19}.tree-piece{opacity:0;transition:opacity .4s steps(4,end);shape-rendering:crispEdges}.tree-piece.collected{opacity:1}
 #record-arm{transform-box:view-box;transform-origin:811px 298px;transition:transform .82s cubic-bezier(.2,.7,.2,1)}
 .record-player.needle-down #record-arm{transform:rotate(-142deg)}
-/* The record's fine surface marks turn around the spindle inside the fixed platter edge. */
 @media(max-width:600px){.case-complete{gap:6px;padding:4px 6px}.case-complete strong{font-size:8px}.case-complete small{font-size:6px}.pixel-trophy{width:20px;height:20px;flex-basis:20px}.case-feedback{font-size:7px}}
 
 /* ============================================================
-   v4 适配：手机横屏全屏 + 保持摊开书页布局 + 悬停才显示提示
+   v6 补丁
    ============================================================ */
 
-/* ① 留声机提示居中 */
-.room-gramophone-hit:after{
-  right:auto;
-  left:50%;
-  top:50%;
-  transform:translate(-50%,-50%);
-  padding:5px 9px;
-}
-
-/* ② 触屏设备默认隐藏提示，改由点击时短暂显示 */
-@media (hover: none) and (pointer: coarse){
-  .desk-hotspot .enter-label,
-  .shelf-enter-label,
-  .case-reopen:after,
-  .plant-target:before{
-    opacity:0 !important;
-  }
-  .plant-target:before{
-    top:50% !important;
-  }
-  #desk[open] > .desk-hotspot .leave-label,
-  #bookshelf[open] > .shelf-hotspot .shelf-leave-label{
-    display:none;
-  }
-  summary, button, .sentence-target, .plant-target{
-    touch-action:manipulation;
-  }
-}
-
-/* ③ 手机横屏全屏沉浸 —— 保持电脑端摊开书页布局（左索引 / 右正文） */
+/* ① 横屏声音按钮固定到视口，和桌面端对齐 */
 @media (orientation: landscape) and (max-height: 560px) and (pointer: coarse){
-  html, body{
-    margin:0 !important;
-    padding:0 !important;
-    width:100%;
-    height:100%;
-    min-height:100%;
-    background:#0b110e;
-    overflow:hidden;
-    overscroll-behavior:none;
-  }
-  body{
-    display:flex !important;
-    flex-direction:column;
-    align-items:stretch;
-    justify-content:center;
-    place-items:unset;
-  }
-  .frame{
-    width:100% !important;
-    max-width:none !important;
-    height:100dvh;
-    margin:0 !important;
-    border:0 !important;
-    box-shadow:none !important;
-    background:#0b110e;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-  }
-  .stage{
-    width:min(100vw, calc(100dvh * 16 / 9)) !important;
-    aspect-ratio:16 / 9 !important;
-    max-height:100dvh;
-    min-height:0 !important;
-    flex:0 0 auto;
-  }
-  .stage > svg{ width:100%; height:100%; }
-  .caption{ display:none !important; }
-
   .sound-controls{
     position:fixed !important;
     z-index:9550 !important;
     top:max(6px, env(safe-area-inset-top)) !important;
     right:max(6px, env(safe-area-inset-right)) !important;
   }
-
-  body:has(#desk[open]),
-  body:has(#bookshelf[open]){
-    overflow:hidden;
-  }
-
-  .desk-ui, .shelf-ui{
-    position:fixed !important;
-    inset:0 !important;
-    z-index:9000 !important;
-    background:#0d1210;
-    pointer-events:auto;
-  }
-  .desk-top-view, .shelf-view{
-    position:absolute !important;
-    inset:0 !important;
-    margin:auto !important;
-    width:min(100vw, calc(100dvh * 16 / 9)) !important;
-    height:min(100dvh, calc(100vw * 9 / 16)) !important;
-    animation:none !important;
-  }
-  .desk-top-view > svg, .shelf-view > svg{
-    width:100% !important;
-    height:100% !important;
-  }
-  #desk[open] > .desk-hotspot,
-  #bookshelf[open] > .shelf-hotspot{
-    position:fixed !important;
-    top:max(10px, env(safe-area-inset-top)) !important;
-    left:max(10px, env(safe-area-inset-left)) !important;
-    z-index:9500 !important;
-  }
-
-  .opened-case{
-    position:fixed !important;
-    inset:0 !important;
-    z-index:9600 !important;
-    padding:max(6px, env(safe-area-inset-top)) 6px max(6px, env(safe-area-inset-bottom));
-    background:rgba(10, 8, 5, .97);
-    perspective:none !important;
-  }
-  .opened-case .case-spread{
-    height:100% !important;
-    padding:10px 12px !important;
-    border-width:3px !important;
-  }
-  .opened-case .case-body{
-    grid-template-columns: minmax(90px, 24%) 1fr !important;
-    grid-template-rows: 1fr !important;
-    gap:10px !important;
-    padding-top:8px !important;
-  }
-  .opened-case .case-index{
-    flex-direction:column !important;
-    border-right:1px solid rgba(118,91,52,.3) !important;
-    border-bottom:0 !important;
-    padding:0 8px 0 0 !important;
-    gap:6px !important;
-    font-size:10px !important;
-  }
-  .opened-case .case-index b{ font-size:11px !important; }
-  .opened-case .case-tree{
-    flex:1 !important;
-    min-height:0 !important;
-  }
-  .opened-case .case-page{
-    font-size:14px !important;
-    line-height:1.9 !important;
-    padding:0 4px !important;
-  }
-  .opened-case .case-page h3{ font-size:15px !important; margin:8px 0 6px !important; }
-  .opened-case .case-page p{ line-height:1.9 !important; margin:8px 0 !important; }
-  .opened-case .case-head{ padding-bottom:6px !important; }
-  .opened-case .case-head h2{ font-size:15px !important; margin:2px 0 !important; }
-  .opened-case .case-head small,
-  .opened-case .case-head span,
-  .opened-case .folio-line{ font-size:7px !important; }
-  .opened-case .case-head button#close-dossier{
-    width:34px !important;
-    height:34px !important;
-    flex-basis:34px !important;
-    font-size:22px !important;
-    line-height:30px !important;
-  }
-  .opened-case .case-controls button{
-    font-size:11px !important;
-    padding:7px 8px !important;
-    min-width:44px;
-  }
-  .opened-case .case-controls span{ font-size:9px !important; }
-  .opened-case .case-feedback{ font-size:9px !important; }
 }
 
-/* ④ 全屏按钮：只在触屏设备显示 */
-.fs-toggle{
-  position:absolute;
-  left:10px;
-  bottom:10px;
-  z-index:60;
-  width:38px;
-  height:38px;
-  border-radius:50%;
-  border:1px solid rgba(205,174,111,.7);
-  background:rgba(16,23,19,.85);
-  color:#eadbb9;
-  font:18px/1 system-ui, -apple-system, sans-serif;
-  cursor:pointer;
-  display:none;
-  place-items:center;
-  box-shadow:0 2px 10px rgba(0,0,0,.45);
-  touch-action:manipulation;
-}
-@media (pointer: coarse){
-  .fs-toggle{ display:grid; }
-}
-@media (max-width:420px){
-  .caption h1{ font-size:16px; }
-  .caption small{ display:none; }
-  .next{ font-size:7.5px; }
-}
-
-/* ============================================================
-   v5 补丁：触屏点击提示、留声机提示、奖杯弹窗
-   ============================================================ */
-
-/* ① 触屏点击时显示提示（由 JS 加 .tip-force-show），覆盖默认隐藏 */
+/* ② 触屏点击提示：强制显示，但 3 秒后自动隐藏 */
 @media (hover: none) and (pointer: coarse){
   .desk-hotspot.tip-force-show .enter-label,
   .shelf-hotspot.tip-force-show .shelf-enter-label,
@@ -317,11 +115,11 @@
     opacity:1 !important;
   }
   .plant-target:before{
-    top:86% !important;
+    top:50% !important;
   }
 }
 
-/* ② 留声机：热区扩大、提示居中加大、3 秒后自动消失 */
+/* ③ 留声机热区加大，提示居中 */
 .room-gramophone-hit{
   left:86% !important;
   top:46% !important;
@@ -343,7 +141,7 @@
   background:rgba(18,25,21,.96);
   border:1.5px solid #c9a45c;
   color:#f0dfb9;
-  font:14px/1.4 "Courier New",monospace;
+  font:9px/1.4 "Courier New",monospace;
   letter-spacing:.1em;
   box-shadow:3px 3px rgba(8,11,9,.55);
   pointer-events:none;
@@ -359,7 +157,7 @@
   .room-gramophone-hit.tip-show:after{ opacity:1; }
 }
 
-/* ③ 奖杯弹窗 */
+/* ④ 奖杯弹窗 */
 .trophy-modal{
   position:fixed;
   inset:0;
@@ -449,8 +247,80 @@
   .trophy-modal-card p{ font-size:11px; }
   .trophy-modal-card button{ padding:8px 22px; font-size:11px; }
 }
-</style></head>
-<body><main class="frame"><section class="stage" aria-label="像素风伦敦书房场景">
+
+/* ⑤ 全屏按钮 */
+.fs-toggle{
+  position:absolute;
+  left:10px;
+  bottom:10px;
+  z-index:60;
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  border:1px solid rgba(205,174,111,.7);
+  background:rgba(16,23,19,.85);
+  color:#eadbb9;
+  font:18px/1 system-ui, -apple-system, sans-serif;
+  cursor:pointer;
+  display:none;
+  place-items:center;
+  box-shadow:0 2px 10px rgba(0,0,0,.45);
+  touch-action:manipulation;
+}
+@media (pointer: coarse){
+  .fs-toggle{ display:grid; }
+}
+
+/* ⑥ 木地板纹理优化：更细腻的横向木板 + 错位接缝 + 细微木纹 */
+/* 原始地板：<rect y="442" width="960" height="98" fill="#49382b"/> */
+/* 用 SVG pattern 替换纯色填充，保持像素风 */
+.floor-pattern{
+  fill:url(#woodFloorPattern);
+}
+</style>
+</head>
+<body>
+<main class="frame">
+<section class="stage" aria-label="像素风伦敦书房场景">
+
+<!-- ===== 木地板纹理定义：SVG pattern ===== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <pattern id="woodFloorPattern" width="96" height="48" patternUnits="userSpaceOnUse">
+      <!-- 底色 -->
+      <rect width="96" height="48" fill="#4a382a"/>
+      <!-- 横向木板行 1 -->
+      <rect x="0" y="0" width="96" height="23" fill="#543e2d"/>
+      <!-- 行 1 接缝 -->
+      <rect x="0" y="22" width="96" height="2" fill="#2e1f16"/>
+      <!-- 行 1 木纹 -->
+      <rect x="8" y="4" width="22" height="1" fill="#634a36"/>
+      <rect x="38" y="9" width="30" height="1" fill="#634a36"/>
+      <rect x="72" y="15" width="18" height="1" fill="#634a36"/>
+      <rect x="18" y="17" width="14" height="1" fill="#3d2c1f"/>
+      <rect x="58" y="5" width="10" height="1" fill="#3d2c1f"/>
+      <!-- 行 2 -->
+      <rect x="0" y="24" width="96" height="24" fill="#4c3727"/>
+      <!-- 行 2 接缝 -->
+      <rect x="0" y="46" width="96" height="2" fill="#2a1c13"/>
+      <!-- 行 2 木纹 -->
+      <rect x="14" y="28" width="26" height="1" fill="#5e4632"/>
+      <rect x="48" y="33" width="20" height="1" fill="#5e4632"/>
+      <rect x="76" y="39" width="14" height="1" fill="#5e4632"/>
+      <rect x="6" y="40" width="16" height="1" fill="#38261a"/>
+      <rect x="64" y="29" width="8" height="1" fill="#38261a"/>
+      <!-- 错位接缝：行 1 在 x=48 处断开，行 2 在 x=24 处断开 -->
+      <rect x="48" y="0" width="2" height="23" fill="#2e1f16"/>
+      <rect x="24" y="24" width="2" height="24" fill="#2a1c13"/>
+      <!-- 细微噪点 -->
+      <rect x="32" y="7" width="1" height="1" fill="#6b4e38"/>
+      <rect x="82" y="12" width="1" height="1" fill="#6b4e38"/>
+      <rect x="54" y="37" width="1" height="1" fill="#6b4e38"/>
+      <rect x="12" y="43" width="1" height="1" fill="#6b4e38"/>
+    </pattern>
+  </defs>
+</svg>
+
 <svg viewBox="0 0 960 540" role="img" aria-label="雨夜里的1920年代伦敦书房：书架、窗户、矮壁炉、台灯和写字桌" shape-rendering="crispEdges">
 <defs>
  <pattern id="wallpaper" width="32" height="32" patternUnits="userSpaceOnUse"><rect width="32" height="32" fill="#455244"/><path d="M8 6h4v4H8zM22 21h4v4h-4z" fill="#596348"/><path d="M10 16h2v5h-2zM23 5h2v5h-2z" fill="#35453b"/></pattern>
@@ -488,7 +358,9 @@
 <g aria-label="壁炉台上的小型蕨类花瓶"><path d="M445 237h28l-3 11h-22z" transform="translate(-302 32) scale(.9 1.2)" fill="#76453a" stroke="#33241b" stroke-width="2"/><path d="M455 238v-15m0 9-9-7m9 3 8-10m-8 14 11-5m-11-1-1-10" transform="translate(-302 32) scale(.9 1.2)" fill="none" stroke="#83906a" stroke-width="3" stroke-linecap="square"/><path d="M447 231h6v3h-6zM459 224h6v3h-6zM463 232h6v3h-6zM451 219h6v3h-6z" transform="translate(-302 32) scale(.9 1.2)" fill="#a5aa76"/></g>
 <g class="fireplace-flames"><path d="M442 325q-15-25 3-42 2 18 9 23-2-29 19-46 0 23 11 33 15 16-1 32z" fill="#ad5433"/><path d="M455 326q-9-17 2-29 3 10 7 14-2-21 12-32 0 16 8 23 9 12-2 24z" fill="#e18139"/><path d="M468 327q-5-14 4-23 3 7 5 11-1-13 7-20 2 11 6 17 4 9-3 15z" fill="#f3c35d"/><path d="M477 326q-2-9 4-14 1 7 4 10v4z" fill="#fff0a2"/></g>
 </g>
-<rect y="442" width="960" height="98" fill="#49382b"/><g stroke="#674c34" stroke-width="5"><path d="M0 467h960M0 500h960M145 442v98M380 442v98M635 442v98M855 442v98"/></g><path d="M277 458h398v75H277z" fill="#684039"/><path d="M293 466h366v59H293z" fill="#a2824c"/><path d="M307 474h338v43H307z" fill="#405441"/><path d="M314 480h324v31H314z" fill="none" stroke="#748063" stroke-width="1.5"/><path d="M320 485h312v21H320z" fill="none" stroke="#344539" stroke-width="1"/><g fill="#c09d5f"><path d="M322 482h8v8h-8zM358 504h8v8h-8zM616 482h8v8h-8zM584 504h8v8h-8zM465 479h22v4h-22z"/></g><g fill="none" stroke="#b69a62" stroke-width="1.5" shape-rendering="crispEdges"><path d="M476 486h8v4h-8zM468 490h8v4h-8zM484 490h8v4h-8zM476 494h8v4h-8zM468 498h8v4h-8zM484 498h8v4h-8zM476 502h8v4h-8z"/><path d="M456 494h8v4h-8zM496 494h8v4h-8z"/></g>
+<!-- ===== 木地板：使用 pattern 填充 ===== -->
+<rect y="442" width="960" height="98" fill="url(#woodFloorPattern)"/>
+<g stroke="#674c34" stroke-width="1" opacity=".35"><path d="M0 467h960M0 500h960M145 442v98M380 442v98M635 442v98M855 442v98"/></g><path d="M277 458h398v75H277z" fill="#684039"/><path d="M293 466h366v59H293z" fill="#a2824c"/><path d="M307 474h338v43H307z" fill="#405441"/><path d="M314 480h324v31H314z" fill="none" stroke="#748063" stroke-width="1.5"/><path d="M320 485h312v21H320z" fill="none" stroke="#344539" stroke-width="1"/><g fill="#c09d5f"><path d="M322 482h8v8h-8zM358 504h8v8h-8zM616 482h8v8h-8zM584 504h8v8h-8zM465 479h22v4h-22z"/></g><g fill="none" stroke="#b69a62" stroke-width="1.5" shape-rendering="crispEdges"><path d="M476 486h8v4h-8zM468 490h8v4h-8zM484 490h8v4h-8zM476 494h8v4h-8zM468 498h8v4h-8zM484 498h8v4h-8zM476 502h8v4h-8z"/><path d="M456 494h8v4h-8zM496 494h8v4h-8z"/></g>
 <g transform="translate(299 56) scale(.78)"><g id="record-player" class="record-player" aria-label="立式木柜留声机">
 <path d="M695 330l8-50 128-2 10 51-12 9H704z" fill="#60412b" stroke="#26190f" stroke-width="5"/>
 <path d="M703 326l7-39 111-1 9 39z" fill="#ad8751" stroke="#dac17d" stroke-width="3"/>
@@ -628,7 +500,6 @@
 </div></div></details></section>
 </main>
 
-<!-- v5: 奖杯弹窗 -->
 <div class="trophy-modal" id="trophy-modal" hidden aria-hidden="true">
   <div class="trophy-modal-card" role="dialog" aria-modal="true" aria-labelledby="trophy-title">
     <span class="pixel-trophy" aria-hidden="true"><i></i><b></b></span>
@@ -759,7 +630,6 @@
 })();
 </script>
 <script>
-/* 手机全屏增强：仅追加，不影响原有逻辑 */
 (function(){
   var stage=document.querySelector('.stage');
   if(!stage) return;
@@ -792,12 +662,19 @@
 </script>
 <script>
 /* ============================================================
-   v5 补丁：触屏提示、留声机提示、奖杯弹窗
+   v6 补丁：提示自动消失、留声机提示、奖杯弹窗
    ============================================================ */
 (function(){
   const touch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+  let tipTimer = 0;
 
-  /* ① 书桌 / 书架：点击先显示标签，再进入场景 */
+  function showTip(el, duration){
+    clearTimeout(tipTimer);
+    el.classList.add('tip-force-show');
+    tipTimer = setTimeout(function(){ el.classList.remove('tip-force-show'); }, duration || 3000);
+  }
+
+  /* ① 书桌 / 书架：点击先显示标签，3 秒后自动消失，再进入场景 */
   if (touch){
     const DELAY = 460;
     ['desk','bookshelf'].forEach(function(id){
@@ -821,7 +698,7 @@
       }, true);
     });
 
-    /* 植物目标：点击先显示标签，再打开 */
+    /* 植物目标：点击先显示标签，3 秒后自动消失，再打开 */
     document.querySelectorAll('.plant-target').forEach(function(btn){
       let bypass = false;
       btn.addEventListener('click', function(e){
@@ -839,14 +716,14 @@
     });
   }
 
-  /* ② 留声机提示：点击 / 悬停显示，3 秒后消失 */
+  /* ② 留声机提示：点击显示，3 秒后自动消失 */
   const hit = document.getElementById('record-player-hit');
   const music = document.getElementById('music-audio');
   if (hit && music){
     let timer = 0;
     hit.setAttribute('data-tip', '播放留声机');
 
-    function showTip(text){
+    function showGramTip(text){
       hit.setAttribute('data-tip', text);
       hit.classList.add('tip-show');
       clearTimeout(timer);
@@ -854,7 +731,7 @@
     }
 
     hit.addEventListener('click', function(){
-      showTip(music.paused ? '播放留声机' : '暂停留声机');
+      showGramTip(music.paused ? '播放留声机' : '暂停留声机');
     }, true);
 
     hit.addEventListener('mouseenter', function(){
@@ -862,7 +739,7 @@
     });
   }
 
-  /* ③ 奖杯弹窗：线索集齐后弹出，关闭时回到底部 */
+  /* ③ 奖杯弹窗 */
   const counter = document.getElementById('clue-count');
   const modal = document.getElementById('trophy-modal');
   if (counter && modal){
