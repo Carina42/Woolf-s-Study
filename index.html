@@ -94,16 +94,16 @@
 @media(max-width:600px){.case-complete{gap:6px;padding:4px 6px}.case-complete strong{font-size:8px}.case-complete small{font-size:6px}.pixel-trophy{width:20px;height:20px;flex-basis:20px}.case-feedback{font-size:7px}}
 
 /* ============================================================
-   v8 补丁：印章进绿垫、留声机提示居中、唱针落点在唱片纹路
+   v9 补丁：印章贴合虚线内缘、留声机提示居中、唱针落在纹路
    ============================================================ */
 
-/* ① 橡树印章移到绿色桌垫右上角内部 */
+/* ① 橡树印章：再向左下一点，贴近虚线内边但留出呼吸空间 */
 .target-stamp{
-  top: 14.5% !important;
-  right: 12% !important;
+  top: 18% !important;
+  right: 14.5% !important;
 }
 
-/* ② 留声机提示居中于留声机，与书桌提示一致，小巧不越界 */
+/* ② 留声机提示：与书桌/书架一致，居中、小巧、不越界 */
 .room-gramophone-hit{
   left: 88.5% !important;
   top: 51% !important;
@@ -129,7 +129,6 @@
   pointer-events: none;
   transition: opacity .22s;
   z-index: 2;
-  max-width: none;
 }
 
 /* ③ 唱针落点：沿唱片椭圆纹路中部偏下 */
@@ -137,7 +136,7 @@
   transform: rotate(-149deg);
 }
 
-/* ④ 保留此前所有提示自动消失 / 温暖色调 / 做旧地板规则 */
+/* ④ 触屏提示只在点击时出现，3 秒后由 JS 自动移除；悬停态一律中和 */
 @media (hover: none) and (pointer: coarse){
   .desk-hotspot:hover,
   .shelf-hotspot:hover,
@@ -181,7 +180,7 @@
 #lampGlow stop:first-child{ stop-color:#f8cf82 !important; stop-opacity:.52 !important; }
 #lampGlow stop:last-child{ stop-color:#d18b46 !important; }
 
-/* ⑥ 手机横屏：声音按钮维持在场景内 */
+/* ⑥ 手机横屏：声音按钮留在场景内 */
 @media (orientation: landscape) and (max-height: 560px) and (pointer: coarse){
   .sound-controls{
     position: absolute !important;
