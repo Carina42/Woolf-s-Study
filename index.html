@@ -104,141 +104,49 @@
 @media(max-width:600px){.case-complete{gap:6px;padding:4px 6px}.case-complete strong{font-size:8px}.case-complete small{font-size:6px}.pixel-trophy{width:20px;height:20px;flex-basis:20px}.case-feedback{font-size:7px}}
 
 /* ============================================================
-   手机适配补丁 v2（仅追加样式，不改动原有 HTML / CSS / JS）
+   v4 最终适配：手机横屏全屏 + 保持摊开书页布局 + 悬停才显示提示
    ============================================================ */
 
-/* 安全区 + 触摸按钮稍微放大 */
-@media (max-width: 760px) {
-  body {
-    padding:
-      max(8px, env(safe-area-inset-top, 0px))
-      max(8px, env(safe-area-inset-right, 0px))
-      max(8px, env(safe-area-inset-bottom, 0px))
-      max(8px, env(safe-area-inset-left, 0px));
-  }
-  .sound-toggle { font-size: 9px; padding: 5px 7px; }
+/* ① 留声机提示居中，和书桌 / 书架一致 */
+.room-gramophone-hit:after{
+  right:auto;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  padding:5px 9px;
 }
 
-/* 手机竖屏：卷宗改为上下布局，阅读区更宽、字更好读 */
-@media (max-width: 600px) {
-  .opened-case { inset: 3% 2%; }
-  .case-spread { padding: 10px 11px; }
-  .case-body {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto minmax(0, 1fr);
-    gap: 10px;
-    padding-top: 10px;
+/* ② 触屏设备只保留 hover / click 触发，不再常亮提示 */
+@media (hover: none) and (pointer: coarse){
+  .desk-hotspot .enter-label,
+  .shelf-enter-label,
+  .case-reopen:after,
+  .plant-target:before{
+    opacity:0 !important;
   }
-  .case-index {
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 6px 14px;
-    border-right: 0;
-    border-bottom: 1px solid rgba(118, 91, 52, .3);
-    padding: 0 0 9px;
+  .plant-target:before{
+    top:50% !important;
   }
-  .case-index b { font-size: 11px; }
-  .case-index span { font-size: 10px; }
-  .case-tree { flex: 0 0 auto; min-height: 0; }
-  .case-tree svg { height: 46px; }
-  .case-page { font-size: 13px; line-height: 1.95; }
-  .case-page h3 { font-size: 15px; margin: 10px 0 8px; }
-  .case-head { gap: 8px; padding-bottom: 7px; }
-  .case-head h2 { font-size: clamp(15px, 4.2vw, 20px); }
-  .case-head small, .case-head span, .folio-line { font-size: 7px; }
-  .case-head button#close-dossier {
-    width: 36px;
-    height: 36px;
-    flex-basis: 36px;
-    font-size: 24px;
-    line-height: 32px;
+  /* 触屏上仍保留“回到书房/书架”按钮 */
+  #desk[open] > .desk-hotspot .leave-label,
+  #bookshelf[open] > .shelf-hotspot .shelf-leave-label{
+    display:none;
   }
-  .case-controls button {
-    font-size: 11px;
-    padding: 8px 6px;
-    min-width: 44px;
-  }
-  .case-controls span { font-size: 9px; }
-  .case-feedback { font-size: 8px; }
-  .case-complete { gap: 6px; padding: 4px 6px; }
-  .case-complete strong { font-size: 9px; }
-  .case-complete small { font-size: 7px; }
-
-  /* 返回按钮更容易点按 */
-  #desk[open] > .desk-hotspot,
-  #bookshelf[open] > .shelf-hotspot {
-    width: 38px !important;
-    height: 36px !important;
-    min-width: 38px;
-    min-height: 36px;
-  }
-
-  /* 植物标本提示稍大一点 */
-  .plant-target:before { font-size: 8px; padding: 4px 6px; }
-}
-
-/* 超小屏：再缩一点字，避免撑破 */
-@media (max-width: 420px) {
-  .caption h1 { font-size: 16px; }
-  .caption small { display: none; }
-  .next { font-size: 8px; }
-  .case-page { font-size: 12px; }
-  .case-page h3 { font-size: 14px; }
-  .case-head h2 { font-size: 14px; }
-  .case-index span { font-size: 9px; }
-  .case-tree svg { height: 38px; }
-}
-
-/* 触屏设备：关键提示常显，不依赖 hover；减少点按延迟 */
-@media (hover: none) and (pointer: coarse) {
-  .desk-hotspot .enter-label { opacity: .92; }
-  .shelf-enter-label { opacity: .92; }
-  .plant-target:before { opacity: .95; top: 86%; }
-  .case-reopen:after { opacity: .9; }
-  .folio-hover { display: none; }
-  .room-gramophone-hit:after { display: none; }
-  summary, button, .sentence-target, .plant-target {
-    touch-action: manipulation;
+  summary, button, .sentence-target, .plant-target{
+    touch-action:manipulation;
   }
 }
 
-/* 手机横屏矮窗口：给卷宗更多阅读高度 */
-@media (max-height: 500px) and (orientation: landscape) {
-  .opened-case { inset: 2% 2%; }
-  .case-spread { padding: 8px 10px; }
-  .case-tree svg { height: min(100px, 24vh); }
-}
-
-/* ============================================================
-   手机全屏沉浸适配 v3 —— 追加于最后，覆盖前面规则
-   ============================================================ */
-
-/* 全屏按钮 */
-.fs-toggle{
-  position:absolute; left:10px; bottom:10px; z-index:60;
-  width:38px; height:38px; border-radius:50%;
-  border:1px solid rgba(205,174,111,.7);
-  background:rgba(16,23,19,.85); color:#eadbb9;
-  font:18px/1 system-ui, -apple-system, sans-serif; cursor:pointer;
-  display:none; place-items:center;
-  box-shadow:0 2px 10px rgba(0,0,0,.45);
-  touch-action:manipulation;
-}
-@media (max-width:900px){ .fs-toggle{ display:grid; } }
-
-/* ---------- 窄屏 / 触屏：全出血布局 ---------- */
-@media (max-width:900px), (max-height:520px){
+/* ③ 手机横屏全屏沉浸 —— 保持电脑端摊开书页布局（左索引 / 右正文） */
+@media (orientation: landscape) and (max-height: 560px) and (pointer: coarse){
   html, body{
     margin:0 !important;
     padding:0 !important;
     width:100%;
     height:100%;
     min-height:100%;
-    min-height:100svh;
-    min-height:100dvh;
-    background:#111c18;
-    overflow-x:hidden;
+    background:#0b110e;
+    overflow:hidden;
     overscroll-behavior:none;
   }
   body{
@@ -247,41 +155,31 @@
     align-items:stretch;
     justify-content:center;
     place-items:unset;
-    -webkit-tap-highlight-color:transparent;
   }
   .frame{
     width:100% !important;
     max-width:none !important;
-    min-height:100svh;
-    min-height:100dvh;
+    height:100dvh;
     margin:0 !important;
     border:0 !important;
     box-shadow:none !important;
-    background:#111c18;
+    background:#0b110e;
     display:flex;
     flex-direction:column;
     justify-content:center;
+    align-items:center;
   }
   .stage{
-    width:100% !important;
-    min-height:0 !important;
-    max-height:none;
+    width:min(100vw, calc(100dvh * 16 / 9)) !important;
     aspect-ratio:16 / 9 !important;
+    max-height:100dvh;
+    min-height:0 !important;
     flex:0 0 auto;
   }
   .stage > svg{ width:100%; height:100%; }
+  .caption{ display:none !important; }
 
-  .caption{
-    flex:0 0 auto;
-    padding:8px 12px calc(10px + env(safe-area-inset-bottom, 0px));
-    background:#111c18;
-    border-top:1px solid rgba(158,131,82,.45);
-  }
-  .caption h1{ font-size:clamp(15px,4.2vw,20px); margin:2px 0 0; }
-  .caption small{ font-size:8px; }
-  .next{ font-size:8px; line-height:1.5; max-width:none; text-align:left; margin-top:4px; }
-
-  /* 声音按钮与安全区 */
+  /* 声音按钮跟随安全区 */
   .sound-controls{
     position:fixed !important;
     z-index:9550 !important;
@@ -289,13 +187,13 @@
     right:max(6px, env(safe-area-inset-right)) !important;
   }
 
-  /* 打开书桌/书架时禁止页面滚动 */
+  /* 打开书桌/书架时锁滚动 */
   body:has(#desk[open]),
   body:has(#bookshelf[open]){
     overflow:hidden;
   }
 
-  /* ---------- 书桌 / 书架：全屏舞台 ---------- */
+  /* 书桌 / 书架铺满屏幕 */
   .desk-ui, .shelf-ui{
     position:fixed !important;
     inset:0 !important;
@@ -309,106 +207,107 @@
     margin:auto !important;
     width:min(100vw, calc(100dvh * 16 / 9)) !important;
     height:min(100dvh, calc(100vw * 9 / 16)) !important;
-    max-width:100vw;
-    max-height:100dvh;
-    aspect-ratio:auto !important;
     animation:none !important;
-    box-shadow:0 0 0 1px rgba(181,150,95,.25);
   }
   .desk-top-view > svg, .shelf-view > svg{
     width:100% !important;
     height:100% !important;
   }
-
-  /* 返回按钮固定到屏幕左上角，避免被全屏层遮挡 */
   #desk[open] > .desk-hotspot,
   #bookshelf[open] > .shelf-hotspot{
     position:fixed !important;
-    z-index:9500 !important;
     top:max(10px, env(safe-area-inset-top)) !important;
     left:max(10px, env(safe-area-inset-left)) !important;
+    z-index:9500 !important;
   }
 
-  /* ---------- 卷宗：全屏阅读 ---------- */
+  /* 卷宗：全屏阅读，摊开书页 + 左索引右正文 */
   .opened-case{
     position:fixed !important;
     inset:0 !important;
     z-index:9600 !important;
     padding:max(6px, env(safe-area-inset-top)) 6px max(6px, env(safe-area-inset-bottom));
-    background:rgba(10,8,5,.97);
+    background:rgba(10, 8, 5, .97);
     perspective:none !important;
   }
   .opened-case .case-spread{
     height:100% !important;
-    padding:10px 11px !important;
+    padding:10px 12px !important;
     border-width:3px !important;
   }
   .opened-case .case-body{
-    grid-template-columns:1fr !important;
-    grid-template-rows:auto minmax(0,1fr) !important;
-    gap:8px !important;
+    grid-template-columns: minmax(90px, 24%) 1fr !important;
+    grid-template-rows: 1fr !important;
+    gap:10px !important;
     padding-top:8px !important;
   }
   .opened-case .case-index{
-    flex-direction:row !important;
-    flex-wrap:wrap;
-    align-items:center;
-    gap:5px 14px !important;
-    border-right:0 !important;
-    border-bottom:1px solid rgba(118,91,52,.3);
-    padding:0 0 7px !important;
+    flex-direction:column !important;
+    border-right:1px solid rgba(118,91,52,.3) !important;
+    border-bottom:0 !important;
+    padding:0 8px 0 0 !important;
+    gap:6px !important;
+    font-size:10px !important;
   }
-  .opened-case .case-tree{ flex:0 0 auto; min-height:0; }
-  .opened-case .case-tree svg{ height:46px !important; }
+  .opened-case .case-index b{ font-size:11px !important; }
+  .opened-case .case-tree{
+    flex:1 !important;
+    min-height:0 !important;
+  }
   .opened-case .case-page{
     font-size:14px !important;
     line-height:1.9 !important;
-    padding:0 !important;
-    -webkit-overflow-scrolling:touch;
+    padding:0 4px !important;
   }
   .opened-case .case-page h3{ font-size:15px !important; margin:8px 0 6px !important; }
-  .opened-case .case-page p{ margin:8px 0 !important; line-height:1.9 !important; }
+  .opened-case .case-page p{ line-height:1.9 !important; margin:8px 0 !important; }
+  .opened-case .case-head{ padding-bottom:6px !important; }
+  .opened-case .case-head h2{ font-size:15px !important; margin:2px 0 !important; }
+  .opened-case .case-head small,
+  .opened-case .case-head span,
+  .opened-case .folio-line{ font-size:7px !important; }
   .opened-case .case-head button#close-dossier{
-    width:40px !important;
-    height:40px !important;
-    flex-basis:40px !important;
-    font-size:26px !important;
-    line-height:36px !important;
+    width:34px !important;
+    height:34px !important;
+    flex-basis:34px !important;
+    font-size:22px !important;
+    line-height:30px !important;
   }
   .opened-case .case-controls button{
-    font-size:12px !important;
-    padding:10px 8px !important;
-    min-width:48px;
+    font-size:11px !important;
+    padding:7px 8px !important;
+    min-width:44px;
   }
   .opened-case .case-controls span{ font-size:9px !important; }
   .opened-case .case-feedback{ font-size:9px !important; }
 }
 
-/* ---------- 手机横屏：画面最大化，隐藏说明 ---------- */
-@media (orientation: landscape) and (max-height: 560px){
-  .frame{
-    min-height:0;
-    height:100svh;
-    height:100dvh;
-    justify-content:center;
-    align-items:center;
-    background:#0b110e;
-  }
-  .stage{
-    width:min(100vw, calc(100dvh * 16 / 9)) !important;
-    aspect-ratio:16 / 9 !important;
-    max-height:100dvh;
-  }
-  .caption{ display:none !important; }
+/* ④ 全屏按钮：只在触屏设备显示 */
+.fs-toggle{
+  position:absolute;
+  left:10px;
+  bottom:10px;
+  z-index:60;
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  border:1px solid rgba(205,174,111,.7);
+  background:rgba(16,23,19,.85);
+  color:#eadbb9;
+  font:18px/1 system-ui, -apple-system, sans-serif;
+  cursor:pointer;
+  display:none;
+  place-items:center;
+  box-shadow:0 2px 10px rgba(0,0,0,.45);
+  touch-action:manipulation;
 }
-
-/* ---------- 超小屏 ---------- */
+@media (pointer: coarse){
+  .fs-toggle{ display:grid; }
+}
 @media (max-width:420px){
   .caption h1{ font-size:16px; }
   .caption small{ display:none; }
   .next{ font-size:7.5px; }
-  .opened-case .case-page{ font-size:13px !important; }
-  .opened-case .case-page h3{ font-size:14px !important; }
 }
 </style></head>
 <body><main class="frame"><section class="stage" aria-label="像素风伦敦书房场景">
@@ -655,7 +554,7 @@
 <g fill="#ddc17f" font-family="monospace" font-size="10" letter-spacing="2" text-anchor="middle"><text x="602" y="276">OAK TREE</text><text x="772" y="276">ROSE</text><text x="602" y="435">JUDAS TREE</text><text x="772" y="435">POPPY</text></g><path d="M487 118v344" stroke="#cfaa66" stroke-width="8"/><path d="M482 126v326" stroke="#34251a" stroke-width="3"/>
 </svg>
 <div class="plant-hover-tip" id="plant-tip" aria-live="polite"></div><div class="plant-select-dialog" id="plant-dialog" aria-live="polite"><b>植物目标已选定</b><span>橡树已登记入卷。您现在可以查看卷宗。<br>请退出书架后，回到书房点击书桌。</span><button type="button" id="confirm-plant">确认</button></div>
-<button class="plant-target oak-target" type="button" data-plant="oak" aria-label="选择橡树目标"></button><button class="plant-target rose-target" type="button" data-plant="rose" aria-label="玫瑰档案，待开放"></button><button class="plant-target judas-target" type="button" data-plant="judas" aria-label="紫荆树档案，待开放"></button><button class="plant-target poppy-target" type="button" data-plant="poppy" aria-label="虞美人档案，待开放"></button>
+<button class="plant-target oak-target" type="button" data-plant="oak" aria-label="选择橡树目标"></button><button class="plant-target rose-target" type="button" data-plant="rose" aria-label="玫瑰档案，待开放"></button><button class="plant-target judas-target" type="button" data-plant="judas" aria-label="紫荆树档案，待开放”></button><button class="plant-target poppy-target" type="button" data-plant="poppy" aria-label="虞美人档案，待开放"></button>
 </div></div></details></section>
 </main><script>
 (()=>{
