@@ -56,8 +56,8 @@
 .desk-top-view.unlocked .case-reopen:not([hidden]){display:block}.case-reopen[hidden]{display:none!important}
 .case-reopen:hover{border-color:rgba(211,177,111,.45);background:rgba(232,196,124,.035)}
 .case-reopen:after{content:"查看卷宗";position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);opacity:0;padding:5px 8px;background:rgba(18,25,21,.9);border:1px solid #b99a5e;color:#e8d9b6;white-space:nowrap;font:9px "Courier New",monospace}.case-reopen:hover:after{opacity:1}
-.sound-controls{position:absolute;z-index:40;right:10px;top:10px;display:flex;gap:12px}.sound-toggle{position:relative;inset:auto;padding:5px 8px}
-@media(max-width:600px){.sound-controls{right:6px;top:6px;gap:8px}.sound-toggle{font-size:7px;padding:4px 6px}.case-head button#close-dossier{width:30px;height:30px;flex-basis:30px;font-size:22px}}
+.sound-controls{position:absolute;z-index:40;right:8px;top:8px;display:flex;gap:14px}.sound-toggle{position:relative;inset:auto;padding:5px 8px}
+@media(max-width:600px){.sound-controls{right:5px;top:5px;gap:10px}.sound-toggle{font-size:7px;padding:4px 6px}.case-head button#close-dossier{width:30px;height:30px;flex-basis:30px;font-size:22px}}
 #record-arm{transform-box:view-box;transform-origin:84.5% 55.2%;transition:transform .85s ease}
 .record-player.playing #record-arm{transform:rotate(130deg)}
 
@@ -94,245 +94,183 @@
 @media(max-width:600px){.case-complete{gap:6px;padding:4px 6px}.case-complete strong{font-size:8px}.case-complete small{font-size:6px}.pixel-trophy{width:20px;height:20px;flex-basis:20px}.case-feedback{font-size:7px}}
 
 /* ============================================================
-   v12：声音按钮更贴边 / 光晕更强 / 修饰纹理 / 手机卷宗排版整理
+   v13：唱针落点修正 / 玻璃蘸水笔细化
    ============================================================ */
-
-/* ① 声音按钮：贴近右上角，彼此分离更清晰 */
-.sound-controls{
-  position:absolute;
-  z-index:40;
-  right:8px;
-  top:8px;
-  display:flex;
-  gap:14px;
+.record-player.needle-down #record-arm{
+  transform: rotate(-152deg) !important;
 }
-@media(max-width:600px){
-  .sound-controls{ right:5px; top:5px; gap:10px; }
+.dip-pen{
+  background: linear-gradient(
+    90deg,
+    rgba(140,150,150,.35) 0%,
+    rgba(220,225,220,.55) 18%,
+    rgba(255,255,255,.85) 30%,
+    rgba(200,210,210,.45) 48%,
+    rgba(160,170,170,.5) 62%,
+    rgba(230,235,230,.7) 78%,
+    rgba(180,190,190,.4) 100%
+  ) !important;
+  border: 1px solid rgba(80,90,90,.45) !important;
+  border-radius: 3px !important;
+  box-shadow:
+    inset 1px 0 2px rgba(255,255,255,.5),
+    inset -1px 0 2px rgba(0,0,0,.15),
+    3px 4px 0 rgba(20,15,10,.25) !important;
 }
-@media (orientation: landscape) and (max-height: 560px) and (pointer: coarse){
-  .sound-controls{
-    position:absolute !important;
-    top:8px !important;
-    right:8px !important;
-    gap:14px !important;
-  }
-}
-
-/* ② 壁炉、台灯光晕加大，亮度提升 */
-#fireGlow stop:first-child{ stop-color:#f7a854 !important; stop-opacity:.70 !important; }
-#fireGlow stop:last-child{ stop-color:#c76a35 !important; }
-#lampGlow stop:first-child{ stop-color:#f8cf82 !important; stop-opacity:.70 !important; }
-#lampGlow stop:last-child{ stop-color:#d18b46 !important; }
-
-/* ③ 卷宗正文中文排版：首行缩进（全端） */
-.case-page p{ text-indent:2em; }
-
-/* ④ 手机横屏卷宗排版整理：更整齐、不挤、字号合适 */
-@media (orientation: landscape) and (max-height: 560px) and (pointer: coarse){
-  .opened-case .case-spread{
-    padding:12px 16px !important;
-    border-width:3px !important;
-  }
-  .opened-case .case-head{
-    padding-bottom:8px !important;
-    margin-bottom:4px !important;
-  }
-  .opened-case .case-head h2{
-    font-size:17px !important;
-    margin:2px 0 4px !important;
-  }
-  .opened-case .case-body{
-    grid-template-columns: minmax(100px, 22%) 1fr !important;
-    grid-template-rows: 1fr !important;
-    gap:14px !important;
-    padding-top:10px !important;
-  }
-  .opened-case .case-index{
-    flex-direction:column !important;
-    border-right:1px solid rgba(118,91,52,.3) !important;
-    border-bottom:0 !important;
-    padding:0 12px 0 0 !important;
-    gap:9px !important;
-    font-size:11px !important;
-    line-height:1.6 !important;
-  }
-  .opened-case .case-index b{ font-size:12px !important; }
-  .opened-case .case-page{
-    font-size:15px !important;
-    line-height:2.15 !important;
-    padding:2px 6px !important;
-  }
-  .opened-case .case-page p{
-    margin:14px 0 !important;
-    line-height:2.15 !important;
-    text-indent:2em;
-  }
-  .opened-case .case-page h3{
-    font-size:16px !important;
-    margin:0 0 12px !important;
-    padding:0 0 8px !important;
-    border-bottom:1px dotted rgba(118,91,52,.4) !important;
-    letter-spacing:.18em !important;
-  }
-  .opened-case .folio-line{
-    padding-bottom:4px !important;
-    margin-bottom:2px !important;
-    border-bottom:1px dashed rgba(118,91,52,.22) !important;
-  }
-  .opened-case .case-controls{
-    padding-top:10px !important;
-    margin-top:2px !important;
-  }
-  .opened-case .case-controls button{
-    font-size:12px !important;
-    padding:8px 10px !important;
-    min-width:48px;
-  }
-  .opened-case .case-controls span{ font-size:10px !important; }
-  .opened-case .case-feedback{ font-size:10px !important; }
-}
-
-/* ⑤ 书架木纹高光修饰（叠加在书架面板上） */
-.shelf-art::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  pointer-events:none;
+.dip-pen:before{
+  content:"" !important;
+  position:absolute !important;
+  left:50% !important;
+  top:18% !important;
+  bottom:12% !important;
+  width:6px !important;
+  transform:translateX(-50%) !important;
   background:
-    repeating-linear-gradient(0deg, transparent 0 26px, rgba(215,180,120,.035) 26px 27px),
-    repeating-linear-gradient(90deg, transparent 0 118px, rgba(0,0,0,.05) 118px 119px);
-  mix-blend-mode:overlay;
+    repeating-linear-gradient(
+      160deg,
+      transparent 0 3px,
+      rgba(255,255,255,.65) 3px 4px,
+      transparent 4px 7px
+    ) !important;
+  border-radius:2px !important;
+  opacity:.85 !important;
+  clip-path:none !important;
+}
+.dip-pen:after{
+  content:"" !important;
+  position:absolute !important;
+  left:50% !important;
+  bottom:-14px !important;
+  transform:translateX(-50%) !important;
+  width:10px !important;
+  height:22px !important;
+  background:linear-gradient(
+    180deg,
+    rgba(210,220,220,.65) 0%,
+    rgba(240,245,240,.85) 40%,
+    rgba(180,195,195,.6) 100%
+  ) !important;
+  clip-path:polygon(50% 100%, 0% 0%, 100% 0%) !important;
+  border-radius:0 !important;
+  top:auto !important;
+  right:auto !important;
+  box-shadow:none !important;
 }
 
-/* ⑥ 书桌俯视图：再加一层细腻布纹装饰 */
-.topdown-art::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-  background-image:
-    repeating-linear-gradient(45deg, transparent 0 22px, rgba(255,225,170,.02) 22px 23px),
-    repeating-linear-gradient(-45deg, transparent 0 22px, rgba(0,0,0,.02) 22px 23px);
-  mix-blend-mode:soft-light;
+/* ============================================================
+   v14：桌面端字号再放大 / 橡树印章贴近绿色桌垫虚线内缘
+   ============================================================ */
+.target-stamp{
+  top: 17% !important;
+  right: 14.5% !important;
 }
-
-/* ⑦ 壁炉砖缝（在壁炉面板上加装饰） */
-.fireplace-bricks{
-  opacity:.32;
-  stroke:#5d4a3a;
-  stroke-width:.55;
-  fill:none;
-  shape-rendering:crispEdges;
-}
-
-/* ⑧ 奖杯弹窗、全屏按钮等保持原有 */ 
-.trophy-modal{
-  position: fixed; inset: 0; z-index: 9800;
-  display: grid; place-items: center; padding: 20px;
-  background: rgba(10,8,5,.86);
-  -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px);
-  animation: trophyFade .28s ease both;
-}
-.trophy-modal[hidden]{ display: none; }
-.trophy-modal-card{
-  background: linear-gradient(135deg,#f6e9c8,#e2cfa0);
-  border: 3px solid #8a6f3d;
-  box-shadow: 0 0 0 2px #d8b878, 0 22px 60px rgba(0,0,0,.55);
-  padding: clamp(22px,4vw,38px) clamp(28px,5.5vw,52px);
-  text-align: center; color: #3a2d1b;
-  display: flex; flex-direction: column; align-items: center; gap: 12px;
-  max-width: min(420px,88vw);
-  animation: trophyRise .38s cubic-bezier(.2,.8,.2,1) both;
-}
-.trophy-modal-card .pixel-trophy{
-  width: 25px; height: 25px; flex-basis: 25px;
-  transform: scale(2.1); transform-origin: center;
-  margin: 18px 0 16px;
-  filter: drop-shadow(2px 3px 0 rgba(63,45,24,.25));
-}
-.trophy-modal-card h4{
-  margin: 0; font-size: clamp(18px,3.6vw,24px);
-  font-weight: 400; letter-spacing: .16em;
-  font-family: "Songti SC","Noto Serif SC",serif;
-  color: #4a3518;
-}
-.trophy-modal-card p{
-  margin: 0; font-size: clamp(12px,2.1vw,14px);
-  color: #6f5732; line-height: 1.8; letter-spacing: .04em;
-}
-.trophy-modal-card button{
-  margin-top: 10px; padding: 11px 30px;
-  border: 2px solid #8a6f3d; background: #fdf3d8;
-  color: #4a3518; font-family: "Courier New",monospace;
-  font-size: 13px; letter-spacing: .12em; cursor: pointer;
-  box-shadow: 2px 2px 0 rgba(63,45,24,.3);
-  transition: transform .15s, box-shadow .15s, background .15s;
-  touch-action: manipulation;
-}
-.trophy-modal-card button:hover{
-  transform: translate(-1px,-1px);
-  box-shadow: 3px 3px 0 rgba(63,45,24,.3);
-  background: #fffbea;
-}
-@keyframes trophyFade{ from{opacity:0} to{opacity:1} }
-@keyframes trophyRise{ from{opacity:0;transform:translateY(18px) scale(.94)} to{opacity:1;transform:translateY(0) scale(1)} }
-@media (prefers-reduced-motion: reduce){
-  .trophy-modal, .trophy-modal-card{ animation: none; }
-}
-@media (orientation:landscape) and (max-height:560px) and (pointer:coarse){
-  .trophy-modal-card{ padding:16px 26px; gap:8px; max-width:min(360px,80vw); }
-  .trophy-modal-card .pixel-trophy{ transform:scale(1.7); margin:14px 0 12px; }
-  .trophy-modal-card h4{ font-size:16px; }
-  .trophy-modal-card p{ font-size:11px; }
-  .trophy-modal-card button{ padding:8px 22px; font-size:11px; }
-}
-.fs-toggle{
-  position: absolute; left: 10px; bottom: 10px; z-index: 60;
-  width: 38px; height: 38px; border-radius: 50%;
-  border: 1px solid rgba(205,174,111,.7);
-  background: rgba(16,23,19,.85); color: #eadbb9;
-  font: 18px/1 system-ui, -apple-system, sans-serif;
-  cursor: pointer; display: none; place-items: center;
-  box-shadow: 0 2px 10px rgba(0,0,0,.45);
-  touch-action: manipulation;
-}
-@media (pointer: coarse){ .fs-toggle{ display: grid; } }
-
-/* ⑨ 桌面端字号放大（沿用 v11） */
-@media (hover: hover) and (pointer: fine) {
-  .meta { font-size: 13px !important; padding: 8px 11px !important; letter-spacing: .2em !important; }
-  .caption small { font-size: 12px !important; letter-spacing: .18em !important; }
-  .caption h1 { font-size: clamp(24px, 3.2vw, 38px) !important; }
-  .next { font-size: 13px !important; line-height: 1.8 !important; }
-  .sound-toggle { font-size: 11px !important; padding: 6px 11px !important; letter-spacing: .1em !important; }
+@media (hover: hover) and (pointer: fine){
+  .meta { font-size: 14px !important; padding: 9px 13px !important; letter-spacing: .2em !important; }
+  .caption small { font-size: 13px !important; letter-spacing: .18em !important; }
+  .caption h1 { font-size: clamp(26px, 3.6vw, 44px) !important; }
+  .next { font-size: 14px !important; line-height: 1.8 !important; }
+  .sound-toggle { font-size: 12px !important; padding: 7px 12px !important; letter-spacing: .12em !important; }
+  .sound-controls { right: 10px !important; top: 10px !important; gap: 16px !important; }
   .desk-hotspot .enter-label,
   .shelf-enter-label,
   .plant-target:before,
-  .room-gramophone-hit:after { font-size: 11px !important; padding: 6px 11px !important; }
+  .room-gramophone-hit:after {
+    font-size: 12px !important;
+    padding: 7px 12px !important;
+    letter-spacing: .1em !important;
+  }
   #desk[open] > .desk-hotspot .leave-label,
-  #bookshelf[open] > .shelf-hotspot .shelf-leave-label { font-size: 10px !important; }
-  .desk-heading { font-size: clamp(22px, 3.2vw, 42px) !important; }
-  .desk-heading small { font-size: 11px !important; }
-  .desk-caption { font-size: 11px !important; line-height: 1.7 !important; }
-  .file-label { font-size: clamp(11px, 1.4vw, 16px) !important; }
-  .file-label b { font-size: clamp(15px, 2vw, 24px) !important; }
-  .folio-hover { font-size: 12px !important; padding: 8px 12px !important; }
-  .case-reopen:after { font-size: 11px !important; padding: 6px 10px !important; }
-  .target-stamp { font-size: 10px !important; padding: 6px 10px !important; }
-  .case-page { font-size: clamp(14px, 1.55vw, 17px) !important; line-height: 2.1 !important; }
-  .case-page h3 { font-size: clamp(16px, 1.9vw, 22px) !important; }
-  .case-head h2 { font-size: clamp(20px, 2.4vw, 28px) !important; }
-  .case-head small, .case-head span, .folio-line { font-size: 10px !important; }
-  .case-index { font-size: 12px !important; }
-  .case-index b { font-size: 14px !important; }
-  .case-controls button { font-size: 12px !important; padding: 6px 8px !important; }
-  .case-controls span { font-size: 11px !important; }
-  .case-feedback { font-size: 10px !important; }
-  .case-complete strong { font-size: 12px !important; }
-  .case-complete small { font-size: 10px !important; }
-  .plant-select-dialog b { font-size: 15px !important; }
-  .plant-select-dialog span { font-size: 12px !important; }
-  .plant-select-dialog button { font-size: 12px !important; padding: 8px 16px !important; }
+  #bookshelf[open] > .shelf-hotspot .shelf-leave-label {
+    font-size: 11px !important;
+  }
+  .desk-caption { font-size: 12px !important; line-height: 1.75 !important; padding: 9px 13px !important; }
+  .folio-hover { font-size: 13px !important; padding: 9px 13px !important; }
+  .case-reopen:after { font-size: 12px !important; padding: 7px 11px !important; }
+  .target-stamp { font-size: 11px !important; padding: 7px 11px !important; letter-spacing: .12em !important; }
+  .case-page {
+    font-size: clamp(15px, 1.7vw, 19px) !important;
+    line-height: 2.15 !important;
+    padding: 4px 8px !important;
+  }
+  .case-page h3 { font-size: clamp(18px, 2.1vw, 24px) !important; margin: 18px 0 14px !important; }
+  .case-page p { line-height: 2.15 !important; margin: 14px 0 !important; }
+  .case-head h2 { font-size: clamp(22px, 2.6vw, 30px) !important; }
+  .case-head small,
+  .case-head span,
+  .folio-line { font-size: 11px !important; letter-spacing: .1em !important; }
+  .case-index { font-size: 13px !important; line-height: 1.65 !important; }
+  .case-index b { font-size: 15px !important; }
+  .case-controls button { font-size: 13px !important; padding: 7px 10px !important; }
+  .case-controls span { font-size: 12px !important; }
+  .case-feedback { font-size: 11px !important; }
+  .case-complete strong { font-size: 13px !important; }
+  .case-complete small { font-size: 11px !important; }
+  .case-head button#close-dossier {
+    width: 38px !important;
+    height: 38px !important;
+    flex-basis: 38px !important;
+    font-size: 26px !important;
+    line-height: 33px !important;
+  }
+  .plant-select-dialog b { font-size: 16px !important; }
+  .plant-select-dialog span { font-size: 13px !important; line-height: 1.7 !important; }
+  .plant-select-dialog button { font-size: 13px !important; padding: 9px 18px !important; }
+}
+
+/* ============================================================
+   v15：修正橡树提示居中 / 卷宗大字回退 / 奖杯弹窗居中
+   ============================================================ */
+
+/* ① 橡树目标提示恢复居中，与其他几个保持一致 */
+.plant-target.oak-target:before{
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+}
+@media (max-width: 600px){
+  .plant-target.oak-target:before{
+    top: 50% !important;
+  }
+}
+
+/* ② 卷宗大字回退：书桌标题「植物探案所」与档案标签恢复原尺寸 */
+@media (hover: hover) and (pointer: fine){
+  .desk-heading { font-size: clamp(19px, 3vw, 34px) !important; padding: 8px 12px !important; }
+  .desk-heading small { font-size: 9px !important; letter-spacing: .2em !important; }
+  .file-label { font-size: clamp(9px, 1.15vw, 13px) !important; padding: 13px 8px !important; }
+  .file-label b { font-size: clamp(13px, 1.7vw, 20px) !important; margin: 8px 0 !important; }
+}
+
+/* ③ 奖杯弹窗：绝对可靠居中，视口固定覆盖 */
+.trophy-modal{
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  z-index: 99999 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 20px !important;
+  margin: 0 !important;
+  background: rgba(10,8,5,.88) !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+.trophy-modal[hidden]{
+  display: none !important;
+}
+.trophy-modal-card{
+  max-height: calc(100vh - 40px) !important;
+  max-height: calc(100dvh - 40px) !important;
+  overflow-y: auto !important;
+  animation: none !important;
+  transform: none !important;
 }
 </style>
 </head>
@@ -501,11 +439,17 @@
 <g id="file-ribbon"><path d="M469 133h35v288h-35z" fill="#78352c" stroke="#49231b" stroke-width="3"/><path d="M474 136h5v282h-5zM494 136h5v282h-5z" fill="#bd7656"/><path d="M352 265h255v32H352z" fill="#84382d" stroke="#4b241c" stroke-width="3"/><path d="M355 270h249v5H355zM355 287h249v5H355z" fill="#bd7553"/></g>
 <ellipse cx="480" cy="292" rx="30" ry="9" fill="#281811" opacity=".65"/><circle cx="477" cy="280" r="27" fill="#4c251c"/><circle cx="474" cy="276" r="23" fill="#84382d" stroke="#d4ad66" stroke-width="3"/><circle cx="474" cy="276" r="16" fill="none" stroke="#c1845b" stroke-width="2"/><path d="M474 286v-20m0 12-7-6m7 2 7-7m-7 14 7-5" fill="none" stroke="#e3c17d" stroke-width="2"/><path d="M464 270h5v4h-5zM475 266h5v4h-5zM476 279h5v4h-5z" fill="#e3c17d"/><g id="case-lock"><path d="M567 342v-11a9 9 0 0 1 18 0v11" fill="none" stroke="#dfc176" stroke-width="5"/><rect x="563" y="339" width="27" height="23" rx="2" fill="#c5a35f" stroke="#533c22" stroke-width="3"/><rect x="567" y="343" width="19" height="14" fill="#ddc27d"/><circle cx="576.5" cy="348" r="2.4" fill="#514027"/><path d="M576 350v4" stroke="#514027" stroke-width="2"/></g>
 </g>
-<g transform="rotate(-26 737 295)" aria-label="蘸水笔：笔杆、金属笔环和分叉钢笔尖">
-<path d="M738 163l7 3 3 211-8 20-8-20 3-211z" fill="#1c1713" stroke="#080807" stroke-width="3"/>
-<path d="M738 171h4v199h-4z" fill="#654a30"/><path d="M733 199h16M733 209h16" stroke="#b38a4c" stroke-width="2"/>
-<path d="M730 372h22v8l-5 8h-12l-5-8z" fill="#c0a061" stroke="#614821" stroke-width="2"/><path d="M730 378h22" stroke="#ead48e" stroke-width="2"/>
-<path d="M735 386h12l10 24-16 27-16-27z" fill="#a5a9a1" stroke="#32342f" stroke-width="2"/><path d="M741 389v39" stroke="#e3e0cc" stroke-width="2"/><circle cx="741" cy="399" r="2.5" fill="#30322e"/><path d="M741 402v24" stroke="#474a45" stroke-width="1.5"/><path d="M727 410l14 19 14-19" fill="none" stroke="#d7d5c7" stroke-width="1"/>
+<g transform="rotate(-26 737 295)" aria-label="玻璃蘸水笔：透明笔杆、螺旋储墨纹和细锥笔尖">
+<path d="M738 163l7 3 3 211-8 20-8-20 3-211z" fill="rgba(200,210,210,.5)" stroke="rgba(80,90,90,.4)" stroke-width="2"/>
+<path d="M738 171h4v199h-4z" fill="rgba(240,245,240,.35)"/>
+<path d="M733 199h16M733 209h16" stroke="rgba(180,190,190,.5)" stroke-width="1.5"/>
+<path d="M730 372h22v8l-5 8h-12l-5-8z" fill="rgba(190,200,200,.5)" stroke="rgba(80,90,90,.4)" stroke-width="1.5"/>
+<path d="M730 378h22" stroke="rgba(240,245,240,.6)" stroke-width="1.5"/>
+<path d="M735 386h12l10 24-16 27-16-27z" fill="rgba(210,220,220,.6)" stroke="rgba(80,90,90,.35)" stroke-width="1.5"/>
+<path d="M741 389v39" stroke="rgba(255,255,255,.7)" stroke-width="1.5"/>
+<circle cx="741" cy="399" r="2" fill="rgba(100,110,110,.4)"/>
+<path d="M741 402v24" stroke="rgba(100,110,110,.35)" stroke-width="1"/>
+<path d="M727 410l14 19 14-19" fill="none" stroke="rgba(220,230,230,.5)" stroke-width="1"/>
 </g>
 <g aria-label="正俯视的方形切面玻璃墨水器，中央圆形墨水口">
 <path d="M147 300h104v104H147z" fill="#120d0a" opacity=".66"/>
