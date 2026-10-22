@@ -94,229 +94,252 @@
 @media(max-width:600px){.case-complete{gap:6px;padding:4px 6px}.case-complete strong{font-size:8px}.case-complete small{font-size:6px}.pixel-trophy{width:20px;height:20px;flex-basis:20px}.case-feedback{font-size:7px}}
 
 /* ============================================================
-   v6 补丁
+   v7 补丁：温馨雨夜色调 + 做旧木地板 + 提示自动消失 + 留声机提示缩小 + 按钮/印章定位
    ============================================================ */
 
-/* ① 横屏声音按钮固定到视口，和桌面端对齐 */
-@media (orientation: landscape) and (max-height: 560px) and (pointer: coarse){
-  .sound-controls{
-    position:fixed !important;
-    z-index:9550 !important;
-    top:max(6px, env(safe-area-inset-top)) !important;
-    right:max(6px, env(safe-area-inset-right)) !important;
-  }
+/* ① 整体调色：暖色 wash，强化壁炉和台灯的 cozy 光晕 */
+.wash{
+  background:
+    radial-gradient(ellipse at 15% 72%, rgba(246,168,92,.075), transparent 55%),
+    radial-gradient(ellipse at 78% 58%, rgba(245,180,105,.055), transparent 55%),
+    linear-gradient(180deg,rgba(12,7,3,.06),transparent 50%,rgba(9,4,1,.30)) !important;
 }
+/* 壁炉和台灯光晕升级，用暖橙色，更浓 */
+#fireGlow stop:first-child{ stop-color:#f7a854 !important; stop-opacity:.50 !important; }
+#fireGlow stop:last-child{ stop-color:#c76a35 !important; }
+#lampGlow stop:first-child{ stop-color:#f8cf82 !important; stop-opacity:.52 !important; }
+#lampGlow stop:last-child{ stop-color:#d18b46 !important; }
 
-/* ② 触屏点击提示：强制显示，但 3 秒后自动隐藏 */
+/* ② 木地板：更做旧、更细腻的横向木板（patterns 定义在原 SVG 内） */
+/* 用更深、更多纹理的木地板底色覆盖旧样式 */
+rect[fill="url(#woodFloorPattern)"]{ fill:url(#woodFloorPattern) !important; }
+
+/* ③ 触屏：中和所有悬停状态，让提示和金色方框真正自动消失 */
 @media (hover: none) and (pointer: coarse){
+  .desk-hotspot:hover,
+  .shelf-hotspot:hover,
+  .room-gramophone-hit:hover,
+  .plant-target:hover{
+    border-color: transparent !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+  .desk-hotspot:hover .enter-label,
+  .shelf-hotspot:hover .shelf-enter-label,
+  .plant-target:hover:before,
+  .room-gramophone-hit:hover:after{
+    opacity: 0 !important;
+  }
+  /* 书桌 / 书架 / 植物目标：点击后显示提示（由 JS 添加 tip-force-show），3 秒后由 JS 自动移除 */
   .desk-hotspot.tip-force-show .enter-label,
   .shelf-hotspot.tip-force-show .shelf-enter-label,
   .plant-target.tip-force-show:before{
-    opacity:1 !important;
+    opacity: 1 !important;
   }
   .plant-target:before{
-    top:50% !important;
+    top: 50% !important;
   }
 }
 
-/* ③ 留声机热区加大，提示居中 */
+/* ④ 留声机提示：小巧、居中、与书桌提示一致，绝不超出屏幕 */
 .room-gramophone-hit{
-  left:86% !important;
-  top:46% !important;
-  width:15% !important;
-  height:52% !important;
+  left: 88.5% !important;
+  top: 51% !important;
+  width: 11.5% !important;
+  height: 43% !important;
 }
 .room-gramophone-hit:after{
-  content:attr(data-tip);
-  position:absolute;
-  left:50%;
-  top:50%;
-  right:auto;
-  transform:translate(-50%,-50%);
-  opacity:0;
-  padding:12px 22px;
-  min-width:108px;
-  text-align:center;
-  white-space:nowrap;
-  background:rgba(18,25,21,.96);
-  border:1.5px solid #c9a45c;
-  color:#f0dfb9;
-  font:9px/1.4 "Courier New",monospace;
-  letter-spacing:.1em;
-  box-shadow:3px 3px rgba(8,11,9,.55);
-  pointer-events:none;
-  transition:opacity .22s;
-  z-index:2;
+  content: attr(data-tip);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  right: auto;
+  transform: translate(-50%,-50%);
+  opacity: 0;
+  padding: 5px 9px;
+  min-width: 0;
+  max-width: 120px;
+  white-space: nowrap;
+  background: rgba(18,25,21,.96);
+  border: 1px solid #b99a5e;
+  color: #e8d9b6;
+  font: 9px/1.4 "Courier New", monospace;
+  letter-spacing: .06em;
+  box-shadow: 2px 2px rgba(8,11,9,.6);
+  pointer-events: none;
+  transition: opacity .22s;
+  z-index: 2;
 }
-.room-gramophone-hit:hover:after,
-.room-gramophone-hit.tip-show:after{
-  opacity:1;
-}
+/* 触屏上禁用 hover 提示（由 JS 点击时通过 .tip-show 显示） */
 @media (hover: none) and (pointer: coarse){
-  .room-gramophone-hit:hover:after{ opacity:0; }
-  .room-gramophone-hit.tip-show:after{ opacity:1; }
+  .room-gramophone-hit:hover:after{ opacity: 0 !important; }
+  .room-gramophone-hit.tip-show:after{ opacity: 1 !important; }
+}
+/* 桌面悬停：留声机靠近右边时，提示从右向左展开避免越界 */
+@media (hover: hover) and (pointer: fine){
+  .room-gramophone-hit:hover:after{ opacity: 1; }
+}
+/* 桌面悬停：留声机靠近右边时，提示从右向左展开避免越界 */
+.room-gramophone-hit::after{
+  left: auto;
+  right: calc(100% + 6px);
+  transform: translateY(-50%);
+  top: 50%;
+}
+/* 覆盖：让提示继续按 data-tip 文字显示，但位置从热点左侧弹出 */
+.room-gramophone-hit[data-tip]::after{ content: attr(data-tip); }
+
+/* ⑤ 雨声/留声机按钮：保持在书房场景之内，不做 fixed 定位 */
+@media (orientation: landscape) and (max-height: 560px) and (pointer: coarse){
+  .sound-controls{
+    position: absolute !important;
+    top: 12px !important;
+    right: 14px !important;
+    z-index: 40 !important;
+  }
 }
 
-/* ④ 奖杯弹窗 */
-.trophy-modal{
-  position:fixed;
-  inset:0;
-  z-index:9800;
-  display:grid;
-  place-items:center;
-  padding:20px;
-  background:rgba(10,8,5,.86);
-  -webkit-backdrop-filter:blur(3px);
-  backdrop-filter:blur(3px);
-  animation:trophyFade .28s ease both;
+/* ⑥ 橡树印章：移到书桌右上角 */
+.target-stamp{
+  top: 7.5% !important;
+  right: 6% !important;
 }
-.trophy-modal[hidden]{ display:none; }
+
+/* ⑦ 奖杯弹窗 */
+.trophy-modal{
+  position: fixed; inset: 0; z-index: 9800;
+  display: grid; place-items: center; padding: 20px;
+  background: rgba(10,8,5,.86);
+  -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px);
+  animation: trophyFade .28s ease both;
+}
+.trophy-modal[hidden]{ display: none; }
 .trophy-modal-card{
-  background:linear-gradient(135deg,#f6e9c8,#e2cfa0);
-  border:3px solid #8a6f3d;
-  box-shadow:0 0 0 2px #d8b878, 0 22px 60px rgba(0,0,0,.55);
-  padding:clamp(22px,4vw,38px) clamp(28px,5.5vw,52px);
-  text-align:center;
-  color:#3a2d1b;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:12px;
-  max-width:min(420px,88vw);
-  animation:trophyRise .38s cubic-bezier(.2,.8,.2,1) both;
+  background: linear-gradient(135deg,#f6e9c8,#e2cfa0);
+  border: 3px solid #8a6f3d;
+  box-shadow: 0 0 0 2px #d8b878, 0 22px 60px rgba(0,0,0,.55);
+  padding: clamp(22px,4vw,38px) clamp(28px,5.5vw,52px);
+  text-align: center; color: #3a2d1b;
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+  max-width: min(420px,88vw);
+  animation: trophyRise .38s cubic-bezier(.2,.8,.2,1) both;
 }
 .trophy-modal-card .pixel-trophy{
-  width:25px;
-  height:25px;
-  flex-basis:25px;
-  transform:scale(2.1);
-  transform-origin:center;
-  margin:18px 0 16px;
-  filter:drop-shadow(2px 3px 0 rgba(63,45,24,.25));
+  width: 25px; height: 25px; flex-basis: 25px;
+  transform: scale(2.1); transform-origin: center;
+  margin: 18px 0 16px;
+  filter: drop-shadow(2px 3px 0 rgba(63,45,24,.25));
 }
 .trophy-modal-card h4{
-  margin:0;
-  font-size:clamp(18px,3.6vw,24px);
-  font-weight:400;
-  letter-spacing:.16em;
-  font-family:"Songti SC","Noto Serif SC",serif;
-  color:#4a3518;
+  margin: 0; font-size: clamp(18px,3.6vw,24px);
+  font-weight: 400; letter-spacing: .16em;
+  font-family: "Songti SC","Noto Serif SC",serif;
+  color: #4a3518;
 }
 .trophy-modal-card p{
-  margin:0;
-  font-size:clamp(12px,2.1vw,14px);
-  color:#6f5732;
-  line-height:1.8;
-  letter-spacing:.04em;
+  margin: 0; font-size: clamp(12px,2.1vw,14px);
+  color: #6f5732; line-height: 1.8; letter-spacing: .04em;
 }
 .trophy-modal-card button{
-  margin-top:10px;
-  padding:11px 30px;
-  border:2px solid #8a6f3d;
-  background:#fdf3d8;
-  color:#4a3518;
-  font-family:"Courier New",monospace;
-  font-size:13px;
-  letter-spacing:.12em;
-  cursor:pointer;
-  box-shadow:2px 2px 0 rgba(63,45,24,.3);
-  transition:transform .15s, box-shadow .15s, background .15s;
-  touch-action:manipulation;
+  margin-top: 10px; padding: 11px 30px;
+  border: 2px solid #8a6f3d; background: #fdf3d8;
+  color: #4a3518; font-family: "Courier New",monospace;
+  font-size: 13px; letter-spacing: .12em; cursor: pointer;
+  box-shadow: 2px 2px 0 rgba(63,45,24,.3);
+  transition: transform .15s, box-shadow .15s, background .15s;
+  touch-action: manipulation;
 }
 .trophy-modal-card button:hover{
-  transform:translate(-1px,-1px);
-  box-shadow:3px 3px 0 rgba(63,45,24,.3);
-  background:#fffbea;
+  transform: translate(-1px,-1px);
+  box-shadow: 3px 3px 0 rgba(63,45,24,.3);
+  background: #fffbea;
 }
 @keyframes trophyFade{ from{opacity:0} to{opacity:1} }
 @keyframes trophyRise{ from{opacity:0;transform:translateY(18px) scale(.94)} to{opacity:1;transform:translateY(0) scale(1)} }
 @media (prefers-reduced-motion: reduce){
-  .trophy-modal, .trophy-modal-card{ animation:none; }
+  .trophy-modal, .trophy-modal-card{ animation: none; }
 }
 @media (orientation:landscape) and (max-height:560px) and (pointer:coarse){
-  .trophy-modal-card{
-    padding:16px 26px;
-    gap:8px;
-    max-width:min(360px,80vw);
-  }
-  .trophy-modal-card .pixel-trophy{
-    transform:scale(1.7);
-    margin:14px 0 12px;
-  }
+  .trophy-modal-card{ padding:16px 26px; gap:8px; max-width:min(360px,80vw); }
+  .trophy-modal-card .pixel-trophy{ transform:scale(1.7); margin:14px 0 12px; }
   .trophy-modal-card h4{ font-size:16px; }
   .trophy-modal-card p{ font-size:11px; }
   .trophy-modal-card button{ padding:8px 22px; font-size:11px; }
 }
 
-/* ⑤ 全屏按钮 */
+/* ⑧ 全屏按钮 */
 .fs-toggle{
-  position:absolute;
-  left:10px;
-  bottom:10px;
-  z-index:60;
-  width:38px;
-  height:38px;
-  border-radius:50%;
-  border:1px solid rgba(205,174,111,.7);
-  background:rgba(16,23,19,.85);
-  color:#eadbb9;
-  font:18px/1 system-ui, -apple-system, sans-serif;
-  cursor:pointer;
-  display:none;
-  place-items:center;
-  box-shadow:0 2px 10px rgba(0,0,0,.45);
-  touch-action:manipulation;
+  position: absolute; left: 10px; bottom: 10px; z-index: 60;
+  width: 38px; height: 38px; border-radius: 50%;
+  border: 1px solid rgba(205,174,111,.7);
+  background: rgba(16,23,19,.85); color: #eadbb9;
+  font: 18px/1 system-ui, -apple-system, sans-serif;
+  cursor: pointer; display: none; place-items: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,.45);
+  touch-action: manipulation;
 }
-@media (pointer: coarse){
-  .fs-toggle{ display:grid; }
-}
-
-/* ⑥ 木地板纹理优化：更细腻的横向木板 + 错位接缝 + 细微木纹 */
-/* 原始地板：<rect y="442" width="960" height="98" fill="#49382b"/> */
-/* 用 SVG pattern 替换纯色填充，保持像素风 */
-.floor-pattern{
-  fill:url(#woodFloorPattern);
-}
+@media (pointer: coarse){ .fs-toggle{ display: grid; } }
 </style>
 </head>
 <body>
 <main class="frame">
 <section class="stage" aria-label="像素风伦敦书房场景">
 
-<!-- ===== 木地板纹理定义：SVG pattern ===== -->
+<!-- ===== 做旧木地板纹理 ===== -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
-    <pattern id="woodFloorPattern" width="96" height="48" patternUnits="userSpaceOnUse">
-      <!-- 底色 -->
-      <rect width="96" height="48" fill="#4a382a"/>
-      <!-- 横向木板行 1 -->
-      <rect x="0" y="0" width="96" height="23" fill="#543e2d"/>
-      <!-- 行 1 接缝 -->
-      <rect x="0" y="22" width="96" height="2" fill="#2e1f16"/>
-      <!-- 行 1 木纹 -->
-      <rect x="8" y="4" width="22" height="1" fill="#634a36"/>
-      <rect x="38" y="9" width="30" height="1" fill="#634a36"/>
-      <rect x="72" y="15" width="18" height="1" fill="#634a36"/>
-      <rect x="18" y="17" width="14" height="1" fill="#3d2c1f"/>
-      <rect x="58" y="5" width="10" height="1" fill="#3d2c1f"/>
-      <!-- 行 2 -->
-      <rect x="0" y="24" width="96" height="24" fill="#4c3727"/>
-      <!-- 行 2 接缝 -->
-      <rect x="0" y="46" width="96" height="2" fill="#2a1c13"/>
-      <!-- 行 2 木纹 -->
-      <rect x="14" y="28" width="26" height="1" fill="#5e4632"/>
-      <rect x="48" y="33" width="20" height="1" fill="#5e4632"/>
-      <rect x="76" y="39" width="14" height="1" fill="#5e4632"/>
-      <rect x="6" y="40" width="16" height="1" fill="#38261a"/>
-      <rect x="64" y="29" width="8" height="1" fill="#38261a"/>
-      <!-- 错位接缝：行 1 在 x=48 处断开，行 2 在 x=24 处断开 -->
-      <rect x="48" y="0" width="2" height="23" fill="#2e1f16"/>
-      <rect x="24" y="24" width="2" height="24" fill="#2a1c13"/>
-      <!-- 细微噪点 -->
-      <rect x="32" y="7" width="1" height="1" fill="#6b4e38"/>
-      <rect x="82" y="12" width="1" height="1" fill="#6b4e38"/>
-      <rect x="54" y="37" width="1" height="1" fill="#6b4e38"/>
-      <rect x="12" y="43" width="1" height="1" fill="#6b4e38"/>
+    <pattern id="woodFloorPattern" width="120" height="60" patternUnits="userSpaceOnUse">
+      <rect width="120" height="60" fill="#3e2c1a"/>
+      <!-- 第一行 -->
+      <rect x="0" y="0" width="120" height="27" fill="#4d3a26"/>
+      <rect x="0" y="0" width="120" height="5" fill="#5a4530" opacity=".75"/>
+      <rect x="0" y="22" width="120" height="5" fill="#3e2d1a" opacity=".85"/>
+      <rect x="0" y="3" width="120" height="1" fill="#614a32" opacity=".85"/>
+      <rect x="0" y="6" width="120" height="1" fill="#392818" opacity=".75"/>
+      <rect x="0" y="9" width="120" height="1" fill="#614a32" opacity=".8"/>
+      <rect x="0" y="12" width="120" height="1" fill="#392818" opacity=".7"/>
+      <rect x="0" y="15" width="120" height="1" fill="#614a32" opacity=".85"/>
+      <rect x="0" y="18" width="120" height="1" fill="#392818" opacity=".7"/>
+      <rect x="0" y="21" width="120" height="1" fill="#614a32" opacity=".75"/>
+      <path d="M0 5 Q20 4 40 5 T80 5 T120 5" stroke="#6b5340" stroke-width=".5" fill="none" opacity=".7"/>
+      <path d="M0 14 Q22 13 44 14 T88 14 T120 14" stroke="#6b5340" stroke-width=".5" fill="none" opacity=".6"/>
+      <rect x="0" y="26" width="120" height="1.5" fill="#1c130a"/>
+      <rect x="62" y="0" width="1.2" height="27" fill="#1f150b" opacity=".9"/>
+      <ellipse cx="28" cy="11" rx="2.2" ry="1.5" fill="#2c1e10"/>
+      <ellipse cx="28" cy="11" rx="3.4" ry="2.2" fill="none" stroke="#3e2e20" stroke-width=".5" opacity=".85"/>
+      <ellipse cx="90" cy="17" rx="1.8" ry="1.2" fill="#2c1e10"/>
+      <ellipse cx="90" cy="17" rx="2.8" ry="1.8" fill="none" stroke="#3e2e20" stroke-width=".4" opacity=".8"/>
+      <circle cx="52" cy="8" r="3" fill="#5c4a35" opacity=".3"/>
+      <circle cx="52" cy="8" r="5.5" fill="none" stroke="#5c4a35" stroke-width=".5" opacity=".35"/>
+      <rect x="8" y="19" width="14" height=".5" fill="#7a614b" opacity=".55"/>
+      <rect x="72" y="6" width="20" height=".5" fill="#7a614b" opacity=".5"/>
+      <!-- 第二行 -->
+      <rect x="0" y="28" width="120" height="28" fill="#523c28"/>
+      <rect x="0" y="28" width="120" height="5" fill="#5e4832" opacity=".75"/>
+      <rect x="0" y="51" width="120" height="5" fill="#42301e" opacity=".85"/>
+      <rect x="0" y="31" width="120" height="1" fill="#695037" opacity=".85"/>
+      <rect x="0" y="34" width="120" height="1" fill="#3e2c1b" opacity=".75"/>
+      <rect x="0" y="37" width="120" height="1" fill="#695037" opacity=".8"/>
+      <rect x="0" y="40" width="120" height="1" fill="#3e2c1b" opacity=".7"/>
+      <rect x="0" y="43" width="120" height="1" fill="#695037" opacity=".85"/>
+      <rect x="0" y="46" width="120" height="1" fill="#3e2c1b" opacity=".7"/>
+      <rect x="0" y="49" width="120" height="1" fill="#695037" opacity=".75"/>
+      <path d="M0 33 Q18 32 36 33 T72 33 T120 33" stroke="#725741" stroke-width=".5" fill="none" opacity=".65"/>
+      <path d="M0 44 Q24 43 48 44 T96 44 T120 44" stroke="#725741" stroke-width=".5" fill="none" opacity=".6"/>
+      <rect x="0" y="55" width="120" height="1.5" fill="#1a1108"/>
+      <rect x="32" y="28" width="1.2" height="28" fill="#1c1309" opacity=".9"/>
+      <ellipse cx="82" cy="40" rx="2" ry="1.4" fill="#2a1c0e"/>
+      <ellipse cx="82" cy="40" rx="3" ry="2.1" fill="none" stroke="#3d2d1f" stroke-width=".45" opacity=".85"/>
+      <circle cx="16" cy="45" r="2.5" fill="#5a4630" opacity=".35"/>
+      <circle cx="16" cy="45" r="4" fill="none" stroke="#5a4630" stroke-width=".4" opacity=".3"/>
+      <rect x="88" y="41" width="18" height=".5" fill="#7d644e" opacity=".5"/>
+      <!-- 细节点 -->
+      <rect x="4" y="2" width="1" height="1" fill="#6d543d" opacity=".8"/>
+      <rect x="46" y="16" width="1" height="1" fill="#6d543d" opacity=".7"/>
+      <rect x="106" y="10" width="1" height="1" fill="#6d543d" opacity=".75"/>
+      <rect x="14" y="34" width="1" height="1" fill="#735b42" opacity=".7"/>
+      <rect x="68" y="50" width="1" height="1" fill="#735b42" opacity=".75"/>
+      <rect x="100" y="35" width="1" height="1" fill="#735b42" opacity=".7"/>
     </pattern>
   </defs>
 </svg>
@@ -325,8 +348,8 @@
 <defs>
  <pattern id="wallpaper" width="32" height="32" patternUnits="userSpaceOnUse"><rect width="32" height="32" fill="#455244"/><path d="M8 6h4v4H8zM22 21h4v4h-4z" fill="#596348"/><path d="M10 16h2v5h-2zM23 5h2v5h-2z" fill="#35453b"/></pattern>
  <linearGradient id="windowNight" x2="0" y2="1"><stop stop-color="#273d48"/><stop offset="1" stop-color="#14272e"/></linearGradient>
- <radialGradient id="lampGlow"><stop stop-color="#f3c76f" stop-opacity=".42"/><stop offset="1" stop-color="#d18b46" stop-opacity="0"/></radialGradient>
- <radialGradient id="fireGlow"><stop stop-color="#f39a43" stop-opacity=".38"/><stop offset="1" stop-color="#d27037" stop-opacity="0"/></radialGradient>
+ <radialGradient id="lampGlow"><stop stop-color="#f8cf82" stop-opacity=".52"/><stop offset="1" stop-color="#d18b46" stop-opacity="0"/></radialGradient>
+ <radialGradient id="fireGlow"><stop stop-color="#f7a854" stop-opacity=".50"/><stop offset="1" stop-color="#c76a35" stop-opacity="0"/></radialGradient>
  <clipPath id="windowClip"><rect x="668" y="82" width="202" height="232"/></clipPath>
 </defs>
 <rect width="960" height="540" fill="url(#wallpaper)"/><rect y="326" width="960" height="214" fill="#29352e"/><path d="M0 330H960v12H0z" fill="#b18d55"/><path d="M0 346H960v5H0z" fill="#18251f"/>
@@ -353,12 +376,11 @@
 <path d="M731 84v230M800 82v232M669 195h202" stroke="#a98b55" stroke-width="7"/><path d="M735 88v224M804 86v226M672 200h195" stroke="#594b35" stroke-width="2"/>
 <path d="M640 64h25v270h-25zM872 64h25v270h-25z" fill="#78483d"/><path d="M646 73h14v8h-14zM646 120h14v8h-14zM646 169h14v8h-14zM646 218h14v8h-14zM646 267h14v8h-14zM879 73h13v8h-13zM879 120h13v8h-13zM879 169h13v8h-13zM879 218h13v8h-13zM879 267h13v8h-13z" fill="#a56a51"/><path d="M657 321h236v12H657z" fill="#d2b272"/></g>
 <g clip-path="url(#windowClip)"><g class="rain-sheet rain-far" fill="#b9ced1" opacity=".62"><path d="M651 52h3l-3 22h-2l3 -22z"/><path d="M684 52h3l-3 26h-2l3 -26z"/><path d="M710 52h3l-3 22h-2l3 -22z"/><path d="M743 52h3l-3 26h-2l3 -26z"/><path d="M769 52h3l-3 22h-2l3 -22z"/><path d="M802 52h3l-3 26h-2l3 -26z"/><path d="M828 52h3l-3 22h-2l3 -22z"/><path d="M854 52h3l-3 26h-2l3 -26z"/><path d="M887 52h3l-3 22h-2l3 -22z"/><path d="M665 80h3l-3 24h-2l3 -24z"/><path d="M698 80h3l-3 28h-2l3 -28z"/><path d="M724 80h3l-3 24h-2l3 -24z"/><path d="M757 80h3l-3 28h-2l3 -28z"/><path d="M783 80h3l-3 24h-2l3 -24z"/><path d="M816 80h3l-3 28h-2l3 -28z"/><path d="M842 80h3l-3 24h-2l3 -24z"/><path d="M868 80h3l-3 28h-2l3 -28z"/><path d="M651 103h3l-3 26h-2l3 -26z"/><path d="M684 103h3l-3 22h-2l3 -22z"/><path d="M710 103h3l-3 26h-2l3 -26z"/><path d="M743 103h3l-3 22h-2l3 -22z"/><path d="M769 103h3l-3 26h-2l3 -26z"/><path d="M802 103h3l-3 22h-2l3 -22z"/><path d="M828 103h3l-3 26h-2l3 -26z"/><path d="M854 103h3l-3 22h-2l3 -22z"/><path d="M887 103h3l-3 26h-2l3 -26z"/><path d="M665 131h3l-3 28h-2l3 -28z"/><path d="M698 131h3l-3 24h-2l3 -24z"/><path d="M724 131h3l-3 28h-2l3 -28z"/><path d="M757 131h3l-3 24h-2l3 -24z"/><path d="M783 131h3l-3 28h-2l3 -28z"/><path d="M816 131h3l-3 24h-2l3 -24z"/><path d="M842 131h3l-3 28h-2l3 -28z"/><path d="M868 131h3l-3 24h-2l3 -24z"/><path d="M651 154h3l-3 22h-2l3 -22z"/><path d="M684 154h3l-3 26h-2l3 -26z"/><path d="M710 154h3l-3 22h-2l3 -22z"/><path d="M743 154h3l-3 26h-2l3 -26z"/><path d="M769 154h3l-3 22h-2l3 -22z"/><path d="M802 154h3l-3 26h-2l3 -26z"/><path d="M828 154h3l-3 22h-2l3 -22z"/><path d="M854 154h3l-3 26h-2l3 -26z"/><path d="M887 154h3l-3 22h-2l3 -22z"/><path d="M665 177h3l-3 24h-2l3 -24z"/><path d="M698 177h3l-3 28h-2l3 -28z"/><path d="M724 177h3l-3 24h-2l3 -24z"/><path d="M757 177h3l-3 28h-2l3 -28z"/><path d="M783 177h3l-3 24h-2l3 -24z"/><path d="M816 177h3l-3 28h-2l3 -28z"/><path d="M842 177h3l-3 24h-2l3 -24z"/><path d="M868 177h3l-3 28h-2l3 -28z"/><path d="M651 205h3l-3 26h-2l3 -26z"/><path d="M684 205h3l-3 22h-2l3 -22z"/><path d="M710 205h3l-3 26h-2l3 -26z"/><path d="M743 205h3l-3 22h-2l3 -22z"/><path d="M769 205h3l-3 26h-2l3 -26z"/><path d="M802 205h3l-3 22h-2l3 -22z"/><path d="M828 205h3l-3 26h-2l3 -26z"/><path d="M854 205h3l-3 22h-2l3 -22z"/><path d="M887 205h3l-3 26h-2l3 -26z"/><path d="M665 228h3l-3 28h-2l3 -28z"/><path d="M698 228h3l-3 24h-2l3 -24z"/><path d="M724 228h3l-3 28h-2l3 -28z"/><path d="M757 228h3l-3 24h-2l3 -24z"/><path d="M783 228h3l-3 28h-2l3 -28z"/><path d="M816 228h3l-3 24h-2l3 -24z"/><path d="M842 228h3l-3 28h-2l3 -28z"/><path d="M868 228h3l-3 24h-2l3 -24z"/><path d="M651 256h3l-3 22h-2l3 -22z"/><path d="M684 256h3l-3 26h-2l3 -26z"/><path d="M710 256h3l-3 22h-2l3 -22z"/><path d="M743 256h3l-3 26h-2l3 -26z"/><path d="M769 256h3l-3 22h-2l3 -22z"/><path d="M802 256h3l-3 26h-2l3 -26z"/><path d="M828 256h3l-3 22h-2l3 -22z"/><path d="M854 256h3l-3 26h-2l3 -26z"/><path d="M887 256h3l-3 22h-2l3 -22z"/><path d="M665 279h3l-3 24h-2l3 -24z"/><path d="M698 279h3l-3 28h-2l3 -28z"/><path d="M724 279h3l-3 24h-2l3 -24z"/><path d="M757 279h3l-3 28h-2l3 -28z"/><path d="M783 279h3l-3 24h-2l3 -24z"/><path d="M816 279h3l-3 28h-2l3 -28z"/><path d="M842 279h3l-3 24h-2l3 -24z"/><path d="M868 279h3l-3 28h-2l3 -28z"/><path d="M651 302h3l-3 26h-2l3 -26z"/><path d="M684 302h3l-3 22h-2l3 -22z"/><path d="M710 302h3l-3 26h-2l3 -26z"/><path d="M743 302h3l-3 22h-2l3 -22z"/><path d="M769 302h3l-3 26h-2l3 -26z"/><path d="M802 302h3l-3 22h-2l3 -22z"/><path d="M828 302h3l-3 26h-2l3 -26z"/><path d="M854 302h3l-3 22h-2l3 -22z"/><path d="M887 302h3l-3 26h-2l3 -26z"/><path d="M665 330h3l-3 28h-2l3 -28z"/><path d="M698 330h3l-3 24h-2l3 -24z"/><path d="M724 330h3l-3 28h-2l3 -28z"/><path d="M757 330h3l-3 24h-2l3 -24z"/><path d="M783 330h3l-3 28h-2l3 -28z"/><path d="M816 330h3l-3 24h-2l3 -24z"/><path d="M842 330h3l-3 28h-2l3 -28z"/><path d="M868 330h3l-3 24h-2l3 -24z"/><path d="M651 353h3l-3 22h-2l3 -22z"/><path d="M684 353h3l-3 26h-2l3 -26z"/><path d="M710 353h3l-3 22h-2l3 -22z"/><path d="M743 353h3l-3 26h-2l3 -26z"/><path d="M769 353h3l-3 22h-2l3 -22z"/><path d="M802 353h3l-3 26h-2l3 -26z"/><path d="M828 353h3l-3 22h-2l3 -22z"/><path d="M854 353h3l-3 26h-2l3 -26z"/><path d="M887 353h3l-3 22h-2l3 -22z"/></g><g class="rain-sheet rain-mid" fill="#c6d8d9" opacity=".78"><path d="M665 63h4l-3 30h-2l3 -30z"/><path d="M691 63h4l-3 34h-2l3 -34z"/><path d="M724 63h4l-3 30h-2l3 -30z"/><path d="M750 63h4l-3 34h-2l3 -34z"/><path d="M776 63h4l-3 30h-2l3 -30z"/><path d="M809 63h4l-3 34h-2l3 -34z"/><path d="M835 63h4l-3 30h-2l3 -30z"/><path d="M868 63h4l-3 34h-2l3 -34z"/><path d="M679 91h4l-3 32h-2l3 -32z"/><path d="M705 91h4l-3 28h-2l3 -28z"/><path d="M738 91h4l-3 32h-2l3 -32z"/><path d="M764 91h4l-3 28h-2l3 -28z"/><path d="M790 91h4l-3 32h-2l3 -32z"/><path d="M823 91h4l-3 28h-2l3 -28z"/><path d="M849 91h4l-3 32h-2l3 -32z"/><path d="M882 91h4l-3 28h-2l3 -28z"/><path d="M665 114h4l-3 34h-2l3 -34z"/><path d="M691 114h4l-3 30h-2l3 -30z"/><path d="M724 114h4l-3 34h-2l3 -34z"/><path d="M750 114h4l-3 30h-2l3 -30z"/><path d="M776 114h4l-3 34h-2l3 -34z"/><path d="M809 114h4l-3 30h-2l3 -30z"/><path d="M835 114h4l-3 34h-2l3 -34z"/><path d="M868 114h4l-3 30h-2l3 -30z"/><path d="M679 137h4l-3 28h-2l3 -28z"/><path d="M705 137h4l-3 32h-2l3 -32z"/><path d="M738 137h4l-3 28h-2l3 -28z"/><path d="M764 137h4l-3 32h-2l3 -32z"/><path d="M790 137h4l-3 28h-2l3 -28z"/><path d="M823 137h4l-3 32h-2l3 -32z"/><path d="M849 137h4l-3 28h-2l3 -28z"/><path d="M882 137h4l-3 32h-2l3 -32z"/><path d="M665 165h4l-3 30h-2l3 -30z"/><path d="M691 165h4l-3 34h-2l3 -34z"/><path d="M724 165h4l-3 30h-2l3 -30z"/><path d="M750 165h4l-3 34h-2l3 -34z"/><path d="M776 165h4l-3 30h-2l3 -30z"/><path d="M809 165h4l-3 34h-2l3 -34z"/><path d="M835 165h4l-3 30h-2l3 -30z"/><path d="M868 165h4l-3 34h-2l3 -34z"/><path d="M679 188h4l-3 32h-2l3 -32z"/><path d="M705 188h4l-3 28h-2l3 -28z"/><path d="M738 188h4l-3 32h-2l3 -32z"/><path d="M764 188h4l-3 28h-2l3 -28z"/><path d="M790 188h4l-3 32h-2l3 -32z"/><path d="M823 188h4l-3 28h-2l3 -28z"/><path d="M849 188h4l-3 32h-2l3 -32z"/><path d="M882 188h4l-3 28h-2l3 -28z"/><path d="M665 216h4l-3 34h-2l3 -34z"/><path d="M691 216h4l-3 30h-2l3 -30z"/><path d="M724 216h4l-3 34h-2l3 -34z"/><path d="M750 216h4l-3 30h-2l3 -30z"/><path d="M776 216h4l-3 34h-2l3 -34z"/><path d="M809 216h4l-3 30h-2l3 -30z"/><path d="M835 216h4l-3 34h-2l3 -34z"/><path d="M868 216h4l-3 30h-2l3 -30z"/><path d="M679 239h4l-3 28h-2l3 -28z"/><path d="M705 239h4l-3 32h-2l3 -32z"/><path d="M738 239h4l-3 28h-2l3 -28z"/><path d="M764 239h4l-3 32h-2l3 -32z"/><path d="M790 239h4l-3 28h-2l3 -28z"/><path d="M823 239h4l-3 32h-2l3 -32z"/><path d="M849 239h4l-3 28h-2l3 -28z"/><path d="M882 239h4l-3 32h-2l3 -32z"/><path d="M665 262h4l-3 30h-2l3 -30z"/><path d="M691 262h4l-3 34h-2l3 -34z"/><path d="M724 262h4l-3 30h-2l3 -30z"/><path d="M750 262h4l-3 34h-2l3 -34z"/><path d="M776 262h4l-3 30h-2l3 -30z"/><path d="M809 262h4l-3 34h-2l3 -34z"/><path d="M835 262h4l-3 30h-2l3 -30z"/><path d="M868 262h4l-3 34h-2l3 -34z"/><path d="M679 290h4l-3 32h-2l3 -32z"/><path d="M705 290h4l-3 28h-2l3 -28z"/><path d="M738 290h4l-3 32h-2l3 -32z"/><path d="M764 290h4l-3 28h-2l3 -28z"/><path d="M790 290h4l-3 32h-2l3 -32z"/><path d="M823 290h4l-3 28h-2l3 -28z"/><path d="M849 290h4l-3 32h-2l3 -32z"/><path d="M882 290h4l-3 28h-2l3 -28z"/><path d="M665 313h4l-3 34h-2l3 -34z"/><path d="M691 313h4l-3 30h-2l3 -30z"/><path d="M724 313h4l-3 34h-2l3 -34z"/><path d="M750 313h4l-3 30h-2l3 -30z"/><path d="M776 313h4l-3 34h-2l3 -34z"/><path d="M809 313h4l-3 30h-2l3 -30z"/><path d="M835 313h4l-3 34h-2l3 -34z"/><path d="M868 313h4l-3 30h-2l3 -30z"/><path d="M679 341h4l-3 28h-2l3 -28z"/><path d="M705 341h4l-3 32h-2l3 -32z"/><path d="M738 341h4l-3 28h-2l3 -28z"/><path d="M764 341h4l-3 32h-2l3 -32z"/><path d="M790 341h4l-3 28h-2l3 -28z"/><path d="M823 341h4l-3 32h-2l3 -32z"/><path d="M849 341h4l-3 28h-2l3 -28z"/><path d="M882 341h4l-3 32h-2l3 -32z"/><path d="M665 364h4l-3 30h-2l3 -30z"/><path d="M691 364h4l-3 34h-2l3 -34z"/><path d="M724 364h4l-3 30h-2l3 -30z"/><path d="M750 364h4l-3 34h-2l3 -34z"/><path d="M776 364h4l-3 30h-2l3 -30z"/><path d="M809 364h4l-3 34h-2l3 -34z"/><path d="M835 364h4l-3 30h-2l3 -30z"/><path d="M868 364h4l-3 34h-2l3 -34z"/></g><g class="rain-sheet rain-near" fill="#d9e6e4" opacity=".84"><path d="M671 59h4l-3 38h-2l3 -38z"/><path d="M697 59h4l-3 34h-2l3 -34z"/><path d="M730 59h4l-3 38h-2l3 -38z"/><path d="M756 59h4l-3 34h-2l3 -34z"/><path d="M789 59h4l-3 38h-2l3 -38z"/><path d="M815 59h4l-3 34h-2l3 -34z"/><path d="M848 59h4l-3 38h-2l3 -38z"/><path d="M874 59h4l-3 34h-2l3 -34z"/><path d="M685 82h4l-3 40h-2l3 -40z"/><path d="M711 82h4l-3 36h-2l3 -36z"/><path d="M744 82h4l-3 40h-2l3 -40z"/><path d="M770 82h4l-3 36h-2l3 -36z"/><path d="M803 82h4l-3 40h-2l3 -40z"/><path d="M829 82h4l-3 36h-2l3 -36z"/><path d="M862 82h4l-3 40h-2l3 -40z"/><path d="M888 82h4l-3 36h-2l3 -36z"/><path d="M671 110h4l-3 34h-2l3 -34z"/><path d="M697 110h4l-3 38h-2l3 -38z"/><path d="M730 110h4l-3 34h-2l3 -34z"/><path d="M756 110h4l-3 38h-2l3 -38z"/><path d="M789 110h4l-3 34h-2l3 -34z"/><path d="M815 110h4l-3 38h-2l3 -38z"/><path d="M848 110h4l-3 34h-2l3 -34z"/><path d="M874 110h4l-3 38h-2l3 -38z"/><path d="M685 133h4l-3 36h-2l3 -36z"/><path d="M711 133h4l-3 40h-2l3 -40z"/><path d="M744 133h4l-3 36h-2l3 -36z"/><path d="M770 133h4l-3 40h-2l3 -40z"/><path d="M803 133h4l-3 36h-2l3 -36z"/><path d="M829 133h4l-3 40h-2l3 -40z"/><path d="M862 133h4l-3 36h-2l3 -36z"/><path d="M888 133h4l-3 40h-2l3 -40z"/><path d="M671 161h4l-3 38h-2l3 -38z"/><path d="M697 161h4l-3 34h-2l3 -34z"/><path d="M730 161h4l-3 38h-2l3 -38z"/><path d="M756 161h4l-3 34h-2l3 -34z"/><path d="M789 161h4l-3 38h-2l3 -38z"/><path d="M815 161h4l-3 34h-2l3 -34z"/><path d="M848 161h4l-3 38h-2l3 -38z"/><path d="M874 161h4l-3 34h-2l3 -34z"/><path d="M685 184h4l-3 40h-2l3 -40z"/><path d="M711 184h4l-3 36h-2l3 -36z"/><path d="M744 184h4l-3 40h-2l3 -40z"/><path d="M770 184h4l-3 36h-2l3 -36z"/><path d="M803 184h4l-3 40h-2l3 -40z"/><path d="M829 184h4l-3 36h-2l3 -36z"/><path d="M862 184h4l-3 40h-2l3 -40z"/><path d="M888 184h4l-3 36h-2l3 -36z"/><path d="M671 207h4l-3 34h-2l3 -34z"/><path d="M697 207h4l-3 38h-2l3 -38z"/><path d="M730 207h4l-3 34h-2l3 -34z"/><path d="M756 207h4l-3 38h-2l3 -38z"/><path d="M789 207h4l-3 34h-2l3 -34z"/><path d="M815 207h4l-3 38h-2l3 -38z"/><path d="M848 207h4l-3 34h-2l3 -34z"/><path d="M874 207h4l-3 38h-2l3 -38z"/><path d="M685 235h4l-3 36h-2l3 -36z"/><path d="M711 235h4l-3 40h-2l3 -40z"/><path d="M744 235h4l-3 36h-2l3 -36z"/><path d="M770 235h4l-3 40h-2l3 -40z"/><path d="M803 235h4l-3 36h-2l3 -36z"/><path d="M829 235h4l-3 40h-2l3 -40z"/><path d="M862 235h4l-3 36h-2l3 -36z"/><path d="M888 235h4l-3 40h-2l3 -40z"/><path d="M671 258h4l-3 38h-2l3 -38z"/><path d="M697 258h4l-3 34h-2l3 -34z"/><path d="M730 258h4l-3 38h-2l3 -38z"/><path d="M756 258h4l-3 34h-2l3 -34z"/><path d="M789 258h4l-3 38h-2l3 -38z"/><path d="M815 258h4l-3 34h-2l3 -34z"/><path d="M848 258h4l-3 38h-2l3 -38z"/><path d="M874 258h4l-3 34h-2l3 -34z"/><path d="M685 286h4l-3 40h-2l3 -40z"/><path d="M711 286h4l-3 36h-2l3 -36z"/><path d="M744 286h4l-3 40h-2l3 -40z"/><path d="M770 286h4l-3 36h-2l3 -36z"/><path d="M803 286h4l-3 40h-2l3 -40z"/><path d="M829 286h4l-3 36h-2l3 -36z"/><path d="M862 286h4l-3 40h-2l3 -40z"/><path d="M888 286h4l-3 36h-2l3 -36z"/><path d="M671 309h4l-3 34h-2l3 -34z"/><path d="M697 309h4l-3 38h-2l3 -38z"/><path d="M730 309h4l-3 34h-2l3 -34z"/><path d="M756 309h4l-3 38h-2l3 -38z"/><path d="M789 309h4l-3 34h-2l3 -34z"/><path d="M815 309h4l-3 38h-2l3 -38z"/><path d="M848 309h4l-3 34h-2l3 -34z"/><path d="M874 309h4l-3 38h-2l3 -38z"/><path d="M685 332h4l-3 36h-2l3 -36z"/><path d="M711 332h4l-3 40h-2l3 -40z"/><path d="M744 332h4l-3 36h-2l3 -36z"/><path d="M770 332h4l-3 40h-2l3 -40z"/><path d="M803 332h4l-3 36h-2l3 -36z"/><path d="M829 332h4l-3 40h-2l3 -40z"/><path d="M862 332h4l-3 36h-2l3 -36z"/><path d="M888 332h4l-3 40h-2l3 -40z"/><path d="M671 360h4l-3 38h-2l3 -38z"/><path d="M697 360h4l-3 34h-2l3 -34z"/><path d="M730 360h4l-3 38h-2l3 -38z"/><path d="M756 360h4l-3 34h-2l3 -34z"/><path d="M789 360h4l-3 38h-2l3 -38z"/><path d="M815 360h4l-3 34h-2l3 -34z"/><path d="M848 360h4l-3 38h-2l3 -38z"/><path d="M874 360h4l-3 34h-2l3 -34z"/></g></g>
-<ellipse class="fire-glow" cx="110" cy="387" rx="150" ry="145" fill="url(#fireGlow)"/><ellipse cx="738" cy="364" rx="240" ry="170" fill="url(#lampGlow)"/>
+<ellipse class="fire-glow" cx="110" cy="387" rx="160" ry="155" fill="url(#fireGlow)"/><ellipse cx="738" cy="364" rx="250" ry="180" fill="url(#lampGlow)"/>
 <g transform="translate(-302 32) scale(.9 1.2)"><rect x="371" y="239" width="174" height="103" fill="#655242"/><rect x="380" y="248" width="156" height="92" fill="#9a8060"/><path d="M362 236h192v13H362z" fill="#c6a76c"/><path d="M354 228h209v10H354z" fill="#a77f4c"/><rect x="397" y="260" width="122" height="78" fill="#221f1b"/><rect x="406" y="270" width="104" height="61" fill="#151916"/><path d="M419 327h80v8h-80z" fill="#b79c69"/>
 <g aria-label="壁炉台上的小型蕨类花瓶"><path d="M445 237h28l-3 11h-22z" transform="translate(-302 32) scale(.9 1.2)" fill="#76453a" stroke="#33241b" stroke-width="2"/><path d="M455 238v-15m0 9-9-7m9 3 8-10m-8 14 11-5m-11-1-1-10" transform="translate(-302 32) scale(.9 1.2)" fill="none" stroke="#83906a" stroke-width="3" stroke-linecap="square"/><path d="M447 231h6v3h-6zM459 224h6v3h-6zM463 232h6v3h-6zM451 219h6v3h-6z" transform="translate(-302 32) scale(.9 1.2)" fill="#a5aa76"/></g>
 <g class="fireplace-flames"><path d="M442 325q-15-25 3-42 2 18 9 23-2-29 19-46 0 23 11 33 15 16-1 32z" fill="#ad5433"/><path d="M455 326q-9-17 2-29 3 10 7 14-2-21 12-32 0 16 8 23 9 12-2 24z" fill="#e18139"/><path d="M468 327q-5-14 4-23 3 7 5 11-1-13 7-20 2 11 6 17 4 9-3 15z" fill="#f3c35d"/><path d="M477 326q-2-9 4-14 1 7 4 10v4z" fill="#fff0a2"/></g>
 </g>
-<!-- ===== 木地板：使用 pattern 填充 ===== -->
 <rect y="442" width="960" height="98" fill="url(#woodFloorPattern)"/>
 <g stroke="#674c34" stroke-width="1" opacity=".35"><path d="M0 467h960M0 500h960M145 442v98M380 442v98M635 442v98M855 442v98"/></g><path d="M277 458h398v75H277z" fill="#684039"/><path d="M293 466h366v59H293z" fill="#a2824c"/><path d="M307 474h338v43H307z" fill="#405441"/><path d="M314 480h324v31H314z" fill="none" stroke="#748063" stroke-width="1.5"/><path d="M320 485h312v21H320z" fill="none" stroke="#344539" stroke-width="1"/><g fill="#c09d5f"><path d="M322 482h8v8h-8zM358 504h8v8h-8zM616 482h8v8h-8zM584 504h8v8h-8zM465 479h22v4h-22z"/></g><g fill="none" stroke="#b69a62" stroke-width="1.5" shape-rendering="crispEdges"><path d="M476 486h8v4h-8zM468 490h8v4h-8zM484 490h8v4h-8zM476 494h8v4h-8zM468 498h8v4h-8zM484 498h8v4h-8zM476 502h8v4h-8z"/><path d="M456 494h8v4h-8zM496 494h8v4h-8z"/></g>
 <g transform="translate(299 56) scale(.78)"><g id="record-player" class="record-player" aria-label="立式木柜留声机">
@@ -661,22 +683,13 @@
 })();
 </script>
 <script>
-/* ============================================================
-   v6 补丁：提示自动消失、留声机提示、奖杯弹窗
-   ============================================================ */
+/* v7 补丁：触屏提示 3 秒自动消失、留声机提示、奖杯弹窗 */
 (function(){
   const touch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
-  let tipTimer = 0;
+  const TIP_MS = 3000;
 
-  function showTip(el, duration){
-    clearTimeout(tipTimer);
-    el.classList.add('tip-force-show');
-    tipTimer = setTimeout(function(){ el.classList.remove('tip-force-show'); }, duration || 3000);
-  }
-
-  /* ① 书桌 / 书架：点击先显示标签，3 秒后自动消失，再进入场景 */
+  /* ① 书桌 / 书架：点击显示提示，3 秒自动消失，然后进入场景 */
   if (touch){
-    const DELAY = 460;
     ['desk','bookshelf'].forEach(function(id){
       const details = document.getElementById(id);
       if (!details) return;
@@ -694,11 +707,11 @@
           summary.classList.remove('tip-force-show');
           busy = false;
           details.open = true;
-        }, DELAY);
+        }, 600);
       }, true);
     });
 
-    /* 植物目标：点击先显示标签，3 秒后自动消失，再打开 */
+    /* 植物目标：点击显示提示，短暂延迟后触发打开，提示随后由 JS 计时器移除 */
     document.querySelectorAll('.plant-target').forEach(function(btn){
       let bypass = false;
       btn.addEventListener('click', function(e){
@@ -711,23 +724,35 @@
           bypass = true;
           btn.click();
           bypass = false;
-        }, 420);
+        }, 600);
       }, true);
     });
   }
 
-  /* ② 留声机提示：点击显示，3 秒后自动消失 */
+  /* ② 留声机提示：点击显示文字 + 金色边框，3 秒后一起消失 */
   const hit = document.getElementById('record-player-hit');
   const music = document.getElementById('music-audio');
   if (hit && music){
     let timer = 0;
     hit.setAttribute('data-tip', '播放留声机');
+    hit.style.borderColor = 'transparent';
+    hit.style.background = 'transparent';
+    hit.style.boxShadow = 'none';
+    hit.style.transition = 'border-color .22s, background .22s, box-shadow .22s';
 
     function showGramTip(text){
       hit.setAttribute('data-tip', text);
       hit.classList.add('tip-show');
+      hit.style.borderColor = 'rgba(225,194,128,.58)';
+      hit.style.background = 'rgba(230,194,123,.05)';
+      hit.style.boxShadow = '0 0 18px rgba(240,190,93,.18)';
       clearTimeout(timer);
-      timer = setTimeout(function(){ hit.classList.remove('tip-show'); }, 3000);
+      timer = setTimeout(function(){
+        hit.classList.remove('tip-show');
+        hit.style.borderColor = 'transparent';
+        hit.style.background = 'transparent';
+        hit.style.boxShadow = 'none';
+      }, TIP_MS);
     }
 
     hit.addEventListener('click', function(){
