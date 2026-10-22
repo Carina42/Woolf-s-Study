@@ -94,16 +94,12 @@
 @media(max-width:600px){.case-complete{gap:6px;padding:4px 6px}.case-complete strong{font-size:8px}.case-complete small{font-size:6px}.pixel-trophy{width:20px;height:20px;flex-basis:20px}.case-feedback{font-size:7px}}
 
 /* ============================================================
-   v9 补丁：印章贴合虚线内缘、留声机提示居中、唱针落在纹路
+   v10 补丁：留声机提示与书桌/书架完全统一
    ============================================================ */
-
-/* ① 橡树印章：再向左下一点，贴近虚线内边但留出呼吸空间 */
 .target-stamp{
   top: 18% !important;
   right: 14.5% !important;
 }
-
-/* ② 留声机提示：与书桌/书架一致，居中、小巧、不越界 */
 .room-gramophone-hit{
   left: 88.5% !important;
   top: 51% !important;
@@ -120,23 +116,16 @@
   opacity: 0;
   padding: 5px 9px;
   white-space: nowrap;
-  background: rgba(18,25,21,.94);
-  border: 1px solid #b99a5e;
-  color: #e8d9b6;
+  background: rgba(20,27,22,.91);
+  border: 1px solid rgba(201,164,92,.65);
+  color: rgba(230,215,178,.88);
   font: 9px/1.4 "Courier New", monospace;
   letter-spacing: .06em;
   box-shadow: 2px 2px rgba(8,11,9,.6);
   pointer-events: none;
-  transition: opacity .22s;
+  transition: opacity .14s;
   z-index: 2;
 }
-
-/* ③ 唱针落点：沿唱片椭圆纹路中部偏下 */
-.record-player.needle-down #record-arm{
-  transform: rotate(-149deg);
-}
-
-/* ④ 触屏提示只在点击时出现，3 秒后由 JS 自动移除；悬停态一律中和 */
 @media (hover: none) and (pointer: coarse){
   .desk-hotspot:hover,
   .shelf-hotspot:hover,
@@ -167,8 +156,9 @@
 @media (hover: hover) and (pointer: fine){
   .room-gramophone-hit:hover:after{ opacity: 1; }
 }
-
-/* ⑤ 温暖色调覆盖 */
+.record-player.needle-down #record-arm{
+  transform: rotate(-149deg);
+}
 .wash{
   background:
     radial-gradient(ellipse at 15% 72%, rgba(246,168,92,.075), transparent 55%),
@@ -179,8 +169,6 @@
 #fireGlow stop:last-child{ stop-color:#c76a35 !important; }
 #lampGlow stop:first-child{ stop-color:#f8cf82 !important; stop-opacity:.52 !important; }
 #lampGlow stop:last-child{ stop-color:#d18b46 !important; }
-
-/* ⑥ 手机横屏：声音按钮留在场景内 */
 @media (orientation: landscape) and (max-height: 560px) and (pointer: coarse){
   .sound-controls{
     position: absolute !important;
@@ -189,8 +177,6 @@
     z-index: 40 !important;
   }
 }
-
-/* ⑦ 奖杯弹窗 */
 .trophy-modal{
   position: fixed; inset: 0; z-index: 9800;
   display: grid; place-items: center; padding: 20px;
@@ -251,8 +237,6 @@
   .trophy-modal-card p{ font-size:11px; }
   .trophy-modal-card button{ padding:8px 22px; font-size:11px; }
 }
-
-/* ⑧ 全屏按钮 */
 .fs-toggle{
   position: absolute; left: 10px; bottom: 10px; z-index: 60;
   width: 38px; height: 38px; border-radius: 50%;
@@ -264,6 +248,102 @@
   touch-action: manipulation;
 }
 @media (pointer: coarse){ .fs-toggle{ display: grid; } }
+
+/* ============================================================
+   v11 补丁：桌面端 / 手机横屏 分别适配字号
+   ============================================================ */
+
+/* ---- A. 桌面端（鼠标设备）：整体放大字号 ---- */
+@media (hover: hover) and (pointer: fine) {
+  /* 房间层：顶部元信息 / 底部说明 / 声音按钮 */
+  .meta { font-size: 13px !important; padding: 8px 11px !important; letter-spacing: .2em !important; }
+  .caption small { font-size: 12px !important; letter-spacing: .18em !important; }
+  .caption h1 { font-size: clamp(24px, 3.2vw, 38px) !important; }
+  .next { font-size: 13px !important; line-height: 1.8 !important; }
+  .sound-toggle { font-size: 11px !important; padding: 6px 11px !important; letter-spacing: .1em !important; }
+
+  /* 房间层：走近 / 查看 / 播放 提示 */
+  .desk-hotspot .enter-label,
+  .shelf-enter-label,
+  .plant-target:before,
+  .room-gramophone-hit:after {
+    font-size: 11px !important;
+    padding: 6px 11px !important;
+  }
+  /* 返回按钮 */
+  #desk[open] > .desk-hotspot .leave-label,
+  #bookshelf[open] > .shelf-hotspot .shelf-leave-label {
+    font-size: 10px !important;
+  }
+
+  /* 书桌俯视层 */
+  .desk-heading { font-size: clamp(22px, 3.2vw, 42px) !important; }
+  .desk-heading small { font-size: 11px !important; }
+  .desk-caption { font-size: 11px !important; line-height: 1.7 !important; }
+  .file-label { font-size: clamp(11px, 1.4vw, 16px) !important; }
+  .file-label b { font-size: clamp(15px, 2vw, 24px) !important; }
+  .folio-hover { font-size: 12px !important; padding: 8px 12px !important; }
+  .case-reopen:after { font-size: 11px !important; padding: 6px 10px !important; }
+  .target-stamp { font-size: 10px !important; padding: 6px 10px !important; }
+
+  /* 卷宗阅读层 */
+  .case-page {
+    font-size: clamp(14px, 1.55vw, 17px) !important;
+    line-height: 2 !important;
+  }
+  .case-page h3 { font-size: clamp(16px, 1.9vw, 22px) !important; }
+  .case-head h2 { font-size: clamp(20px, 2.4vw, 28px) !important; }
+  .case-head small,
+  .case-head span,
+  .folio-line { font-size: 10px !important; }
+  .case-index { font-size: 12px !important; }
+  .case-index b { font-size: 14px !important; }
+  .case-controls button { font-size: 12px !important; padding: 6px 8px !important; }
+  .case-controls span { font-size: 11px !important; }
+  .case-feedback { font-size: 10px !important; }
+  .case-complete strong { font-size: 12px !important; }
+  .case-complete small { font-size: 10px !important; }
+
+  /* 植物目标选择弹窗 */
+  .plant-select-dialog b { font-size: 15px !important; }
+  .plant-select-dialog span { font-size: 12px !important; }
+  .plant-select-dialog button { font-size: 12px !important; padding: 8px 16px !important; }
+}
+
+/* ---- B. 手机横屏：字号适度放大，不撑破阅读区 ---- */
+@media (orientation: landscape) and (max-height: 560px) and (pointer: coarse) {
+  .case-page {
+    font-size: 15px !important;
+    line-height: 1.95 !important;
+  }
+  .case-page h3 { font-size: 16px !important; }
+  .case-head h2 { font-size: 17px !important; }
+  .case-head small,
+  .case-head span,
+  .folio-line { font-size: 8px !important; }
+  .case-index { font-size: 11px !important; }
+  .case-index b { font-size: 12px !important; }
+  .case-controls button { font-size: 12px !important; }
+  .case-controls span { font-size: 10px !important; }
+  .case-feedback { font-size: 10px !important; }
+  .case-complete strong { font-size: 10px !important; }
+  .case-complete small { font-size: 8px !important; }
+
+  .desk-hotspot .enter-label,
+  .shelf-enter-label,
+  .plant-target:before,
+  .room-gramophone-hit:after {
+    font-size: 10px !important;
+    padding: 6px 10px !important;
+  }
+  .sound-toggle { font-size: 9px !important; padding: 5px 8px !important; }
+  .target-stamp { font-size: 8px !important; }
+  .file-label { font-size: 10px !important; }
+  .file-label b { font-size: 14px !important; }
+  .desk-heading { font-size: 22px !important; }
+  .desk-heading small { font-size: 8px !important; }
+  .desk-caption { font-size: 9px !important; }
+}
 </style>
 </head>
 <body>
@@ -666,7 +746,7 @@
 <script>
 (function(){
   const touch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
-  const TIP_MS = 3000;
+  const TIP_MS = 600;
 
   if (touch){
     ['desk','bookshelf'].forEach(function(id){
@@ -712,23 +792,13 @@
   if (hit && music){
     let timer = 0;
     hit.setAttribute('data-tip', '播放留声机');
-    hit.style.borderColor = 'transparent';
-    hit.style.background = 'transparent';
-    hit.style.boxShadow = 'none';
-    hit.style.transition = 'border-color .22s, background .22s, box-shadow .22s';
 
     function showGramTip(text){
       hit.setAttribute('data-tip', text);
       hit.classList.add('tip-show');
-      hit.style.borderColor = 'rgba(225,194,128,.58)';
-      hit.style.background = 'rgba(230,194,123,.05)';
-      hit.style.boxShadow = '0 0 18px rgba(240,190,93,.18)';
       clearTimeout(timer);
       timer = setTimeout(function(){
         hit.classList.remove('tip-show');
-        hit.style.borderColor = 'transparent';
-        hit.style.background = 'transparent';
-        hit.style.boxShadow = 'none';
       }, TIP_MS);
     }
 
