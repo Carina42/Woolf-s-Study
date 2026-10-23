@@ -158,7 +158,7 @@
 }
 
 /* ============================================================
-   v14：桌面端字号再放大 / 橡树印章贴近绿色桌垫虚线内缘
+   v14：桌面端字号再放大 / 橡树印章位置
    ============================================================ */
 .target-stamp{
   top: 17% !important;
@@ -218,10 +218,8 @@
 }
 
 /* ============================================================
-   v15：修正橡树提示居中 / 卷宗大字回退 / 奖杯弹窗居中
+   v15：橡树提示居中 / 卷宗大字回退 / 奖杯弹窗居中
    ============================================================ */
-
-/* ① 橡树目标提示恢复居中，与其他几个保持一致 */
 .plant-target.oak-target:before{
   top: 50% !important;
   left: 50% !important;
@@ -232,16 +230,12 @@
     top: 50% !important;
   }
 }
-
-/* ② 卷宗大字回退：书桌标题「植物探案所」与档案标签恢复原尺寸 */
 @media (hover: hover) and (pointer: fine){
   .desk-heading { font-size: clamp(19px, 3vw, 34px) !important; padding: 8px 12px !important; }
   .desk-heading small { font-size: 9px !important; letter-spacing: .2em !important; }
   .file-label { font-size: clamp(9px, 1.15vw, 13px) !important; padding: 13px 8px !important; }
   .file-label b { font-size: clamp(13px, 1.7vw, 20px) !important; margin: 8px 0 !important; }
 }
-
-/* ③ 奖杯弹窗：绝对可靠居中，视口固定覆盖 */
 .trophy-modal{
   position: fixed !important;
   top: 0 !important;
@@ -274,7 +268,7 @@
 }
 
 /* ============================================================
-   v16：恢复手机横屏全屏布局（iOS 用 100dvh 兜底）
+   v16：手机横屏全屏布局
    ============================================================ */
 @media (orientation: landscape) and (max-height: 560px) and (pointer: coarse) {
   html, body {
@@ -409,9 +403,43 @@
   }
 }
 
-/* CSS 伪全屏：当标准全屏 API 不可用时（iPhone） */
+/* ============================================================
+   v17：全屏按钮 + 伪全屏增强
+   ============================================================ */
+
+/* 全屏按钮：固定到视口左下角 */
+.fs-toggle{
+  position: fixed;
+  left: max(10px, env(safe-area-inset-left, 0px));
+  bottom: max(10px, env(safe-area-inset-bottom, 0px));
+  z-index: 9990;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(205,174,111,.7);
+  background: rgba(16,23,19,.88);
+  color: #eadbb9;
+  font: 20px/1 system-ui, -apple-system, sans-serif;
+  cursor: pointer;
+  display: none;
+  place-items: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,.5);
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+@media (pointer: coarse), (max-width: 1200px){
+  .fs-toggle{ display: grid; }
+}
+
+/* 伪全屏：标准全屏不可用时的兜底（iOS / 部分安卓） */
 body.pseudo-fullscreen {
   overflow: hidden !important;
+  touch-action: none;
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
 }
 body.pseudo-fullscreen .frame {
   width: 100vw !important;
@@ -421,27 +449,22 @@ body.pseudo-fullscreen .frame {
   margin: 0 !important;
   border: 0 !important;
   box-shadow: none !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 body.pseudo-fullscreen .caption {
   display: none !important;
 }
 body.pseudo-fullscreen .stage {
   width: min(100vw, calc(100dvh * 16 / 9)) !important;
-  aspect-ratio: 16/9 !important;
+  aspect-ratio: 16 / 9 !important;
+  max-height: 100dvh;
 }
-
-/* 全屏按钮：默认只在触屏显示 */
-.fs-toggle{
-  position: absolute; left: 10px; bottom: 10px; z-index: 60;
-  width: 38px; height: 38px; border-radius: 50%;
-  border: 1px solid rgba(205,174,111,.7);
-  background: rgba(16,23,19,.85); color: #eadbb9;
-  font: 18px/1 system-ui, -apple-system, sans-serif;
-  cursor: pointer; display: none; place-items: center;
-  box-shadow: 0 2px 10px rgba(0,0,0,.45);
-  touch-action: manipulation;
+body.pseudo-fullscreen .fs-toggle {
+  display: grid !important;
 }
-@media (pointer: coarse){ .fs-toggle{ display: grid; } }
 </style>
 </head>
 <body>
@@ -691,10 +714,57 @@ body.pseudo-fullscreen .stage {
 
 <div class="trophy-modal" id="trophy-modal" hidden aria-hidden="true">
   <div class="trophy-modal-card" role="dialog" aria-modal="true" aria-labelledby="trophy-title">
-    <span class="pixel-trophy" aria-hidden="true"><i></i><b></b></span>
-    <h4 id="trophy-title">阶段勘查完成</h4>
-    <p>橡树线索已全部收集<br>下一阶段：主题探索</p>
-    <button type="button" id="close-trophy">继续</button>
+
+    <p class="trophy-kicker">CASE FILE · NO. 01</p>
+
+    <div class="trophy-emblem" aria-hidden="true">
+      <span class="trophy-rays"></span>
+      <span class="trophy-halo"></span>
+      <svg class="trophy-seal" viewBox="0 0 72 72" shape-rendering="crispEdges" focusable="false">
+        <circle cx="36" cy="36" r="32" fill="none" stroke="#c9a45c" stroke-width="2" stroke-dasharray="2 4" opacity=".45"/>
+        <circle cx="36" cy="36" r="27" fill="#1b2721" stroke="#c9a45c" stroke-width="2.5"/>
+        <circle cx="36" cy="36" r="23" fill="none" stroke="#8a6f42" stroke-width="1" opacity=".85"/>
+        <g fill="#4d6a44">
+          <rect x="31" y="17" width="10" height="3"/>
+          <rect x="28" y="20" width="16" height="3"/>
+          <rect x="25" y="23" width="22" height="3"/>
+          <rect x="23" y="26" width="26" height="3"/>
+          <rect x="23" y="29" width="26" height="3"/>
+          <rect x="25" y="32" width="22" height="3"/>
+          <rect x="28" y="35" width="16" height="3"/>
+          <rect x="31" y="38" width="10" height="3"/>
+        </g>
+        <g fill="#7d9a63">
+          <rect x="31" y="20" width="7" height="3"/>
+          <rect x="28" y="23" width="7" height="3"/>
+          <rect x="26" y="26" width="8" height="3"/>
+          <rect x="26" y="29" width="6" height="3"/>
+        </g>
+        <g fill="#33472f">
+          <rect x="42" y="23" width="5" height="6"/>
+          <rect x="44" y="29" width="5" height="3"/>
+          <rect x="39" y="32" width="8" height="3"/>
+          <rect x="35" y="35" width="7" height="3"/>
+        </g>
+        <rect x="34" y="38" width="4" height="12" fill="#9c7b4a"/>
+        <rect x="31" y="47" width="10" height="3" fill="#9c7b4a"/>
+      </svg>
+    </div>
+
+    <h4 id="trophy-title" class="trophy-title">阶段勘查完成</h4>
+    <p class="trophy-subtitle">THE OAK TREE · 山顶的橡树</p>
+
+    <ul class="trophy-clues" aria-label="已收集线索">
+      <li style="--i:0"><i>01</i>树冠</li>
+      <li style="--i:1"><i>02</i>树根</li>
+      <li style="--i:2"><i>03</i>叶片</li>
+      <li style="--i:3"><i>04</i>诗稿</li>
+      <li style="--i:4"><i>05</i>时间</li>
+    </ul>
+
+    <p class="trophy-next">线索已归卷 · 下一阶段：<b>主题探索</b></p>
+
+    <button type="button" id="close-trophy">继续探索 →</button>
   </div>
 </div>
 
@@ -819,26 +889,42 @@ body.pseudo-fullscreen .stage {
 })();
 </script>
 <script>
+/* 全屏按钮：兼容微信 X5 / 安卓 Chrome / iOS 伪全屏 */
 (function(){
-  var stage = document.querySelector('.stage');
-  if (!stage) return;
-
   var btn = document.createElement('button');
   btn.type = 'button';
   btn.className = 'fs-toggle';
   btn.textContent = '⛶';
   btn.setAttribute('aria-label', '全屏游玩');
   btn.title = '全屏游玩（建议横屏）';
-  stage.appendChild(btn);
+  document.body.appendChild(btn);
+
+  var isWeChat = /MicroMessenger/i.test(navigator.userAgent);
+  var isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
   function sync() {
     btn.textContent = document.fullscreenElement ? '⤫' : '⛶';
   }
 
   btn.addEventListener('click', async function(){
+    /* 退出标准全屏 */
     if (document.fullscreenElement) {
       try { await document.exitFullscreen(); } catch(e) {}
       sync();
+      return;
+    }
+
+    /* 退出伪全屏 */
+    if (document.body.classList.contains('pseudo-fullscreen')) {
+      document.body.classList.remove('pseudo-fullscreen');
+      btn.dataset.pseudo = '';
+      sync();
+      return;
+    }
+
+    /* 微信 X5 内核提示 */
+    if (isWeChat) {
+      showTip('微信内置浏览器不支持网页全屏，请点击右上角 ··· → 在浏览器中打开');
       return;
     }
 
@@ -849,32 +935,35 @@ body.pseudo-fullscreen .stage {
       try {
         await request.call(el);
         if (screen.orientation && screen.orientation.lock) {
-          try { await screen.orientation.lock('landscape'); } catch(e) {}
+          screen.orientation.lock('landscape').catch(function(){});
         }
         sync();
         return;
-      } catch(e) {}
+      } catch(e) {
+        console.warn('Fullscreen request failed:', e);
+      }
     }
 
-    /* 兜底：CSS 伪全屏 */
-    var isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+    /* 伪全屏兜底 */
     document.body.classList.add('pseudo-fullscreen');
-
     if (isIOS) {
-      var tip = document.createElement('div');
-      tip.textContent = '请横置手机以获得最佳全屏效果';
-      tip.style.cssText =
-        'position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);' +
-        'z-index:99999;padding:12px 18px;background:rgba(18,25,21,.96);' +
-        'border:2px solid #c9a45c;color:#f0dfb9;font:13px "Courier New",monospace;' +
-        'white-space:nowrap;box-shadow:4px 4px rgba(0,0,0,.4);';
-      document.body.appendChild(tip);
-      setTimeout(function(){ tip.remove(); }, 2600);
+      showTip('请横置手机以获得最佳全屏效果');
     }
-
     btn.dataset.pseudo = 'true';
     sync();
   });
+
+  function showTip(text) {
+    var tip = document.createElement('div');
+    tip.textContent = text;
+    tip.style.cssText =
+      'position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);' +
+      'z-index:99999;padding:12px 18px;background:rgba(18,25,21,.96);' +
+      'border:2px solid #c9a45c;color:#f0dfb9;font:13px "Courier New",monospace;' +
+      'white-space:nowrap;box-shadow:4px 4px rgba(0,0,0,.4);max-width:90vw;text-align:center;';
+    document.body.appendChild(tip);
+    setTimeout(function(){ tip.remove(); }, 3200);
+  }
 
   document.addEventListener('fullscreenchange', sync);
 })();
