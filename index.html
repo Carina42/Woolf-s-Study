@@ -272,6 +272,176 @@
   animation: none !important;
   transform: none !important;
 }
+
+/* ============================================================
+   v16：恢复手机横屏全屏布局（iOS 用 100dvh 兜底）
+   ============================================================ */
+@media (orientation: landscape) and (max-height: 560px) and (pointer: coarse) {
+  html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    background: #0b110e;
+    overflow: hidden !important;
+    overscroll-behavior: none;
+    touch-action: none;
+  }
+  body {
+    display: flex !important;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    place-items: unset !important;
+  }
+  .frame {
+    width: 100% !important;
+    max-width: none !important;
+    height: 100vh;
+    height: 100dvh;
+    margin: 0 !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    background: #0b110e;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .stage {
+    width: min(100vw, calc(100dvh * 16 / 9)) !important;
+    aspect-ratio: 16 / 9 !important;
+    max-height: 100dvh;
+    min-height: 0 !important;
+    flex: 0 0 auto;
+  }
+  .stage > svg {
+    width: 100%;
+    height: 100%;
+  }
+  .caption {
+    display: none !important;
+  }
+  .sound-controls {
+    position: absolute !important;
+    top: 8px !important;
+    right: 8px !important;
+    gap: 14px !important;
+    z-index: 9500;
+  }
+  .desk-ui, .shelf-ui {
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 9000 !important;
+    background: #0d1210;
+    pointer-events: auto;
+  }
+  .desk-top-view, .shelf-view {
+    position: absolute !important;
+    inset: 0 !important;
+    margin: auto !important;
+    width: min(100vw, calc(100dvh * 16 / 9)) !important;
+    height: min(100dvh, calc(100vw * 9 / 16)) !important;
+    animation: none !important;
+  }
+  #desk[open] > .desk-hotspot,
+  #bookshelf[open] > .shelf-hotspot {
+    position: fixed !important;
+    top: 8px !important;
+    left: 8px !important;
+    z-index: 9500 !important;
+  }
+  .opened-case {
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 9600 !important;
+    padding: max(4px, env(safe-area-inset-top)) 4px max(4px, env(safe-area-inset-bottom));
+    background: rgba(10, 8, 5, 0.97);
+    perspective: none !important;
+  }
+  .opened-case .case-spread {
+    height: 100% !important;
+    padding: 10px 12px !important;
+    border-width: 3px !important;
+  }
+  .opened-case .case-body {
+    grid-template-columns: minmax(90px, 22%) 1fr !important;
+    grid-template-rows: 1fr !important;
+    gap: 12px !important;
+    padding-top: 8px !important;
+  }
+  .opened-case .case-index {
+    flex-direction: column !important;
+    border-right: 1px solid rgba(118, 91, 52, 0.3) !important;
+    border-bottom: 0 !important;
+    padding: 0 10px 0 0 !important;
+    gap: 7px !important;
+    font-size: 10px !important;
+  }
+  .opened-case .case-page {
+    font-size: 15px !important;
+    line-height: 2.1 !important;
+    padding: 2px 6px !important;
+  }
+  .opened-case .case-page h3 {
+    font-size: 16px !important;
+  }
+  .opened-case .case-controls button {
+    font-size: 12px !important;
+    padding: 8px 10px !important;
+    min-width: 48px;
+  }
+  .trophy-modal {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 12px !important;
+  }
+  .trophy-modal-card {
+    max-height: calc(100dvh - 24px) !important;
+    overflow-y: auto !important;
+  }
+}
+
+/* CSS 伪全屏：当标准全屏 API 不可用时（iPhone） */
+body.pseudo-fullscreen {
+  overflow: hidden !important;
+}
+body.pseudo-fullscreen .frame {
+  width: 100vw !important;
+  max-width: none !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  margin: 0 !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+body.pseudo-fullscreen .caption {
+  display: none !important;
+}
+body.pseudo-fullscreen .stage {
+  width: min(100vw, calc(100dvh * 16 / 9)) !important;
+  aspect-ratio: 16/9 !important;
+}
+
+/* 全屏按钮：默认只在触屏显示 */
+.fs-toggle{
+  position: absolute; left: 10px; bottom: 10px; z-index: 60;
+  width: 38px; height: 38px; border-radius: 50%;
+  border: 1px solid rgba(205,174,111,.7);
+  background: rgba(16,23,19,.85); color: #eadbb9;
+  font: 18px/1 system-ui, -apple-system, sans-serif;
+  cursor: pointer; display: none; place-items: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,.45);
+  touch-action: manipulation;
+}
+@media (pointer: coarse){ .fs-toggle{ display: grid; } }
 </style>
 </head>
 <body>
@@ -650,32 +820,62 @@
 </script>
 <script>
 (function(){
-  var stage=document.querySelector('.stage');
-  if(!stage) return;
-  var btn=document.createElement('button');
-  btn.type='button';
-  btn.className='fs-toggle';
-  btn.textContent='⛶';
-  btn.setAttribute('aria-label','全屏游玩');
-  btn.title='全屏游玩（建议横屏）';
+  var stage = document.querySelector('.stage');
+  if (!stage) return;
+
+  var btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'fs-toggle';
+  btn.textContent = '⛶';
+  btn.setAttribute('aria-label', '全屏游玩');
+  btn.title = '全屏游玩（建议横屏）';
   stage.appendChild(btn);
-  function sync(){ btn.textContent = document.fullscreenElement ? '⤫' : '⛶'; }
+
+  function sync() {
+    btn.textContent = document.fullscreenElement ? '⤫' : '⛶';
+  }
+
   btn.addEventListener('click', async function(){
-    try{
-      if(!document.fullscreenElement){
-        var el=document.documentElement;
-        if(el.requestFullscreen) await el.requestFullscreen();
-        else if(el.webkitRequestFullscreen) el.webkitRequestFullscreen();
-        if(screen.orientation && screen.orientation.lock){
-          try{ await screen.orientation.lock('landscape'); }catch(e){}
+    if (document.fullscreenElement) {
+      try { await document.exitFullscreen(); } catch(e) {}
+      sync();
+      return;
+    }
+
+    var el = document.documentElement;
+    var request = el.requestFullscreen || el.webkitRequestFullscreen || el.msRequestFullscreen;
+
+    if (request) {
+      try {
+        await request.call(el);
+        if (screen.orientation && screen.orientation.lock) {
+          try { await screen.orientation.lock('landscape'); } catch(e) {}
         }
-      } else {
-        if(document.exitFullscreen) await document.exitFullscreen();
-        else if(document.webkitExitFullscreen) document.webkitExitFullscreen();
-      }
-    }catch(e){}
+        sync();
+        return;
+      } catch(e) {}
+    }
+
+    /* 兜底：CSS 伪全屏 */
+    var isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+    document.body.classList.add('pseudo-fullscreen');
+
+    if (isIOS) {
+      var tip = document.createElement('div');
+      tip.textContent = '请横置手机以获得最佳全屏效果';
+      tip.style.cssText =
+        'position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);' +
+        'z-index:99999;padding:12px 18px;background:rgba(18,25,21,.96);' +
+        'border:2px solid #c9a45c;color:#f0dfb9;font:13px "Courier New",monospace;' +
+        'white-space:nowrap;box-shadow:4px 4px rgba(0,0,0,.4);';
+      document.body.appendChild(tip);
+      setTimeout(function(){ tip.remove(); }, 2600);
+    }
+
+    btn.dataset.pseudo = 'true';
     sync();
   });
+
   document.addEventListener('fullscreenchange', sync);
 })();
 </script>
