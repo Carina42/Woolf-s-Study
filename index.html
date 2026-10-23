@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>植物探案所 · 伍尔夫的书房</title>
+<link rel="stylesheet" href="assets/styles.css?v=20261023-aligned-hints">
+</head>
+<body>
+<main class="frame">
+<section class="stage is-night weather-rain" aria-label="像素风伦敦书房场景">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+
+<!-- Shared botanical sprites: stepped silhouettes, veins and restrained highlights. -->
+<g id="bot-oak-leaf">
+ <path d="M0 0l-3-3h-3v-3h3v-2h-5v-4h3v-2h-3v-4h4v-2h-1v-3h3v-3h4v3h3v3H4v2h4v4H5v2h3v4H3v2h3v3H3z" fill="currentColor"/>
+ <path d="M0-2v-21m0 17-4-3m4-3-5-3m5-3-3-3m3 12 4-3m-4-3 5-3m-5-3 3-3" fill="none" stroke="#b8b47e" stroke-width=".8" opacity=".65"/>
+ <path d="M-2-23h2v6h-2zM-5-16h2v2h-2zM-5-10h2v2h-2z" fill="#d0c99a" opacity=".25"/>
+</g>
+<g id="bot-rose-leaf">
+ <path d="M0 0l-4-3-1-3-3-2 1-3-2-2 2-3 1-4 4-3 2 4 3 2-1 3 2 3-2 2v4z" fill="currentColor"/>
+ <path d="M0-2-1-19m1 12-4-4m4 0 3-4m-4 0-3-2" fill="none" stroke="#b0ad75" stroke-width=".7" opacity=".6"/>
+</g>
+<g id="bot-judas-leaf">
+ <path d="M0 0l-6-3-5-6v-7l4-4h4l3 3 3-3h4l4 4v7l-5 6z" fill="currentColor"/>
+ <path d="M0-1v-14m0 12-7-8m7 5 7-6m-7 2-4-6m4 7 4-7" fill="none" stroke="#aeb27a" stroke-width=".8" opacity=".55"/>
+ <path d="M-7-17h3v2h-3zM-9-14h2v4h-2z" fill="#c1c495" opacity=".2"/>
+</g>
+<g id="bot-ginkgo-leaf">
+ <path d="M0 0l-6-7-9-9v-5l7-6h5l3 6 3-6h5l7 6v5L6-7z" fill="currentColor"/>
+ <path d="M0-2-11-19m11 17-7-21m7 21-2-17m2 17 2-17m-2 17 7-21m-7 21 11-17" fill="none" stroke="#c8bf84" stroke-width=".75" opacity=".75"/>
+</g>
+<g id="bot-rose-bloom">
+ <path d="M-7-14h12v3h7v5h4V5h-4v6H5v4H-5v-3h-7V7h-4V-4h4v-6h5z" fill="#6f343d"/>
+ <path d="M-5-13h10v4h7v5h2v8H9v6H2v3h-7V9h-6V3h-3v-6h5v-6h4z" fill="#aa5261"/>
+ <path d="M-5-11H4v3H-2v4h-6v5h-4V-4h4v-4h3zM6-7h5v6H7v5H3v5h-6V5h4V0h5z" fill="#cb7e82"/>
+ <path d="M-4-4h9v3h3v6H3v4h-7V5h-4v-5h4z" fill="#893d4d"/>
+ <path d="M-3-3h6v3h3v3H1V1h-4v4h-3V0h3z" fill="#d29592"/>
+ <path d="M-1-1h3v3h-3zM4 4h3v2H4z" fill="#65313c"/>
+ <path d="M-8-10h4v2h-4zM-11-6h3v2h-3zM5 8h3v2H5z" fill="#e0ad9e" opacity=".6"/>
+</g>
+<g id="bot-poppy-bloom">
+ <path d="M-12-13h10l4 5 5-5h9l5 6v7l-6 4 2 7-5 6H4l-4-5-5 5h-9l-5-6 2-8-5-4v-8z" fill="#8c382e"/>
+ <path d="M-12-12h10l5 6-3 7-9 2-9-5v-5z" fill="#c84f3c"/>
+ <path d="M7-12h8l5 5v7l-9 4L1 0l1-7z" fill="#d46645"/>
+ <path d="M-9 0l9 2 4 9-6 5h-10l-5-6 2-7z" fill="#c4513b"/>
+ <path d="M1 1l9 1 6 5-2 7H5l-7-7z" fill="#dc7650"/>
+ <path d="M-15-7h5v2h-5zM-10-10h6v2h-6zM11-9h4v2h-4zM11 11h3v2h-3z" fill="#efa17a" opacity=".75"/>
+ <path d="M-11-5-3 0m15-6-8 7M-9 10-2 4m12 5-6-5" fill="none" stroke="#943c32" stroke-width=".8"/>
+ <path d="M-5-4h3v-2h5v2h4v3h2v5H5v3H0V5h-5V2h-2v-4h2z" fill="#292921"/>
+ <path d="M-2-2h4v4h-4z" fill="#79774c"/>
+ <path d="M-4-4h1v1h-1zM3-4h1v1H3zM5 0h1v1H5zM3 4h1v1H3zM-4 3h1v1h-1z" fill="#b1a06b"/>
+</g>
+<g id="bot-fern-frond">
+ <path d="M0 0V-42l3-13" fill="none" stroke="#6c774b" stroke-width="1.3"/>
+<path d="M-1 -7l-12.0-4v-3l9.0 2 4 4z" fill="#718155" /><path d="M1 -9l11.0-5v-3l-8.0 3-4 4z" fill="#8a9561" /><path d="M-2 -8l-8.0-3m6 1 7-4" fill="none" stroke="#b4b583" stroke-width="0.45" stroke-linecap="square" stroke-linejoin="miter"/><path d="M-1 -12l-11.1-4v-3l8.1 2 4 4z" fill="#718155" /><path d="M1 -14l10.1-5v-3l-7.1 3-4 4z" fill="#8a9561" /><path d="M-2 -13l-7.1-3m6 1 7-4" fill="none" stroke="#b4b583" stroke-width="0.45" stroke-linecap="square" stroke-linejoin="miter"/><path d="M-1 -17l-10.1-4v-3l7.1 2 4 4z" fill="#718155" /><path d="M1 -19l9.1-5v-3l-6.1 3-4 4z" fill="#8a9561" /><path d="M-2 -18l-6.1-3m6 1 7-4" fill="none" stroke="#b4b583" stroke-width="0.45" stroke-linecap="square" stroke-linejoin="miter"/><path d="M-1 -22l-9.2-4v-3l6.2 2 4 4z" fill="#718155" /><path d="M1 -24l8.2-5v-3l-5.2 3-4 4z" fill="#8a9561" /><path d="M-2 -23l-5.2-3m6 1 7-4" fill="none" stroke="#b4b583" stroke-width="0.45" stroke-linecap="square" stroke-linejoin="miter"/><path d="M-1 -27l-8.2-4v-3l5.2 2 4 4z" fill="#718155" /><path d="M1 -29l7.2-5v-3l-4.2 3-4 4z" fill="#8a9561" /><path d="M-2 -28l-4.2-3m6 1 7-4" fill="none" stroke="#b4b583" stroke-width="0.45" stroke-linecap="square" stroke-linejoin="miter"/><path d="M-1 -32l-7.2-4v-3l4.2 2 4 4z" fill="#718155" /><path d="M1 -34l6.2-5v-3l-3.2 3-4 4z" fill="#8a9561" /><path d="M-2 -33l-3.2-3m6 1 7-4" fill="none" stroke="#b4b583" stroke-width="0.45" stroke-linecap="square" stroke-linejoin="miter"/><path d="M-1 -37l-6.3-4v-3l3.3 2 4 4z" fill="#718155" /><path d="M1 -39l5.3-5v-3l-2.3 3-4 4z" fill="#8a9561" /><path d="M-2 -38l-2.3-3m6 1 7-4" fill="none" stroke="#b4b583" stroke-width="0.45" stroke-linecap="square" stroke-linejoin="miter"/><path d="M-1 -42l-5.4-4v-3l2.4 2 4 4z" fill="#718155" /><path d="M1 -44l4.4-5v-3l-1.4 3-4 4z" fill="#8a9561" /><path d="M-2 -43l-1.4-3m6 1 7-4" fill="none" stroke="#b4b583" stroke-width="0.45" stroke-linecap="square" stroke-linejoin="miter"/><path d="M-1 -47l-4.4-4v-3l1.4 2 4 4z" fill="#718155" /><path d="M1 -49l3.4-5v-3l-0.4 3-4 4z" fill="#8a9561" /><path d="M-2 -48l-0.4-3m6 1 7-4" fill="none" stroke="#b4b583" stroke-width="0.45" stroke-linecap="square" stroke-linejoin="miter"/></g>
+<linearGradient id="bot-paper" x2="1" y2="1"><stop stop-color="#ded0a8"/><stop offset=".55" stop-color="#cfc29c"/><stop offset="1" stop-color="#b7aa80"/></linearGradient>
+    <pattern id="woodFloorPattern" width="120" height="60" patternUnits="userSpaceOnUse">
+      <rect width="120" height="60" fill="#3e2c1a"/>
+      <rect x="0" y="0" width="120" height="27" fill="#4d3a26"/>
+      <rect x="0" y="0" width="120" height="5" fill="#5a4530" opacity=".75"/>
+      <rect x="0" y="22" width="120" height="5" fill="#3e2d1a" opacity=".85"/>
+      <rect x="0" y="3" width="120" height="1" fill="#614a32" opacity=".85"/>
+      <rect x="0" y="6" width="120" height="1" fill="#392818" opacity=".75"/>
+      <rect x="0" y="9" width="120" height="1" fill="#614a32" opacity=".8"/>
+      <rect x="0" y="12" width="120" height="1" fill="#392818" opacity=".7"/>
+      <rect x="0" y="15" width="120" height="1" fill="#614a32" opacity=".85"/>
+      <rect x="0" y="18" width="120" height="1" fill="#392818" opacity=".7"/>
+      <rect x="0" y="21" width="120" height="1" fill="#614a32" opacity=".75"/>
+      <path d="M0 5 Q20 4 40 5 T80 5 T120 5" stroke="#6b5340" stroke-width=".5" fill="none" opacity=".7"/>
+      <path d="M0 14 Q22 13 44 14 T88 14 T120 14" stroke="#6b5340" stroke-width=".5" fill="none" opacity=".6"/>
+      <rect x="0" y="26" width="120" height="1.5" fill="#1c130a"/>
+      <rect x="62" y="0" width="1.2" height="27" fill="#1f150b" opacity=".9"/>
+      <ellipse cx="28" cy="11" rx="2.2" ry="1.5" fill="#2c1e10"/>
+      <ellipse cx="28" cy="11" rx="3.4" ry="2.2" fill="none" stroke="#3e2e20" stroke-width=".5" opacity=".85"/>
+      <ellipse cx="90" cy="17" rx="1.8" ry="1.2" fill="#2c1e10"/>
+      <ellipse cx="90" cy="17" rx="2.8" ry="1.8" fill="none" stroke="#3e2e20" stroke-width=".4" opacity=".8"/>
+      <circle cx="52" cy="8" r="3" fill="#5c4a35" opacity=".3"/>
+      <circle cx="52" cy="8" r="5.5" fill="none" stroke="#5c4a35" stroke-width=".5" opacity=".35"/>
+      <rect x="8" y="19" width="14" height=".5" fill="#7a614b" opacity=".55"/>
+      <rect x="72" y="6" width="20" height=".5" fill="#7a614b" opacity=".5"/>
+      <rect x="0" y="28" width="120" height="28" fill="#523c28"/>
+      <rect x="0" y="28" width="120" height="5" fill="#5e4832" opacity=".75"/>
+      <rect x="0" y="51" width="120" height="5" fill="#42301e" opacity=".85"/>
+      <rect x="0" y="31" width="120" height="1" fill="#695037" opacity=".85"/>
+      <rect x="0" y="34" width="120" height="1" fill="#3e2c1b" opacity=".75"/>
+      <rect x="0" y="37" width="120" height="1" fill="#695037" opacity=".8"/>
+      <rect x="0" y="40" width="120" height="1" fill="#3e2c1b" opacity=".7"/>
+      <rect x="0" y="43" width="120" height="1" fill="#695037" opacity=".85"/>
+      <rect x="0" y="46" width="120" height="1" fill="#3e2c1b" opacity=".7"/>
+      <rect x="0" y="49" width="120" height="1" fill="#695037" opacity=".75"/>
+      <path d="M0 33 Q18 32 36 33 T72 33 T120 33" stroke="#725741" stroke-width=".5" fill="none" opacity=".65"/>
+      <path d="M0 44 Q24 43 48 44 T96 44 T120 44" stroke="#725741" stroke-width=".5" fill="none" opacity=".6"/>
+      <rect x="0" y="55" width="120" height="1.5" fill="#1a1108"/>
+      <rect x="32" y="28" width="1.2" height="28" fill="#1c1309" opacity=".9"/>
+      <ellipse cx="82" cy="40" rx="2" ry="1.4" fill="#2a1c0e"/>
+      <ellipse cx="82" cy="40" rx="3" ry="2.1" fill="none" stroke="#3d2d1f" stroke-width=".45" opacity=".85"/>
+      <circle cx="16" cy="45" r="2.5" fill="#5a4630" opacity=".35"/>
+      <circle cx="16" cy="45" r="4" fill="none" stroke="#5a4630" stroke-width=".4" opacity=".3"/>
+      <rect x="88" y="41" width="18" height=".5" fill="#7d644e" opacity=".5"/>
+      <rect x="4" y="2" width="1" height="1" fill="#6d543d" opacity=".8"/>
+      <rect x="46" y="16" width="1" height="1" fill="#6d543d" opacity=".7"/>
+      <rect x="106" y="10" width="1" height="1" fill="#6d543d" opacity=".75"/>
+      <rect x="14" y="34" width="1" height="1" fill="#735b42" opacity=".7"/>
+      <rect x="68" y="50" width="1" height="1" fill="#735b42" opacity=".75"/>
+      <rect x="100" y="35" width="1" height="1" fill="#735b42" opacity=".7"/>
+    </pattern>
+  </defs>
+</svg>
+
+<svg viewBox="0 0 960 540" role="img" aria-label="伦敦书房：书架、窗户、矮壁炉、台灯和写字桌" shape-rendering="crispEdges">
+<defs>
+ <pattern id="wallpaper" width="32" height="32" patternUnits="userSpaceOnUse">
+  <rect width="32" height="32" fill="#455244"/>
+  <path d="M8 6h4v2H8z M6 8h8v2H6z M4 10h12v2H4z M6 12h8v2H6z M8 14h4v2H8z" fill="#4c594b"/>
+  <path d="M22 20h4v2h-4z M20 22h8v2h-8z M18 24h12v2H18z M20 26h8v2h-8z M22 28h4v2h-4z" fill="#3a463b"/>
+  <path d="M20 2h4v2h-4z M18 4h8v2h-8z M16 6h12v2H16z M18 8h8v2h-8z M20 10h4v2h-4z" fill="#424f43"/>
+ </pattern>
+ <linearGradient id="windowNight" x2="0" y2="1"><stop stop-color="#273d48"/><stop offset="1" stop-color="#14272e"/></linearGradient>
+ <radialGradient id="lampGlow"><stop stop-color="#f8cf82" stop-opacity=".70"/><stop offset="1" stop-color="#d18b46" stop-opacity="0"/></radialGradient>
+ <radialGradient id="fireGlow"><stop stop-color="#f7a854" stop-opacity=".70"/><stop offset="1" stop-color="#c76a35" stop-opacity="0"/></radialGradient>
+ <clipPath id="windowClip"><rect x="668" y="82" width="202" height="232"/></clipPath>
+</defs>
+<rect width="960" height="540" fill="url(#wallpaper)"/><rect y="326" width="960" height="214" fill="#29352e"/><path d="M0 330H960v12H0z" fill="#b18d55"/><path d="M0 346H960v5H0z" fill="#18251f"/>
+<g fill="#354238"><path d="M0 372h960v7H0zM0 435h960v7H0zM0 500h960v7H0z"/><path d="M98 350v190h8V350zM284 350v190h8V350zM470 350v190h8V350zM656 350v190h8V350zM842 350v190h8V350z"/></g>
+<g id="room-bookshelf-art" transform="translate(305 0)"><rect x="42" y="56" width="255" height="288" fill="#171d19"/><rect x="52" y="66" width="235" height="266" fill="#63482f"/><rect x="61" y="75" width="217" height="246" fill="#30281f"/>
+<g fill="#493421"><path d="M49 77h242v7H49zM49 139h242v7H49zM49 201h242v7H49zM49 263h242v7H49zM49 330h242v11H49z"/></g>
+<g stroke="#b18b54" stroke-width="1.5"><path d="M54 84h232M54 146h232M54 208h232M54 270h232"/></g>
+<g stroke="#241a14" stroke-width="2" stroke-linejoin="miter">
+<path fill="#8a493a" d="M66 91h24v44H66z"/><path fill="#b88850" d="M94 96h20v39H94z"/><path fill="#465b49" d="M117 89h26v46h-26z"/><path fill="#5c3e32" d="M147 101h17v34h-17z"/><path fill="#91754d" d="M168 94h26v41h-26z"/><path fill="#773f37" d="M198 88h19v47h-19z"/><path fill="#51614b" d="M220 98h27v37h-27z"/><path fill="#9a6841" d="M251 91h19v44h-19z"/>
+<path fill="#5b4434" d="M68 153h20v45H68z"/><path fill="#4f624b" d="M91 158h29v40H91z"/><path fill="#a35440" d="M124 151h20v47h-20z"/><path fill="#9d794a" d="M148 164h24v34h-24z"/><path fill="#405447" d="M176 154h19v44h-19z"/><path fill="#84453a" d="M199 159h27v39h-27z"/><path fill="#a57d4d" d="M230 151h17v47h-17z"/><path fill="#455645" d="M251 165h20v33h-20z"/>
+<path fill="#a27a48" d="M68 215h23v44H68z"/><path fill="#6f4137" d="M95 220h17v39H95z"/><path fill="#52644e" d="M116 213h28v46h-28z"/><path fill="#a2523d" d="M148 225h19v34h-19z"/><path fill="#574331" d="M171 218h24v41h-24z"/><path fill="#966e43" d="M199 212h19v47h-19z"/><path fill="#4e5c48" d="M222 225h25v34h-25z"/><path fill="#824b38" d="M251 216h20v43h-20z"/>
+</g>
+<g fill="none" stroke="#b99a62" stroke-width="1.5" shape-rendering="crispEdges">
+<path d="M69 95v36M97 100v31M120 93v39M150 105v26M171 98v33M201 92v39M223 102v31M254 95v36"/>
+<path d="M71 98h13M97 101h13M120 96h17M150 106h10M171 100h18M201 95h13M223 104h18M254 98h12"/>
+<path d="M71 155v39M94 160v34M127 154v41M151 167v29M179 157v38M202 162v33M233 154v40M254 168v26"/>
+<path d="M71 158h13M94 162h22M127 157h14M151 169h17M179 160h13M202 165h20M233 157h11M254 170h13"/>
+<path d="M71 218v38M98 223v33M119 216v40M151 228v29M174 221v35M202 215v40M225 228v29M254 219v37"/>
+<path d="M71 221h16M98 225h10M119 219h22M151 230h13M174 223h17M202 218h13M225 230h18M254 222h13"/>
+</g></g>
+<g id="wall-oak-study" transform="translate(72 76)" aria-label="橡树叶与橡果的植物学标本">
+ <rect x="3" y="4" width="118" height="108" fill="#162019" opacity=".6"/>
+ <rect width="118" height="108" fill="#34271c"/>
+ <rect x="2" y="2" width="114" height="104" fill="#9a7847"/>
+ <rect x="5" y="5" width="108" height="98" fill="#54402b"/>
+ <path d="M2 2h114M2 2v104" fill="none" stroke="#c0a06a" stroke-width="1"/>
+ <path d="M4 104h110M114 4v100" fill="none" stroke="#62492d" stroke-width="1.5"/>
+ <rect x="8" y="8" width="102" height="92" fill="#25372c"/>
+ <rect x="10" y="10" width="98" height="88" fill="url(#bot-paper)"/>
+ <path d="M11 11h96M11 11v86" fill="none" stroke="#f0e3bf" stroke-width=".6" opacity=".7"/>
+ <path d="M14 17h1v1h-1zM101 23h1v1h-1zM16 83h1v1h-1zM96 88h1v1h-1z" fill="#94815a" opacity=".4"/>
+ <path d="M54 80l6-21-1-16 8-15m-8 26-18-7m19 15 18-13m-20-7-9-12" fill="none" stroke="#786141" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><use href="#bot-oak-leaf" transform="translate(42 48) rotate(-54) scale(0.91)" color="#77815b"/><use href="#bot-oak-leaf" transform="translate(59 43) rotate(-18) scale(0.96)" color="#7d865b"/><use href="#bot-oak-leaf" transform="translate(77 51) rotate(38) scale(0.83)" color="#8a9063"/><use href="#bot-oak-leaf" transform="translate(56 67) rotate(-74) scale(0.78)" color="#6b7851"/><path d="M68 58l12 7m-3-2 2 6" fill="none" stroke="#92784e" stroke-width="1" stroke-linecap="square" stroke-linejoin="miter"/><path d="M76 65h7v4h-7zM80 68h7v4h-7z" fill="#80663f" /><path d="M77 69h5v6h-2v2h-2v-2h-1zM81 72h5v6h-2v2h-2v-2h-1z" fill="#af8c53" /><path d="M56 69h7v2h-7zM61 39h5v2h-5z" fill="#e5d7b6" opacity=".75"/>
+ <path d="M46 90h26v1h-26z" fill="#a59368" opacity=".7"/>
+ <text x="59" y="95" text-anchor="middle" fill="#796744" font-family="monospace" font-size="3.2" letter-spacing=".45">QUERCUS ROBUR</text>
+</g>
+<g id="wall-specimens" aria-label="左墙错落陈列的玫瑰果、蕨叶和银杏标本">
+<g transform="translate(244 110)" aria-label="带锯齿复叶和萼片的玫瑰果枝标本">
+ <rect x="3" y="4" width="60" height="78" fill="#162019" opacity=".6"/>
+ <rect width="60" height="78" fill="#34271c"/>
+ <rect x="2" y="2" width="56" height="74" fill="#9a7847"/>
+ <rect x="5" y="5" width="50" height="68" fill="#54402b"/>
+ <path d="M2 2h56M2 2v74" fill="none" stroke="#c0a06a" stroke-width="1"/>
+ <path d="M4 74h52M56 4v70" fill="none" stroke="#62492d" stroke-width="1.5"/>
+ <rect x="8" y="8" width="44" height="62" fill="#25372c"/>
+ <rect x="10" y="10" width="40" height="58" fill="url(#bot-paper)"/>
+ <path d="M11 11h38M11 11v56" fill="none" stroke="#f0e3bf" stroke-width=".6" opacity=".7"/>
+ <path d="M14 17h1v1h-1zM43 23h1v1h-1zM16 53h1v1h-1zM38 58h1v1h-1z" fill="#94815a" opacity=".4"/>
+ <path d="M29 55l2-13-3-13 6-11m-5 21-10-8m11 16 10-10" fill="none" stroke="#7b6847" stroke-width="1" stroke-linecap="square" stroke-linejoin="miter"/><use href="#bot-rose-leaf" transform="translate(21 34) rotate(-50) scale(0.62)" color="#7e8358"/><use href="#bot-rose-leaf" transform="translate(36 40) rotate(52) scale(0.62)" color="#758052"/><path d="M28 20h6v3h2v6h-2v3h-6v-3h-2v-6h2zM37 15h5v3h2v5h-2v2h-5v-3h-2v-5h2z" fill="#9b5b42" /><path d="M29 21h3v3h-3zM38 16h2v2h-2z" fill="#bd8560" /><path d="M29 20l-2-3m4 3 2-4m6-1-1-3" fill="none" stroke="#6c7348" stroke-width="0.7" stroke-linecap="square" stroke-linejoin="miter"/>
+ <path d="M17 60h26v1h-26z" fill="#a59368" opacity=".7"/>
+ <text x="30" y="65" text-anchor="middle" fill="#796744" font-family="monospace" font-size="3.2" letter-spacing=".45">ROSA</text>
+</g>
+<g transform="translate(42 208)" aria-label="细密羽状小叶的蕨叶标本">
+ <rect x="3" y="4" width="64" height="84" fill="#162019" opacity=".6"/>
+ <rect width="64" height="84" fill="#34271c"/>
+ <rect x="2" y="2" width="60" height="80" fill="#9a7847"/>
+ <rect x="5" y="5" width="54" height="74" fill="#54402b"/>
+ <path d="M2 2h60M2 2v80" fill="none" stroke="#c0a06a" stroke-width="1"/>
+ <path d="M4 80h56M60 4v76" fill="none" stroke="#62492d" stroke-width="1.5"/>
+ <rect x="8" y="8" width="48" height="68" fill="#25372c"/>
+ <rect x="10" y="10" width="44" height="64" fill="url(#bot-paper)"/>
+ <path d="M11 11h42M11 11v62" fill="none" stroke="#f0e3bf" stroke-width=".6" opacity=".7"/>
+ <path d="M14 17h1v1h-1zM47 23h1v1h-1zM16 59h1v1h-1zM42 64h1v1h-1z" fill="#94815a" opacity=".4"/>
+ <use href="#bot-fern-frond" transform="translate(30 64) rotate(10) scale(0.79)" color="#72805a"/><use href="#bot-fern-frond" transform="translate(30 64) rotate(-24) scale(0.53)" color="#72805a"/><path d="M27 56h8v2h-8zM30 29h6v2h-6z" fill="#e5d7b6" opacity=".7"/>
+ <path d="M19 66h26v1h-26z" fill="#a59368" opacity=".7"/>
+ <text x="32" y="71" text-anchor="middle" fill="#796744" font-family="monospace" font-size="3.2" letter-spacing=".45">FERN</text>
+</g>
+<g transform="translate(178 216)" aria-label="扇形叶片与放射叶脉的银杏标本">
+ <rect x="3" y="4" width="62" height="76" fill="#162019" opacity=".6"/>
+ <rect width="62" height="76" fill="#34271c"/>
+ <rect x="2" y="2" width="58" height="72" fill="#9a7847"/>
+ <rect x="5" y="5" width="52" height="66" fill="#54402b"/>
+ <path d="M2 2h58M2 2v72" fill="none" stroke="#c0a06a" stroke-width="1"/>
+ <path d="M4 72h54M58 4v68" fill="none" stroke="#62492d" stroke-width="1.5"/>
+ <rect x="8" y="8" width="46" height="60" fill="#25372c"/>
+ <rect x="10" y="10" width="42" height="56" fill="url(#bot-paper)"/>
+ <path d="M11 11h40M11 11v54" fill="none" stroke="#f0e3bf" stroke-width=".6" opacity=".7"/>
+ <path d="M14 17h1v1h-1zM45 23h1v1h-1zM16 51h1v1h-1zM40 56h1v1h-1z" fill="#94815a" opacity=".4"/>
+ <path d="M30 54l-1-15-10-12m10 17 11-17" fill="none" stroke="#8b784c" stroke-width="1.2" stroke-linecap="square" stroke-linejoin="miter"/><use href="#bot-ginkgo-leaf" transform="translate(23 38) rotate(-24) scale(0.62)" color="#9e9d63"/><use href="#bot-ginkgo-leaf" transform="translate(38 37) rotate(24) scale(0.61)" color="#8a935c"/><path d="M27 47h7v2h-7z" fill="#e5d7b6" opacity=".65"/>
+ <path d="M18 58h26v1h-26z" fill="#a59368" opacity=".7"/>
+ <text x="31" y="63" text-anchor="middle" fill="#796744" font-family="monospace" font-size="3.2" letter-spacing=".45">GINKGO</text>
+</g>
+</g>
+<g id="room-window"><rect x="651" y="66" width="236" height="266" fill="#a9844c"/><rect class="window-sky" x="666" y="80" width="206" height="238" fill="url(#windowNight)"/>
+<path d="M731 84v230M800 82v232M669 195h202" stroke="#a98b55" stroke-width="7"/><path d="M735 88v224M804 86v226M672 200h195" stroke="#594b35" stroke-width="2"/>
+<path d="M640 64h25v270h-25zM872 64h25v270h-25z" fill="#78483d"/><path d="M646 73h14v8h-14zM646 120h14v8h-14zM646 169h14v8h-14zM646 218h14v8h-14zM646 267h14v8h-14zM879 73h13v8h-13zM879 120h13v8h-13zM879 169h13v8h-13zM879 218h13v8h-13zM879 267h13v8h-13z" fill="#a56a51"/><path d="M657 321h236v12H657z" fill="#d2b272"/>
+<path d="M651 62h236v5H651zM659 327h225v4H659z" fill="#d7bb7b"/>
+</g>
+<g clip-path="url(#windowClip)">
+  <!-- 雨丝 (仅雨天显示) -->
+  <g class="rain-sheet rain-far" fill="#b9ced1" opacity=".62"><path d="M651 52h3l-3 22h-2l3 -22z"/><path d="M684 52h3l-3 26h-2l3 -26z"/><path d="M710 52h3l-3 22h-2l3 -22z"/><path d="M743 52h3l-3 26h-2l3 -26z"/><path d="M769 52h3l-3 22h-2l3 -22z"/><path d="M802 52h3l-3 26h-2l3 -26z"/><path d="M828 52h3l-3 22h-2l3 -22z"/><path d="M854 52h3l-3 26h-2l3 -26z"/><path d="M887 52h3l-3 22h-2l3 -22z"/><path d="M665 80h3l-3 24h-2l3 -24z"/><path d="M698 80h3l-3 28h-2l3 -28z"/><path d="M724 80h3l-3 24h-2l3 -24z"/><path d="M757 80h3l-3 28h-2l3 -28z"/><path d="M783 80h3l-3 24h-2l3 -24z"/><path d="M816 80h3l-3 28h-2l3 -28z"/><path d="M842 80h3l-3 24h-2l3 -24z"/><path d="M868 80h3l-3 28h-2l3 -28z"/><path d="M651 103h3l-3 26h-2l3 -26z"/><path d="M684 103h3l-3 22h-2l3 -22z"/><path d="M710 103h3l-3 26h-2l3 -26z"/><path d="M743 103h3l-3 22h-2l3 -22z"/><path d="M769 103h3l-3 26h-2l3 -26z"/><path d="M802 103h3l-3 22h-2l3 -22z"/><path d="M828 103h3l-3 26h-2l3 -26z"/><path d="M854 103h3l-3 22h-2l3 -22z"/><path d="M887 103h3l-3 26h-2l3 -26z"/><path d="M665 131h3l-3 28h-2l3 -28z"/><path d="M698 131h3l-3 24h-2l3 -24z"/><path d="M724 131h3l-3 28h-2l3 -28z"/><path d="M757 131h3l-3 24h-2l3 -24z"/><path d="M783 131h3l-3 28h-2l3 -28z"/><path d="M816 131h3l-3 24h-2l3 -24z"/><path d="M842 131h3l-3 28h-2l3 -28z"/><path d="M868 131h3l-3 24h-2l3 -24z"/><path d="M651 154h3l-3 22h-2l3 -22z"/><path d="M684 154h3l-3 26h-2l3 -26z"/><path d="M710 154h3l-3 22h-2l3 -22z"/><path d="M743 154h3l-3 26h-2l3 -26z"/><path d="M769 154h3l-3 22h-2l3 -22z"/><path d="M802 154h3l-3 26h-2l3 -26z"/><path d="M828 154h3l-3 22h-2l3 -22z"/><path d="M854 154h3l-3 26h-2l3 -26z"/><path d="M887 154h3l-3 22h-2l3 -22z"/><path d="M665 177h3l-3 24h-2l3 -24z"/><path d="M698 177h3l-3 28h-2l3 -28z"/><path d="M724 177h3l-3 24h-2l3 -24z"/><path d="M757 177h3l-3 28h-2l3 -28z"/><path d="M783 177h3l-3 24h-2l3 -24z"/><path d="M816 177h3l-3 28h-2l3 -28z"/><path d="M842 177h3l-3 24h-2l3 -24z"/><path d="M868 177h3l-3 28h-2l3 -28z"/><path d="M651 205h3l-3 26h-2l3 -26z"/><path d="M684 205h3l-3 22h-2l3 -22z"/><path d="M710 205h3l-3 26h-2l3 -26z"/><path d="M743 205h3l-3 22h-2l3 -22z"/><path d="M769 205h3l-3 26h-2l3 -26z"/><path d="M802 205h3l-3 22h-2l3 -22z"/><path d="M828 205h3l-3 26h-2l3 -26z"/><path d="M854 205h3l-3 22h-2l3 -22z"/><path d="M887 205h3l-3 26h-2l3 -26z"/><path d="M665 228h3l-3 28h-2l3 -28z"/><path d="M698 228h3l-3 24h-2l3 -24z"/><path d="M724 228h3l-3 28h-2l3 -28z"/><path d="M757 228h3l-3 24h-2l3 -24z"/><path d="M783 228h3l-3 28h-2l3 -28z"/><path d="M816 228h3l-3 24h-2l3 -24z"/><path d="M842 228h3l-3 28h-2l3 -28z"/><path d="M868 228h3l-3 24h-2l3 -24z"/><path d="M651 256h3l-3 22h-2l3 -22z"/><path d="M684 256h3l-3 26h-2l3 -26z"/><path d="M710 256h3l-3 22h-2l3 -22z"/><path d="M743 256h3l-3 26h-2l3 -26z"/><path d="M769 256h3l-3 22h-2l3 -22z"/><path d="M802 256h3l-3 26h-2l3 -26z"/><path d="M828 256h3l-3 22h-2l3 -22z"/><path d="M854 256h3l-3 26h-2l3 -26z"/><path d="M887 256h3l-3 22h-2l3 -22z"/><path d="M665 279h3l-3 24h-2l3 -24z"/><path d="M698 279h3l-3 28h-2l3 -28z"/><path d="M724 279h3l-3 24h-2l3 -24z"/><path d="M757 279h3l-3 28h-2l3 -28z"/><path d="M783 279h3l-3 24h-2l3 -24z"/><path d="M816 279h3l-3 28h-2l3 -28z"/><path d="M842 279h3l-3 24h-2l3 -24z"/><path d="M868 279h3l-3 28h-2l3 -28z"/><path d="M651 302h3l-3 26h-2l3 -26z"/><path d="M684 302h3l-3 22h-2l3 -22z"/><path d="M710 302h3l-3 26h-2l3 -26z"/><path d="M743 302h3l-3 22h-2l3 -22z"/><path d="M769 302h3l-3 26h-2l3 -26z"/><path d="M802 302h3l-3 22h-2l3 -22z"/><path d="M828 302h3l-3 26h-2l3 -26z"/><path d="M854 302h3l-3 22h-2l3 -22z"/><path d="M887 302h3l-3 26h-2l3 -26z"/><path d="M665 330h3l-3 28h-2l3 -28z"/><path d="M698 330h3l-3 24h-2l3 -24z"/><path d="M724 330h3l-3 28h-2l3 -28z"/><path d="M757 330h3l-3 24h-2l3 -24z"/><path d="M783 330h3l-3 28h-2l3 -28z"/><path d="M816 330h3l-3 24h-2l3 -24z"/><path d="M842 330h3l-3 28h-2l3 -28z"/><path d="M868 330h3l-3 24h-2l3 -24z"/><path d="M651 353h3l-3 22h-2l3 -22z"/><path d="M684 353h3l-3 26h-2l3 -26z"/><path d="M710 353h3l-3 22h-2l3 -22z"/><path d="M743 353h3l-3 26h-2l3 -26z"/><path d="M769 353h3l-3 22h-2l3 -22z"/><path d="M802 353h3l-3 26h-2l3 -26z"/><path d="M828 353h3l-3 22h-2l3 -22z"/><path d="M854 353h3l-3 26h-2l3 -26z"/><path d="M887 353h3l-3 22h-2l3 -22z"/></g><g class="rain-sheet rain-mid" fill="#c6d8d9" opacity=".78"><path d="M665 63h4l-3 30h-2l3 -30z"/><path d="M691 63h4l-3 34h-2l3 -34z"/><path d="M724 63h4l-3 30h-2l3 -30z"/><path d="M750 63h4l-3 34h-2l3 -34z"/><path d="M776 63h4l-3 30h-2l3 -30z"/><path d="M809 63h4l-3 34h-2l3 -34z"/><path d="M835 63h4l-3 30h-2l3 -30z"/><path d="M868 63h4l-3 34h-2l3 -34z"/><path d="M679 91h4l-3 32h-2l3 -32z"/><path d="M705 91h4l-3 28h-2l3 -28z"/><path d="M738 91h4l-3 32h-2l3 -32z"/><path d="M764 91h4l-3 28h-2l3 -28z"/><path d="M790 91h4l-3 32h-2l3 -32z"/><path d="M823 91h4l-3 28h-2l3 -28z"/><path d="M849 91h4l-3 32h-2l3 -32z"/><path d="M882 91h4l-3 28h-2l3 -28z"/><path d="M665 114h4l-3 34h-2l3 -34z"/><path d="M691 114h4l-3 30h-2l3 -30z"/><path d="M724 114h4l-3 34h-2l3 -34z"/><path d="M750 114h4l-3 30h-2l3 -30z"/><path d="M776 114h4l-3 34h-2l3 -34z"/><path d="M809 114h4l-3 30h-2l3 -30z"/><path d="M835 114h4l-3 34h-2l3 -34z"/><path d="M868 114h4l-3 30h-2l3 -30z"/><path d="M679 137h4l-3 28h-2l3 -28z"/><path d="M705 137h4l-3 32h-2l3 -32z"/><path d="M738 137h4l-3 28h-2l3 -28z"/><path d="M764 137h4l-3 32h-2l3 -32z"/><path d="M790 137h4l-3 28h-2l3 -28z"/><path d="M823 137h4l-3 32h-2l3 -32z"/><path d="M849 137h4l-3 28h-2l3 -28z"/><path d="M882 137h4l-3 32h-2l3 -32z"/><path d="M665 165h4l-3 30h-2l3 -30z"/><path d="M691 165h4l-3 34h-2l3 -34z"/><path d="M724 165h4l-3 30h-2l3 -30z"/><path d="M750 165h4l-3 34h-2l3 -34z"/><path d="M776 165h4l-3 30h-2l3 -30z"/><path d="M809 165h4l-3 34h-2l3 -34z"/><path d="M835 165h4l-3 30h-2l3 -30z"/><path d="M868 165h4l-3 34h-2l3 -34z"/><path d="M679 188h4l-3 32h-2l3 -32z"/><path d="M705 188h4l-3 28h-2l3 -28z"/><path d="M738 188h4l-3 32h-2l3 -32z"/><path d="M764 188h4l-3 28h-2l3 -28z"/><path d="M790 188h4l-3 32h-2l3 -32z"/><path d="M823 188h4l-3 28h-2l3 -28z"/><path d="M849 188h4l-3 32h-2l3 -32z"/><path d="M882 188h4l-3 28h-2l3 -28z"/><path d="M665 216h4l-3 34h-2l3 -34z"/><path d="M691 216h4l-3 30h-2l3 -30z"/><path d="M724 216h4l-3 34h-2l3 -34z"/><path d="M750 216h4l-3 30h-2l3 -30z"/><path d="M776 216h4l-3 34h-2l3 -34z"/><path d="M809 216h4l-3 30h-2l3 -30z"/><path d="M835 216h4l-3 34h-2l3 -34z"/><path d="M868 216h4l-3 30h-2l3 -30z"/><path d="M679 239h4l-3 28h-2l3 -28z"/><path d="M705 239h4l-3 32h-2l3 -32z"/><path d="M738 239h4l-3 28h-2l3 -28z"/><path d="M764 239h4l-3 32h-2l3 -32z"/><path d="M790 239h4l-3 28h-2l3 -28z"/><path d="M823 239h4l-3 32h-2l3 -32z"/><path d="M849 239h4l-3 28h-2l3 -28z"/><path d="M882 239h4l-3 32h-2l3 -32z"/><path d="M665 262h4l-3 30h-2l3 -30z"/><path d="M691 262h4l-3 34h-2l3 -34z"/><path d="M724 262h4l-3 30h-2l3 -30z"/><path d="M750 262h4l-3 34h-2l3 -34z"/><path d="M776 262h4l-3 30h-2l3 -30z"/><path d="M809 262h4l-3 34h-2l3 -34z"/><path d="M835 262h4l-3 30h-2l3 -30z"/><path d="M868 262h4l-3 34h-2l3 -34z"/><path d="M679 290h4l-3 32h-2l3 -32z"/><path d="M705 290h4l-3 28h-2l3 -28z"/><path d="M738 290h4l-3 32h-2l3 -32z"/><path d="M764 290h4l-3 28h-2l3 -28z"/><path d="M790 290h4l-3 32h-2l3 -32z"/><path d="M823 290h4l-3 28h-2l3 -28z"/><path d="M849 290h4l-3 32h-2l3 -32z"/><path d="M882 290h4l-3 28h-2l3 -28z"/><path d="M665 313h4l-3 34h-2l3 -34z"/><path d="M691 313h4l-3 30h-2l3 -30z"/><path d="M724 313h4l-3 34h-2l3 -34z"/><path d="M750 313h4l-3 30h-2l3 -30z"/><path d="M776 313h4l-3 34h-2l3 -34z"/><path d="M809 313h4l-3 30h-2l3 -30z"/><path d="M835 313h4l-3 34h-2l3 -34z"/><path d="M868 313h4l-3 30h-2l3 -30z"/><path d="M679 341h4l-3 28h-2l3 -28z"/><path d="M705 341h4l-3 32h-2l3 -32z"/><path d="M738 341h4l-3 28h-2l3 -28z"/><path d="M764 341h4l-3 32h-2l3 -32z"/><path d="M790 341h4l-3 28h-2l3 -28z"/><path d="M823 341h4l-3 32h-2l3 -32z"/><path d="M849 341h4l-3 28h-2l3 -28z"/><path d="M882 341h4l-3 32h-2l3 -32z"/><path d="M665 364h4l-3 30h-2l3 -30z"/><path d="M691 364h4l-3 34h-2l3 -34z"/><path d="M724 364h4l-3 30h-2l3 -30z"/><path d="M750 364h4l-3 34h-2l3 -34z"/><path d="M776 364h4l-3 30h-2l3 -30z"/><path d="M809 364h4l-3 34h-2l3 -34z"/><path d="M835 364h4l-3 30h-2l3 -30z"/><path d="M868 364h4l-3 34h-2l3 -34z"/></g><g class="rain-sheet rain-near" fill="#d9e6e4" opacity=".84"><path d="M671 59h4l-3 38h-2l3 -38z"/><path d="M697 59h4l-3 34h-2l3 -34z"/><path d="M730 59h4l-3 38h-2l3 -38z"/><path d="M756 59h4l-3 34h-2l3 -34z"/><path d="M789 59h4l-3 38h-2l3 -38z"/><path d="M815 59h4l-3 34h-2l3 -34z"/><path d="M848 59h4l-3 38h-2l3 -38z"/><path d="M874 59h4l-3 34h-2l3 -34z"/><path d="M685 82h4l-3 40h-2l3 -40z"/><path d="M711 82h4l-3 36h-2l3 -36z"/><path d="M744 82h4l-3 40h-2l3 -40z"/><path d="M770 82h4l-3 36h-2l3 -36z"/><path d="M803 82h4l-3 40h-2l3 -40z"/><path d="M829 82h4l-3 36h-2l3 -36z"/><path d="M862 82h4l-3 40h-2l3 -40z"/><path d="M888 82h4l-3 36h-2l3 -36z"/><path d="M671 110h4l-3 34h-2l3 -34z"/><path d="M697 110h4l-3 38h-2l3 -38z"/><path d="M730 110h4l-3 34h-2l3 -34z"/><path d="M756 110h4l-3 38h-2l3 -38z"/><path d="M789 110h4l-3 34h-2l3 -34z"/><path d="M815 110h4l-3 38h-2l3 -38z"/><path d="M848 110h4l-3 34h-2l3 -34z"/><path d="M874 110h4l-3 38h-2l3 -38z"/><path d="M685 133h4l-3 36h-2l3 -36z"/><path d="M711 133h4l-3 40h-2l3 -40z"/><path d="M744 133h4l-3 36h-2l3 -36z"/><path d="M770 133h4l-3 40h-2l3 -40z"/><path d="M803 133h4l-3 36h-2l3 -36z"/><path d="M829 133h4l-3 40h-2l3 -40z"/><path d="M862 133h4l-3 36h-2l3 -36z"/><path d="M888 133h4l-3 40h-2l3 -40z"/><path d="M671 161h4l-3 38h-2l3 -38z"/><path d="M697 161h4l-3 34h-2l3 -34z"/><path d="M730 161h4l-3 38h-2l3 -38z"/><path d="M756 161h4l-3 34h-2l3 -34z"/><path d="M789 161h4l-3 38h-2l3 -38z"/><path d="M815 161h4l-3 34h-2l3 -34z"/><path d="M848 161h4l-3 38h-2l3 -38z"/><path d="M874 161h4l-3 34h-2l3 -34z"/><path d="M685 184h4l-3 40h-2l3 -40z"/><path d="M711 184h4l-3 36h-2l3 -36z"/><path d="M744 184h4l-3 40h-2l3 -40z"/><path d="M770 184h4l-3 36h-2l3 -36z"/><path d="M803 184h4l-3 40h-2l3 -40z"/><path d="M829 184h4l-3 36h-2l3 -36z"/><path d="M862 184h4l-3 40h-2l3 -40z"/><path d="M888 184h4l-3 36h-2l3 -36z"/><path d="M671 207h4l-3 34h-2l3 -34z"/><path d="M697 207h4l-3 38h-2l3 -38z"/><path d="M730 207h4l-3 34h-2l3 -34z"/><path d="M756 207h4l-3 38h-2l3 -38z"/><path d="M789 207h4l-3 34h-2l3 -34z"/><path d="M815 207h4l-3 38h-2l3 -38z"/><path d="M848 207h4l-3 34h-2l3 -34z"/><path d="M874 207h4l-3 38h-2l3 -38z"/><path d="M685 235h4l-3 36h-2l3 -36z"/><path d="M711 235h4l-3 40h-2l3 -40z"/><path d="M744 235h4l-3 36h-2l3 -36z"/><path d="M770 235h4l-3 40h-2l3 -40z"/><path d="M803 235h4l-3 36h-2l3 -36z"/><path d="M829 235h4l-3 40h-2l3 -40z"/><path d="M862 235h4l-3 36h-2l3 -36z"/><path d="M888 235h4l-3 40h-2l3 -40z"/><path d="M671 258h4l-3 38h-2l3 -38z"/><path d="M697 258h4l-3 34h-2l3 -34z"/><path d="M730 258h4l-3 38h-2l3 -38z"/><path d="M756 258h4l-3 34h-2l3 -34z"/><path d="M789 258h4l-3 38h-2l3 -38z"/><path d="M815 258h4l-3 34h-2l3 -34z"/><path d="M848 258h4l-3 38h-2l3 -38z"/><path d="M874 258h4l-3 34h-2l3 -34z"/><path d="M685 286h4l-3 40h-2l3 -40z"/><path d="M711 286h4l-3 36h-2l3 -36z"/><path d="M744 286h4l-3 40h-2l3 -40z"/><path d="M770 286h4l-3 36h-2l3 -36z"/><path d="M803 286h4l-3 40h-2l3 -40z"/><path d="M829 286h4l-3 36h-2l3 -36z"/><path d="M862 286h4l-3 40h-2l3 -40z"/><path d="M888 286h4l-3 36h-2l3 -36z"/><path d="M671 309h4l-3 34h-2l3 -34z"/><path d="M697 309h4l-3 38h-2l3 -38z"/><path d="M730 309h4l-3 34h-2l3 -34z"/><path d="M756 309h4l-3 38h-2l3 -38z"/><path d="M789 309h4l-3 34h-2l3 -34z"/><path d="M815 309h4l-3 38h-2l3 -38z"/><path d="M848 309h4l-3 34h-2l3 -34z"/><path d="M874 309h4l-3 38h-2l3 -38z"/><path d="M685 332h4l-3 36h-2l3 -36z"/><path d="M711 332h4l-3 40h-2l3 -40z"/><path d="M744 332h4l-3 36h-2l3 -36z"/><path d="M770 332h4l-3 40h-2l3 -40z"/><path d="M803 332h4l-3 36h-2l3 -36z"/><path d="M829 332h4l-3 40h-2l3 -40z"/><path d="M862 332h4l-3 36h-2l3 -36z"/><path d="M888 332h4l-3 40h-2l3 -40z"/><path d="M671 360h4l-3 38h-2l3 -38z"/><path d="M697 360h4l-3 34h-2l3 -34z"/><path d="M730 360h4l-3 38h-2l3 -38z"/><path d="M756 360h4l-3 34h-2l3 -34z"/><path d="M789 360h4l-3 38h-2l3 -38z"/><path d="M815 360h4l-3 34h-2l3 -34z"/><path d="M848 360h4l-3 38h-2l3 -38z"/><path d="M874 360h4l-3 34h-2l3 -34z"/></g>
+</g>
+<ellipse class="fire-glow" cx="110" cy="387" rx="185" ry="175" fill="url(#fireGlow)"/><ellipse class="lamp-glow" cx="738" cy="364" rx="290" ry="215" fill="url(#lampGlow)"/>
+<g transform="translate(-302 32) scale(.9 1.2)"><rect x="371" y="239" width="174" height="103" fill="#655242"/><rect x="380" y="248" width="156" height="92" fill="#9a8060"/>
+<g class="fireplace-bricks"><path d="M380 262h156M380 276h156M380 290h156M380 304h156M380 318h156"/><path d="M420 248v14M460 248v14M500 248v14M400 262v14M440 262v14M480 262v14M520 262v14M420 276v14M460 276v14M500 276v14M400 290v14M440 290v14M480 290v14M520 290v14M420 304v14M460 304v14M500 304v14M400 318v14M440 318v14M480 318v14M520 318v14"/></g>
+<path d="M362 236h192v13H362z" fill="#c6a76c"/><path d="M354 228h209v10H354z" fill="#a77f4c"/><rect x="397" y="260" width="122" height="78" fill="#221f1b"/><rect x="406" y="270" width="104" height="61" fill="#151916"/><path d="M419 327h80v8h-80z" fill="#b79c69"/>
+<g aria-label="壁炉台上的小型蕨类花瓶"><path d="M445 237h28l-3 11h-22z" transform="translate(-302 32) scale(.9 1.2)" fill="#76453a" stroke="#33241b" stroke-width="2"/><path d="M455 238v-15m0 9-9-7m9 3 8-10m-8 14 11-5m-11-1-1-10" transform="translate(-302 32) scale(.9 1.2)" fill="none" stroke="#83906a" stroke-width="3" stroke-linecap="square"/><path d="M447 231h6v3h-6zM459 224h6v3h-6zM463 232h6v3h-6zM451 219h6v3h-6z" transform="translate(-302 32) scale(.9 1.2)" fill="#a5aa76"/></g>
+<g class="fireplace-flames"><path d="M442 325q-15-25 3-42 2 18 9 23-2-29 19-46 0 23 11 33 15 16-1 32z" fill="#ad5433"/><path d="M455 326q-9-17 2-29 3 10 7 14-2-21 12-32 0 16 8 23 9 12-2 24z" fill="#e18139"/><path d="M468 327q-5-14 4-23 3 7 5 11-1-13 7-20 2 11 6 17 4 9-3 15z" fill="#f3c35d"/><path d="M477 326q-2-9 4-14 1 7 4 10v4z" fill="#fff0a2"/></g>
+</g>
+<rect y="442" width="960" height="98" fill="url(#woodFloorPattern)"/>
+<g stroke="#674c34" stroke-width="1" opacity=".35"><path d="M0 467h960M0 500h960M145 442v98M380 442v98M635 442v98M855 442v98"/></g><path d="M277 458h398v75H277z" fill="#684039"/><path d="M293 466h366v59H293z" fill="#a2824c"/><path d="M307 474h338v43H307z" fill="#405441"/><path d="M314 480h324v31H314z" fill="none" stroke="#748063" stroke-width="1.5"/><path d="M320 485h312v21H320z" fill="none" stroke="#344539" stroke-width="1"/><g fill="#c09d5f"><path d="M322 482h8v8h-8zM358 504h8v8h-8zM616 482h8v8h-8zM584 504h8v8h-8zM465 479h22v4h-22z"/></g><g fill="none" stroke="#b69a62" stroke-width="1.5" shape-rendering="crispEdges"><path d="M476 486h8v4h-8zM468 490h8v4h-8zM484 490h8v4h-8zM476 494h8v4h-8zM468 498h8v4h-8zM484 498h8v4h-8zM476 502h8v4h-8z"/><path d="M456 494h8v4h-8zM496 494h8v4h-8z"/></g>
+<g transform="translate(299 56) scale(.78)"><g id="record-player" class="record-player" aria-label="立式木柜留声机">
+<path d="M695 330l8-50 128-2 10 51-12 9H704z" fill="#60412b" stroke="#26190f" stroke-width="5"/>
+<path d="M703 326l7-39 111-1 9 39z" fill="#ad8751" stroke="#dac17d" stroke-width="3"/>
+<path d="M714 318l5-26h91l7 26z" fill="#725334" stroke="#8a6840" stroke-width="2"/>
+<path d="M725 306h66v3h-66z" fill="#c3a268" opacity=".72"/>
+<ellipse cx="768" cy="305" rx="29" ry="18" fill="#211b16" stroke="#e0c37c" stroke-width="3"/>
+<ellipse id="record-disc" cx="768" cy="305" rx="24" ry="15" fill="#101211" stroke="#9f804e" stroke-width="2"/>
+<g stroke="#555953" stroke-width=".75" opacity=".82"><ellipse cx="768" cy="305" rx="20" ry="12.5" fill="none"/><ellipse cx="768" cy="305" rx="17" ry="10.6" fill="none"/><ellipse cx="768" cy="305" rx="14" ry="8.75" fill="none"/><ellipse cx="768" cy="305" rx="11" ry="6.9" fill="none"/><ellipse cx="768" cy="305" rx="8" ry="5" fill="none"/></g>
+<defs><clipPath id="record-surface-clip"><ellipse cx="768" cy="305" rx="23" ry="14"/></clipPath></defs>
+<g clip-path="url(#record-surface-clip)"><g transform="translate(768 305) scale(1 .8)"><g id="record-spin-layer" transform="rotate(0)" shape-rendering="crispEdges">
+<g fill="#858579" opacity=".85"><path d="M10-8h3v1h-3zM16-4h3v1h-3zM18 4h2v1h-2zM12 10h3v1h-3zM-5 12h3v1h-3zM-14 7h2v1h-2zM-18-2h3v1h-3zM-12-11h2v1h-2z"/></g>
+<g fill="none" stroke="#858579" stroke-width=".8" opacity=".72"><path d="M11-11a15 15 0 0 1 5 5M-15-2a16 16 0 0 1 3-7M5 15a16 16 0 0 1-8 1M17 1a17 17 0 0 1-2 8"/></g>
+<g aria-label="旋转唱片中心标签"><ellipse cx="0" cy="0" rx="6.2" ry="4.84" fill="#71372d" stroke="#b49961" stroke-width=".75"/><ellipse cx="0" cy="0" rx="4.7" ry="3.67" fill="none" stroke="#c0a36a" stroke-width=".45"/><path d="M-3.8-2.3h7.6M-4.5 2.1h9" stroke="#d3bd86" stroke-width=".5" opacity=".8"/><text x="0" y=".75" text-anchor="middle" fill="#f0d99b" font-family="monospace" font-size="2.35" letter-spacing=".28">LONDON</text></g>
+</g></g></g>
+<circle cx="768" cy="305" r="1.2" fill="#090b0a" stroke="#9a8e72" stroke-width=".55" aria-label="唱片轴孔"/><circle cx="768" cy="305" r=".35" fill="#d4bb83"/>
+<g id="record-arm"><circle cx="811" cy="298" r="7" fill="#d8b971" stroke="#45331f" stroke-width="3"/><path d="M811 298L838 269" fill="none" stroke="#dbc17c" stroke-width="3.5"/><path d="M834 267l4-4 5 1 2 4-4 4-5-1z" fill="#ded0a3" stroke="#51452f" stroke-width="1.5"/><path d="M838 270L841 266" stroke="#f1e4bd" stroke-width="1.5"/><circle cx="841" cy="266" r="1.25" fill="#342a1b" stroke="#e8d6a6" stroke-width=".65"/></g>
+
+<!-- Fixed upper chassis and sound grille; storage is only behind the two lower doors. -->
+<g id="gramophone-chassis" aria-label="固定的留声机主体与发声格栅">
+  <path d="M700 337h132v162l-8 8H708l-8-8z" fill="#4a3020" stroke="#21160e" stroke-width="5"/>
+  <path d="M706 343h120v148H706z" fill="#754d2e" stroke="#c09a5b" stroke-width="3"/>
+  <path d="M711 349h110v5H711zM711 485h110v4H711z" fill="#d2ad67"/>
+  <path d="M711 357h110v4H711zM711 480h110v4H711z" fill="#4a3020"/>
+  <path d="M714 360h104M714 477h104" stroke="#d3ae69" stroke-width="1" opacity=".72"/>
+  <path d="M714 359h49v57h-49zM769 359h49v57h-49z" fill="#563b28" stroke="#d0ad68" stroke-width="2"/>
+  <path d="M720 365h37v44h-37zM775 365h37v44h-37z" fill="#68482e" stroke="#9c7746" stroke-width="1"/>
+  <path d="M724 370h29v3h-29zM724 378h29v3h-29zM724 386h29v3h-29zM724 394h29v3h-29zM724 402h29v3h-29zM779 370h29v3h-29zM779 378h29v3h-29zM779 386h29v3h-29zM779 394h29v3h-29zM779 402h29v3h-29z" fill="#c29a58"/>
+  <path d="M710 419h112v4H710z" fill="#332319"/><path d="M712 419h108v1H712z" fill="#c4a168"/>
+  <path d="M708 495h11l-1 8 4 5-4 7h-13l3-8-3-5zM809 495h11l3 7-3 5 3 8h-13l-4-7 4-5z" fill="#563922" stroke="#291b11" stroke-width="2"/>
+  <path d="M696 496h140v8H696z" fill="#392519" stroke="#b18b50" stroke-width="2"/>
+</g>
+<g id="cabinet-original" aria-label="关闭的两扇唱片柜门">
+  <path d="M714 423h49v55h-49zM769 423h49v55h-49z" fill="#60432c" stroke="#c19b5b" stroke-width="2"/>
+  <path d="M720 430h37v42h-37zM775 430h37v42h-37z" fill="#704c2e" stroke="#987344" stroke-width="1"/>
+  <path d="M738 437h3v26h-3zM793 437h3v26h-3z" fill="#b28a4e"/>
+  <circle cx="754" cy="451" r="2" fill="#dec67f"/><circle cx="779" cy="451" r="2" fill="#dec67f"/>
+</g>
+<g id="cabinet-opened" style="display:none" aria-label="两扇下柜门打开，里面竖放着薄纸套唱片">
+  <rect x="713" y="424" width="106" height="53" fill="#211b15"/>
+  <path d="M716 426h100v3H716zM716 474h100v3H716zM764 426h4v49h-4z" fill="#8a653f"/>
+  <path d="M718 430h43v3h-43zM771 430h43v3h-43z" fill="#0f1310" opacity=".65"/>
+  <g class="record-sleeves" aria-label="薄纸套竖立收纳">
+    <path d="M718 435h2v38h-2z" fill="#a68d60"/><path d="M718 435h1v35h-1z" fill="#e3d4ae" opacity=".45"/>
+    <path d="M721 434h2v39h-2z" fill="#c8b88b"/><path d="M721 434h1v36h-1z" fill="#e3d4ae" opacity=".45"/>
+    <path d="M724 433h2v40h-2z" fill="#847453"/><path d="M724 433h1v37h-1z" fill="#e3d4ae" opacity=".45"/>
+    <path d="M727 435h2v38h-2z" fill="#b5a279"/><path d="M727 435h1v35h-1z" fill="#e3d4ae" opacity=".45"/>
+    <path d="M730 434h2v39h-2z" fill="#91846a"/><path d="M730 434h1v36h-1z" fill="#e3d4ae" opacity=".45"/>
+    <path d="M733 433h2v40h-2z" fill="#d3c198"/><path d="M733 433h1v37h-1z" fill="#e3d4ae" opacity=".45"/>
+    <path d="M735 435l21-3v40l-21 2z" fill="#756243"/>
+    <path d="M737 433l20-2v40l-20 2z" fill="#c6b58b" stroke="#8b754f" stroke-width="1"/>
+    <path d="M739 436l16-2M739 469l16-2" stroke="#ab966c" stroke-width="1"/>
+    <ellipse cx="747" cy="451" rx="7" ry="9" fill="#292a22"/>
+    <ellipse cx="747" cy="451" rx="3.5" ry="4.5" fill="#8f6845"/>
+    <path d="M744 448h6v1h-6zM745 453h4v1h-4z" fill="#c9b887"/>
+    <path d="M740 439h5v1h-5zM748 438h5v1h-5z" fill="#917a50"/>
+  </g>
+  <g class="record-sleeves" aria-label="薄纸套竖立收纳">
+    <path d="M771 435h2v38h-2z" fill="#a68d60"/><path d="M771 435h1v35h-1z" fill="#e3d4ae" opacity=".45"/>
+    <path d="M774 434h2v39h-2z" fill="#c8b88b"/><path d="M774 434h1v36h-1z" fill="#e3d4ae" opacity=".45"/>
+    <path d="M777 433h2v40h-2z" fill="#847453"/><path d="M777 433h1v37h-1z" fill="#e3d4ae" opacity=".45"/>
+    <path d="M780 435h2v38h-2z" fill="#b5a279"/><path d="M780 435h1v35h-1z" fill="#e3d4ae" opacity=".45"/>
+    <path d="M783 434h2v39h-2z" fill="#91846a"/><path d="M783 434h1v36h-1z" fill="#e3d4ae" opacity=".45"/>
+    <path d="M786 433h2v40h-2z" fill="#d3c198"/><path d="M786 433h1v37h-1z" fill="#e3d4ae" opacity=".45"/>
+    <path d="M788 435l21-3v40l-21 2z" fill="#756243"/>
+    <path d="M790 433l20-2v40l-20 2z" fill="#c6b58b" stroke="#8b754f" stroke-width="1"/>
+    <path d="M792 436l16-2M792 469l16-2" stroke="#ab966c" stroke-width="1"/>
+    <ellipse cx="800" cy="451" rx="7" ry="9" fill="#292a22"/>
+    <ellipse cx="800" cy="451" rx="3.5" ry="4.5" fill="#8f6845"/>
+    <path d="M797 448h6v1h-6zM798 453h4v1h-4z" fill="#c9b887"/>
+    <path d="M793 439h5v1h-5zM801 438h5v1h-5z" fill="#917a50"/>
+  </g>
+  <!-- Solid walnut doors: top/end grain, exposed thickness and inset front panels. -->
+  <defs>
+    <pattern id="cabinet-door-grain" width="18" height="32" patternUnits="userSpaceOnUse">
+      <rect width="18" height="32" fill="#77502e"/>
+      <path d="M2 0v32M7 0v13l2 5v14M14 0v32" fill="none" stroke="#4f351f" stroke-width="1" opacity=".5"/>
+      <path d="M4 2v18M11 11v18" stroke="#a17743" stroke-width="1" opacity=".4"/>
+    </pattern>
+  </defs>
+  <path d="M686 489l30-12 4 4-30 13zM818 477l30 12-4 5-30-13z" fill="#12150f" opacity=".5"/>
+  <g id="cabinet-left-door" aria-label="带木质厚边和内嵌面板的左柜门">
+    <path d="M714 423l-24 12-4-2 24-12z" fill="#bb935b" stroke="#604124" stroke-width="1"/>
+    <path d="M690 435l-4-2v55l4 2z" fill="#a17843"/>
+    <path d="M687 436v48" stroke="#c0995b" stroke-width="1"/>
+    <path d="M714 423l-24 12v55l24-13z" fill="url(#cabinet-door-grain)" stroke="#3a281a" stroke-width="1.5"/>
+    <path d="M711 429l-18 9v46l18-9z" fill="#a37b45"/>
+    <path d="M709 434l-13 7v38l13-7z" fill="#4f3824"/>
+    <path d="M708 436l-10 5v33l10-5z" fill="url(#cabinet-door-grain)"/>
+    <path d="M698 442v31l10-5" fill="none" stroke="#b38c50" stroke-width="1"/>
+    <path d="M692 439v45M712 428v45" stroke="#c39a5a" stroke-width="1" opacity=".7"/>
+    <path d="M690 490l24-13-4-2-24 13z" fill="#49331e"/>
+    <path d="M692 450l4-2v7l-4 2z" fill="#d1af6b" stroke="#6a4d2c" stroke-width="1"/>
+  </g>
+  <g id="cabinet-right-door" aria-label="带木质厚边和内嵌面板的右柜门">
+    <path d="M818 423l24 12 4-2-24-12z" fill="#bb935b" stroke="#604124" stroke-width="1"/>
+    <path d="M842 435l4-2v55l-4 2z" fill="#634323"/>
+    <path d="M845 436v48" stroke="#9d7541" stroke-width="1"/>
+    <path d="M818 423l24 12v55l-24-13z" fill="url(#cabinet-door-grain)" stroke="#3a281a" stroke-width="1.5"/>
+    <path d="M821 429l18 9v46l-18-9z" fill="#a37b45"/>
+    <path d="M823 434l13 7v38l-13-7z" fill="#4f3824"/>
+    <path d="M824 436l10 5v33l-10-5z" fill="url(#cabinet-door-grain)"/>
+    <path d="M824 436v32l10 6" fill="none" stroke="#b38c50" stroke-width="1"/>
+    <path d="M820 428v45M840 439v45" stroke="#c39a5a" stroke-width="1" opacity=".7"/>
+    <path d="M842 490l-24-13 4-2 24 13z" fill="#49331e"/>
+    <path d="M836 448l4 2v7l-4-2z" fill="#d1af6b" stroke="#6a4d2c" stroke-width="1"/>
+  </g>
+</g>
+
+<path d="M829 363h7v28h-7zM834 362h13v5h-13zM834 388h14v5h-14z" fill="#c69f5d" stroke="#4f3821" stroke-width="2"/>
+<circle cx="814" cy="350" r="4" fill="#7e6036" stroke="#e3c982" stroke-width="1.4"/><circle cx="814" cy="350" r="1.3" fill="#ead89e"/><rect x="740" y="482" width="22" height="5" fill="#c9a65f"/><circle cx="750" cy="484" r="1.4" fill="#43311d"/>
+</g></g>
+<g transform="translate(89 72) scale(.82)"><ellipse cx="555" cy="400" rx="425" ry="96" fill="#181d18" opacity=".45"/><g id="room-desk-art"><path d="M142 339h699v28H142z" fill="#98683d"/><path d="M128 327h729v16H128z" fill="#c09250"/><path d="M169 366h26v134h-26zM786 366h26v134h-26z" fill="#553c2b"/><path d="M209 378h592v68H209z" fill="#69492f"/><path d="M245 386h167v47H245zM432 386h166v47H432zM618 386h147v47H618z" fill="#765335"/><path d="M314 405h28v5h-28zM500 405h28v5h-28zM679 405h28v5h-28z" fill="#c69e59"/><path d="M153 347h678v4H153z" fill="#e0b86e"/></g>
+<path d="M222 320h222v8H222z" fill="#29352e"/><path d="M242 294h178v27H242z" fill="#d7c8a4"/><path d="M251 288h174v28H251z" fill="#eee1bf"/><g stroke="#958263" stroke-width="3"><path d="M263 296h138M263 303h121M263 310h144"/></g><path d="M390 293l14 9-14 12z" fill="#a7553e"/>
+<path d="M478 299h22v27h-22z" fill="#1c2622"/><path d="M473 296h32v6h-32z" fill="#c4a56a"/><path d="M488 265h4v30h-4zM490 252h3v14h-3z" fill="#e6d9bb"/><circle cx="555" cy="309" r="15" fill="#a98147"/><circle cx="555" cy="309" r="9" fill="#26332d"/><path d="M565 319l23 18-4 5-24-18z" fill="#c3a05e"/><path d="M605 305h81v26h-81z" fill="#d7c7a3"/><path d="M611 311h58v2h-58zM611 318h47v2h-47z" fill="#958366"/><path d="M674 305l12 13-12 13z" fill="#a7553e"/>
+<path d="M738 326h77v8h-77z" fill="#c2a05e"/><path d="M747 320h59v5h-59z" fill="#9a7545"/><path d="M775 315v-58m0 36-21-17m21 9 20-20m-20 6-3-20" stroke="#8d663b" stroke-width="6"/><g fill="#77895b"><path d="M737 273h18v13h-18zM750 258h18v14h-18zM780 258h19v14h-19zM795 274h17v13h-17zM761 239h17v15h-17zM781 238h17v16h-17zM750 286h17v14h-17zM786 286h18v14h-18z"/></g><g fill="#a2a36c"><path d="M744 276h6v5h-6zM757 263h6v5h-6zM786 263h6v5h-6zM800 278h6v5h-6zM766 244h6v5h-6z"/></g><path d="M728 235q3-39 47-43 45 5 49 43v83H728z" fill="#b7c9b8" opacity=".13" stroke="#d5dfd0" stroke-width="4"/><path d="M738 319h76" stroke="#d5dfd0" stroke-width="3" opacity=".7"/>
+<path d="M688 327h100v8H688z" fill="#d0aa62"/><path d="M739 318h8v-41h-8z" fill="#b48a4c"/><path d="M719 272h48v8h-48z" fill="#e0bd74"/><path d="M709 271l12-35h44l12 35z" fill="#b96648"/><path d="M722 243h42v7h-42z" fill="#e5c77f"/><path d="M728 255h31v7h-31z" fill="#f3dc9a"/><path d="M738 265h14v9h-14z" fill="#fff0b6"/>
+<g fill="#e4cb88" opacity=".55"><path d="M330 215h4v4h-4zM597 187h3v3h-3zM621 286h4v4h-4zM102 221h3v3h-3zM902 357h4v4h-4zM539 244h3v3h-3z"/></g>
+<g aria-hidden="true" shape-rendering="crispEdges">
+<g><path d="M390 248h120v4H390zM390 338h120v3H390z" fill="#c9ae79"/><g fill="#ffcf69"><path d="M459 300h4v5h-4zM479 309h4v4h-4zM446 318h3v4h-3z"/></g></g>
+<path d="M716 269h36v3h-36zM730 244h25v3h-25z" fill="#fff0b6"/>
+<g transform="translate(89 72) scale(.82)"><path d="M143 329h699v3H143zM146 352h692v3H146z" fill="#e2bd72"/><path d="M224 382h579v3H224zM224 441h579v3H224z" fill="#3b2a20"/><g fill="#d9b466"><rect x="320" y="403" width="15" height="4"/><rect x="506" y="403" width="15" height="4"/><rect x="681" y="403" width="15" height="4"/></g><path d="M165 339h92v3h-92zM267 339h106v3H267zM648 339h89v3h-89z" fill="#e2b971"/></g>
+<g transform="translate(89 72) scale(.82)"><path d="M479 302h3v14h-3zM732 246h3v53h-3zM810 250h2v45h-2z" fill="#e8e4ca" opacity=".65"/></g>
+</g></g></svg>
+
+<button class="room-gramophone-hit" id="record-player-hit" data-hint-target="#record-player" data-hint-box="695 260 150 163" data-hint-padding="1" data-tip="播放留声机" type="button" aria-label="点击立式留声机播放或暂停唱片" title="点击播放留声机"></button>
+<button class="cabinet-hit" id="cabinet-hit" data-hint-target="#cabinet-original" data-hint-open-target="#cabinet-opened" data-hint-open-box="686 421 160 69" data-hint-padding="1" type="button" aria-label="打开唱片柜" title="打开唱片柜" aria-expanded="false" aria-controls="cabinet-menu"></button>
+<div class="cabinet-menu" id="cabinet-menu" role="group" aria-label="唱片柜选项" hidden>
+  <button type="button" id="change-record">更换唱片</button>
+  <button type="button" id="close-cabinet">关闭唱片柜</button>
+</div>
+<div class="record-notice" id="record-selection" role="dialog" aria-labelledby="record-notice-title" aria-describedby="record-notice-copy" hidden>
+  <h2 id="record-notice-title">更换唱片</h2>
+  <p id="record-notice-copy">新的唱片正在整理，曲目稍后加入。</p>
+  <button type="button" id="confirm-record-notice">确认</button>
+</div>
+
+<div class="wash"></div><div class="meta">LONDON · WOOLF'S STUDY</div>
+
+<div class="env-controls">
+  <button class="env-btn" id="time-toggle" type="button" title="切换白天/夜晚">🌙 夜晚</button>
+  <button class="env-btn" id="weather-toggle" type="button" title="切换天气">🌧️ 雨天</button>
+</div>
+
+<audio id="rain-audio" preload="auto" src="rain-window-source.mp3"></audio><audio id="music-audio" preload="auto" src="chopin-nocturne-source.mp3"></audio>
+
+<details class="explore" id="desk"><summary class="desk-hotspot" data-hint-target="#room-desk-art" data-hint-padding="8"><span class="enter-label">走近书桌</span><span class="leave-label">← 回到书房</span></summary><div class="desk-ui"><div class="desk-top-view" aria-label="书桌表面俯视图"><svg class="topdown-art" viewBox="0 0 960 540" role="img" aria-label="深色胡桃木桌面、绿皮桌垫、封闭的植物卷宗、蘸水笔和墨水瓶" shape-rendering="crispEdges" preserveAspectRatio="xMidYMid slice">
+<defs><pattern id="grain" width="160" height="76" patternUnits="userSpaceOnUse"><rect width="160" height="76" fill="#63452f"/><path d="M0 13h160v3H0zM0 39h91v2H0zM104 40h56v2h-56zM0 67h160v2H0z" fill="#79563a"/><path d="M20 23h62v2H20zM98 55h44v2H98zM122 8h22v2h-22z" fill="#4c3425" opacity=".72"/><path d="M42 0v76M118 0v76" stroke="#402c20" stroke-width="2" opacity=".55"/></pattern><linearGradient id="leather" x2=".85" y2="1"><stop stop-color="#81563a"/><stop offset=".48" stop-color="#69432f"/><stop offset="1" stop-color="#4a3022"/></linearGradient><linearGradient id="paperedge" x2="0" y2="1"><stop stop-color="#fff0ca"/><stop offset="1" stop-color="#ad9165"/></linearGradient><radialGradient id="pool"><stop stop-color="#efbb64" stop-opacity=".38"/><stop offset="1" stop-color="#efbb64" stop-opacity="0"/></radialGradient><linearGradient id="glass" x2="1" y2="1"><stop stop-color="#63756a"/><stop offset=".45" stop-color="#263b34"/><stop offset="1" stop-color="#111c18"/></linearGradient></defs>
+<rect width="960" height="540" fill="url(#grain)"/><rect width="960" height="540" fill="#160f0b" opacity=".19"/><ellipse cx="723" cy="205" rx="300" ry="250" fill="url(#pool)"/>
+<rect x="13" y="13" width="934" height="514" fill="none" stroke="#211710" stroke-width="15"/><rect x="22" y="22" width="916" height="496" fill="none" stroke="#a47a45" stroke-width="3"/><rect x="30" y="30" width="900" height="480" fill="none" stroke="#d0a765" stroke-width="1"/><g fill="#d2ad66"><path d="M32 30h35v5H32zM32 30v35h5V30zM893 30h35v5h-35zM923 30v35h5V30zM32 505h35v5H32zM32 475v35h5v-35zM893 505h35v5h-35zM923 475v35h5v-35z"/></g>
+<rect x="104" y="78" width="747" height="389" fill="#241a13"/><rect x="98" y="72" width="747" height="389" fill="#23362d" stroke="#bd9658" stroke-width="5"/><rect x="109" y="83" width="725" height="367" fill="none" stroke="#718064" stroke-width="2" stroke-dasharray="3 7"/><path d="M118 96h707M118 438h707" stroke="#34493c" stroke-width="3"/>
+<circle cx="474" cy="104" r="17" fill="#1b2b23" stroke="#897348" stroke-width="2"/><path d="M466 111v-14h5l3 8 3-8h5v14h-4v-8l-4 8-4-8v8z" fill="#b89b60" opacity=".75"/>
+<path d="M183 150h126v74h-126z" fill="#d7c39b" stroke="#5a442b" stroke-width="4"/><path d="M193 160h106v54H193z" fill="#eee0bd"/><path d="M203 171h66v3h-66zM203 181h78v2h-78zM203 191h59v2h-59z" fill="#9a835d"/><circle cx="285" cy="202" r="5" fill="#9f7848"/><path d="M186 216h117" stroke="#aa8a57" stroke-width="2"/>
+<g id="book-pages-underlay"><path d="M352 139h125v281H352z" fill="#f0e3c4" stroke="#4e3825" stroke-width="5"/><path d="M478 139h130v281H478z" fill="#e6d6b1" stroke="#4e3825" stroke-width="5"/><path d="M477 140v278" stroke="#8c6d43" stroke-width="4"/><path d="M369 164h90M369 178h84M369 192h92M369 210h74M369 348h91M369 363h85M494 164h94M494 178h89M494 192h90M494 210h76" stroke="#b6a17b" stroke-width="2"/></g>
+<g id="closed-book" transform="rotate(-2 480 280)">
+<path d="M351 149l267-5 18 17-5 288-17 15-263-8z" fill="#1b120d" opacity=".68"/>
+<path d="M364 137h244l14 13v284l-13 13H364l-9-12V150z" fill="#bca47a" stroke="#281b13" stroke-width="5"/>
+<path d="M372 145h233v274H372z" fill="url(#paperedge)"/><path d="M376 155h225M376 165h225M376 404h225M376 414h225" stroke="#a88e66" stroke-width="2" opacity=".75"/>
+<path d="M608 151l8 7v268l-8 7z" fill="#806341"/><path d="M613 159v260" stroke="#d8c496" stroke-width="2"/>
+<path d="M350 132h257v292H350z" fill="url(#leather)" stroke="#281a12" stroke-width="7"/>
+<path d="M359 141h239v274H359z" fill="none" stroke="#c49a5c" stroke-width="3"/>
+<path d="M367 149h224v258H367z" fill="none" stroke="#9c7045" stroke-width="2"/>
+<path d="M350 132h26v292h-26z" fill="#42291b"/><path d="M359 143h5v270h-5zM370 143h3v270h-3z" fill="#bd9256"/><path d="M378 147v262" stroke="#342117" stroke-width="3" opacity=".8"/>
+<path d="M359 141h29v5h-24v24h-5zM586 141h12v29h-5v-24h-7zM359 386v24h24v5h-29v-29zM586 410h12v-29h-5v24h-7z" fill="#d0ab68"/>
+<path d="M479 166v32m0-20-14-10m14 18 13-12m-13 4 11-12" stroke="#b18b55" stroke-width="2" opacity=".7"/><path d="M461 194h36" stroke="#b18b55" stroke-width="2" opacity=".55"/>
+<g id="file-ribbon"><path d="M469 133h35v288h-35z" fill="#78352c" stroke="#49231b" stroke-width="3"/><path d="M474 136h5v282h-5zM494 136h5v282h-5z" fill="#bd7656"/><path d="M352 265h255v32H352z" fill="#84382d" stroke="#4b241c" stroke-width="3"/><path d="M355 270h249v5H355zM355 287h249v5H355z" fill="#bd7553"/></g>
+<ellipse cx="480" cy="292" rx="30" ry="9" fill="#281811" opacity=".65"/><circle cx="477" cy="280" r="27" fill="#4c251c"/><circle cx="474" cy="276" r="23" fill="#84382d" stroke="#d4ad66" stroke-width="3"/><circle cx="474" cy="276" r="16" fill="none" stroke="#c1845b" stroke-width="2"/><path d="M474 286v-20m0 12-7-6m7 2 7-7m-7 14 7-5" fill="none" stroke="#e3c17d" stroke-width="2"/><path d="M464 270h5v4h-5zM475 266h5v4h-5zM476 279h5v4h-5z" fill="#e3c17d"/><g id="case-lock"><path d="M567 342v-11a9 9 0 0 1 18 0v11" fill="none" stroke="#dfc176" stroke-width="5"/><rect x="563" y="339" width="27" height="23" rx="2" fill="#c5a35f" stroke="#533c22" stroke-width="3"/><rect x="567" y="343" width="19" height="14" fill="#ddc27d"/><circle cx="576.5" cy="348" r="2.4" fill="#514027"/><path d="M576 350v4" stroke="#514027" stroke-width="2"/></g>
+</g>
+<g transform="rotate(-26 737 295)" aria-label="玻璃蘸水笔：透明笔杆、螺旋储墨纹和细锥笔尖">
+<path d="M738 163l7 3 3 211-8 20-8-20 3-211z" fill="rgba(200,210,210,.5)" stroke="rgba(80,90,90,.4)" stroke-width="2"/>
+<path d="M738 171h4v199h-4z" fill="rgba(240,245,240,.35)"/>
+<path d="M733 199h16M733 209h16" stroke="rgba(180,190,190,.5)" stroke-width="1.5"/>
+<path d="M730 372h22v8l-5 8h-12l-5-8z" fill="rgba(190,200,200,.5)" stroke="rgba(80,90,90,.4)" stroke-width="1.5"/>
+<path d="M730 378h22" stroke="rgba(240,245,240,.6)" stroke-width="1.5"/>
+<path d="M735 386h12l10 24-16 27-16-27z" fill="rgba(210,220,220,.6)" stroke="rgba(80,90,90,.35)" stroke-width="1.5"/>
+<path d="M741 389v39" stroke="rgba(255,255,255,.7)" stroke-width="1.5"/>
+<circle cx="741" cy="399" r="2" fill="rgba(100,110,110,.4)"/>
+<path d="M741 402v24" stroke="rgba(100,110,110,.35)" stroke-width="1"/>
+<path d="M727 410l14 19 14-19" fill="none" stroke="rgba(220,230,230,.5)" stroke-width="1"/>
+</g>
+<g aria-label="正俯视的方形切面玻璃墨水器，中央圆形墨水口">
+<path d="M147 300h104v104H147z" fill="#120d0a" opacity=".66"/>
+<path d="M139 289h104v104H139z" fill="#14231e" stroke="#a9864e" stroke-width="3"/>
+<path d="M143 293h96v96h-96z" fill="#456355" stroke="#d0b16d" stroke-width="3"/>
+<path d="M143 293h28l20 20h-48z" fill="#94aa97" opacity=".72"/><path d="M239 293v29l-20 20v-49z" fill="#182c24" opacity=".86"/><path d="M143 389v-26l23 23z" fill="#b3c3ae" opacity=".46"/><path d="M239 389h-27l-18-18h45z" fill="#0d1915" opacity=".82"/>
+<path d="M149 299h84v84h-84z" fill="none" stroke="#78927e" stroke-width="2" opacity=".88"/><path d="M153 302l22 0 15 15M229 302l-13 0-12 12M153 380l16 0 11-11M229 380h-17l-11-11" fill="none" stroke="#d4e0ca" stroke-width="2" opacity=".72"/>
+<rect x="174" y="324" width="34" height="34" fill="#b89758" stroke="#f0d58c" stroke-width="3"/><rect x="178" y="328" width="26" height="26" fill="#6b5531" stroke="#d9bb76" stroke-width="2"/><circle cx="191" cy="341" r="10" fill="#111719" stroke="#413d38" stroke-width="2"/><ellipse cx="189" cy="338" rx="4" ry="2" fill="#a89aa6" opacity=".75"/><path d="M184 337h5v2h-5z" fill="#d1bfd1" opacity=".8"/>
+<path d="M139 382h104v11H139z" fill="#17241f" stroke="#9b804b" stroke-width="2"/><path d="M139 386h104v3H139z" fill="#d5b66c" opacity=".72"/><path d="M145 300h3v48h-3z" fill="#eef2dc" opacity=".72"/><path d="M236 354h3v26h-3z" fill="#8da394" opacity=".7"/>
+</g>
+<path d="M757 136l-35 32 15 14 40-30z" fill="#a88043" stroke="#4e3822" stroke-width="4"/><path d="M744 178l-13 25 27 15 16-27z" fill="#c19a54" stroke="#4e3822" stroke-width="4"/><path d="M731 198l25 13-14 12-25-12z" fill="#ddbd76" stroke="#5b4327" stroke-width="3"/><path d="M741 203l10 5-7 6-9-5z" fill="#fff0b1"/>
+<path d="M764 354l7-9 5 6 8-8 4 8 11-1-3 9 8 6-9 5 1 10-10-2-5 9-6-8-9 4 1-10-8-5 9-5z" fill="#89906a" stroke="#3d503e" stroke-width="2" opacity=".82"/><path d="M773 385l22-27M783 374l-1-10M789 368l9 1" stroke="#c1b37a" stroke-width="2"/>
+<circle cx="783" cy="296" r="36" fill="none" stroke="#b98e58" stroke-width="4" opacity=".32"/><circle cx="783" cy="296" r="31" fill="none" stroke="#d0aa6a" stroke-width="1" opacity=".27"/><g fill="#e1c98e" opacity=".65"><path d="M128 120h4v4h-4zM289 433h3v3h-3zM812 110h4v4h-4zM724 426h3v3h-3zM160 392h4v4h-4zM846 370h3v3h-3z"/></g>
+</svg><button class="case-reopen" id="case-reopen" data-hint-target="#book-pages-underlay" data-hint-padding="7" type="button" hidden>查看卷宗</button><div class="folio-target" data-hint-target="#closed-book" data-hint-padding="7" tabindex="0" aria-label="合起的卷宗，鼠标悬停查看"></div><div class="folio-hover" id="folio-hover" aria-hidden="true">卷宗已封存<br>去书架寻找植物目标</div><div class="desk-heading">植物探案所<small>THE WOOLF BOTANICAL CASEBOOK · LONDON</small></div><div class="target-stamp" id="target-stamp" hidden>橡树目标 · 已解封</div><div class="opened-case" id="opened-case" aria-label="打开的橡树卷宗">
+ <div class="case-spread">
+  <header class="case-head"><div><small>PRIVATE BOTANICAL FILE · NO. 01</small><h2>山顶的橡树</h2><span>VIRGINIA WOOLF · ORLANDO</span></div><button type="button" id="close-dossier" aria-label="合上卷宗">×</button></header>
+  <div class="case-body"><aside class="case-index"><b>勘查记录</b><span>目标　橡树</span><span>地点　山顶</span><span>状态　<em id="clue-count">0 / 5 条线索</em></span><div class="case-tree" aria-hidden="true"><svg viewBox="0 0 100 126" shape-rendering="crispEdges" role="img" aria-label="随线索逐步显形的像素橡树">
+<g class="tree-ghost" fill="#66745b"><path d="M34 7h25v4h8v5h8v7h6v10h5v14h-5v8h-6v8h-8v5h-7v5H38v-5h-8v-5h-8v-6h-6v-9h-5V38h5V27h6v-7h7v-7h5z"/><path d="M45 53h11v31h8v5h10v5h-6v-2H57v-4H49v8h8v4h-8v-2H39v-5H28v5h-9v-4h8v-4h12V83h6z"/></g>
+<g class="tree-piece" data-tree-key="canopy">
+<path fill="#536c48" d="M35 11h23v5h8v5h8v7h6v9h4v12h-5v7h-6v6h-8v5H38v-5h-8v-5h-8v-6h-6v-9h-4V38h5v-9h6v-7h7v-6h5z"/>
+<path fill="#405b3d" d="M21 34h10v6h-5v9h-5v-7h-4v-6h4zM67 32h10v7h-5v8h-5v-7h-4v-5h4zM31 20h9v5h-5v6h-6v-6h2zM54 17h8v6h-5v6h-5v-7h2z"/>
+<path fill="#71875a" d="M31 25h8v5h-4v5h-6v-6h2zM45 14h8v5h-4v6h-5v-6h1zM62 28h8v5h-4v5h-5v-6h1zM24 43h7v5h-4v6h-5v-7h2zM56 45h9v5h-5v7h-6v-7h2zM39 33h8v5h-5v6h-5v-7h2z"/>
+</g>
+<g class="tree-piece" data-tree-key="root" fill="#795538"><path d="M43 49h15v37h8v5h12v5h-8v-2H57v-4h-8v8h8v4H45v-2H34v-4H20v5h-9v-4h8v-5h14v-5h10z"/><path d="M44 55h4v24h-4zM53 50h4v29h-4z" fill="#9a7048"/><path d="M45 64h4v6h-4zM52 75h5v4h-5z" fill="#bd9260"/></g>
+<g class="tree-piece" data-tree-key="leaf"><g fill="#a5b07a"><path d="M28 29h5v3h4v5h-4v4h-5v-3h-4v-5h4zM43 18h5v3h4v5h-4v4h-5v-3h-4v-5h4zM62 36h5v3h4v5h-4v4h-5v-3h-4v-5h4zM31 48h4v3h4v4h-4v4h-4v-3h-4v-4h4zM58 20h4v3h4v4h-4v4h-4v-3h-4v-4h4z"/></g><g fill="#d5bd76"><path d="M22 37h2v2h-2zM39 25h2v2h-2zM69 43h2v2h-2zM34 54h2v2h-2zM61 27h2v2h-2z"/></g><path d="M31 38v8M46 28v7M66 45v7" stroke="#c4a45f" stroke-width="1"/><path fill="#8d6339" d="M72 56h3v4h-3zM75 58h4v2h-4zM26 59h3v4h-3z"/></g>
+<g class="tree-piece" data-tree-key="poem"><path d="M72 103h16v3H72zM74 95h12v8H74z" fill="#8b4137" stroke="#d2b16e" stroke-width="1.5"/><path d="M76 97h8v1h-8zM80 96v7" stroke="#e0c986" stroke-width="1"/><path d="M89 104h3v2h-3z" fill="#c6a766"/></g>
+<g class="tree-piece" data-tree-key="time" fill="#d1b66d"><path d="M46 73h8v2h-8zM45 78h10v2H45zM47 83h7v2h-7z"/><path d="M61 66h3v3h-3zM36 71h3v3h-3z"/></g>
+<path d="M5 112h90v2H5zM11 116h78v2H11z" fill="#887047" opacity=".55"/>
+</svg></div></aside>
+   <div class="case-reading">
+    <article class="case-page active" data-case-page="0"><div class="folio-line"><span>FOLIO I</span><span>ORLANDO · CHAPTER I</span></div><h3>证词一 · 山顶的橡树</h3><p><span class="sentence-target" data-keys="canopy" tabindex="0" role="button">他快步向山上走去，穿过羊齿草和荆棘丛，惊动了鹿和鸟儿，来到山顶，上面只有一棵浓阴如盖的大橡树。</span><span class="sentence-target" data-keys="" tabindex="0" role="button">这里地势高耸，英格兰十九郡尽收眼底；无云的日子能看三十郡，天朗气清之时更可看到四十郡。</span><span class="sentence-target" data-keys="" tabindex="0" role="button">远处的英吉利海峡碧波涟涟，近处的河面上游船浮泛。</span><span class="sentence-target" data-keys="" tabindex="0" role="button">西班牙大帆船出海了，舰队喷出团团白烟，还传来沉闷的炮声；海边的要塞和茵茵绿草之中的古堡现出身影；这里一处了望塔，那里一处堡垒，还有一些大宅，譬如奥兰多父亲的这一所，大得像峡谷中一座墙垣环绕的城镇。</span><span class="sentence-target" data-keys="" tabindex="0" role="button">东西出伦敦城的尖塔和笼罩城市的烟雾；在天边，没准风向对头的时候，斯诺登峰陡峭的峰巅和锯齿般的山脊，会从云中显露她的峥嵘。</span><span class="sentence-target" data-keys="" tabindex="0" role="button">半晌，奥兰多站在那里点数，凝视，辨认。</span><span class="sentence-target" data-keys="" tabindex="0" role="button">一边的宅邸属于他父亲，另一边的属于他叔父。</span><span class="sentence-target" data-keys="" tabindex="0" role="button">他的姑母拥有树丛中那三座高耸的角楼。</span><span class="sentence-target" data-keys="" tabindex="0" role="button">荒野和森林属于他们，还有野鸡和鹿、狐狸、獾和蝴蝶。</span></p><p><span class="sentence-target" data-keys="root" tabindex="0" role="button">他叹了口气，深深地，倒在地上——他的动作中有一种激情，配得上这个词——他喜欢在夏日短暂的绚烂之下，感受大地的脊梁在他身下；因为他把橡树坚硬的根就当作大地的脊梁；或者，意象接着意象，那是他骑着一匹大马的背，或是一艘颠簸船只的甲板——事实上，只要坚硬就行，因为他需要某种东西来系住他漂浮的心。</span><span class="sentence-target" data-keys="" tabindex="0" role="button">一个小时左右之后，山谷里传来一声号角。</span></p></article><article class="case-page" data-case-page="1"><div class="folio-line"><span>FOLIO II</span><span>ORLANDO · CHAPTER V</span></div><h3>证词二 · 诗稿的痕迹</h3><p><span class="sentence-target" data-keys="poem" tabindex="0" role="button">她把手伸进衬衫的胸口，仿佛在找什么吊坠或失去爱情的遗物，却什么也没掏出来，只掏出一卷纸，海渍斑斑、血渍斑斑、旅渍斑斑——那是她的诗稿《大橡树》。</span><span class="sentence-target" data-keys="poem" tabindex="0" role="button">她带着它已经这么多年了，经历了那么多危险，许多页面被污损，有些被撕破；而与吉普赛人在一起时缺少写字的纸张，迫使她在页边和行间密密麻麻地补写，直到手稿看起来像一件仔仔细细织补过的衣物。</span><span class="sentence-target" data-keys="time" tabindex="0" role="button">她翻回第一页，读到日期，1586，用她稚气的笔迹写着。</span><span class="sentence-target" data-keys="time" tabindex="0" role="button">她从事这首诗已经快三百年了。</span><span class="sentence-target" data-keys="" tabindex="0" role="button">是时候做个了结了。</span></p><p><span class="sentence-target" data-keys="" tabindex="0" role="button">她站起身来，走到窗边。</span><span class="sentence-target" data-keys="" tabindex="0" role="button">“毕竟，”她想，“什么都没有变。</span><span class="sentence-target" data-keys="" tabindex="0" role="button">房子、花园一如从前。</span><span class="sentence-target" data-keys="" tabindex="0" role="button">没有一把椅子被移动过，没有一件小摆设被卖掉。</span><span class="sentence-target" data-keys="" tabindex="0" role="button">同样的步道，同样的草坪，同样的树木，同样的池塘，我敢说，里面还是同样的鲤鱼。</span><span class="sentence-target" data-keys="" tabindex="0" role="button">不错，现在王位上坐的是维多利亚女王，而不是伊丽莎白女王，但又有什么分别呢。</span><span class="sentence-target" data-keys="" tabindex="0" role="button">……”管家巴克斯特和女管家巴塞洛缪进来收拾茶具。</span></p></article><article class="case-page" data-case-page="2"><div class="folio-line"><span>FOLIO III</span><span>ORLANDO · CHAPTER VI</span></div><h3>证词三 · 重返与放下</h3><p><span class="sentence-target" data-keys="" tabindex="0" role="button">长满羊齿草的小路，蜿蜒曲折地往山上延伸，一直通往山顶的那棵大橡树。</span><span class="sentence-target" data-keys="time leaf" tabindex="0" role="button">比起1588年她初见它时的模样，如今的大橡树更高大、更粗壮，也更龙蟠虬结，但它依然风华正茂，在风中飒飒抖动的锯齿边小树叶，依然在枝头茂盛繁密。</span><span class="sentence-target" data-keys="root" tabindex="0" role="button">她扑倒在地上，感受树根的骨感，像脊椎伸出的肋骨，在她的身下纵横交错。</span><span class="sentence-target" data-keys="" tabindex="0" role="button">她喜欢想象自己正骑在世界的脊梁上，她喜欢自己的身子贴着坚硬的东西。</span><span class="sentence-target" data-keys="poem" tabindex="0" role="button">就在她扑倒在地的那一刻，有一本红布封面的四四方方的小书，从她皮外套的前胸掉了出来——是她的诗作《大橡树》。</span><span class="sentence-target" data-keys="" tabindex="0" role="button">“我应该带一把小铲子来，”她想。</span><span class="sentence-target" data-keys="root" tabindex="0" role="button">但她即便真的带来了小铲子，似乎也不太可能把书葬在这里，因为树根上面的土层很浅。</span><span class="sentence-target" data-keys="" tabindex="0" role="button">再说，她的那几条猎犬也可能把埋好的书再刨出来。</span><span class="sentence-target" data-keys="" tabindex="0" role="button">这种象征性的仪式从来都不走运，她想。</span><span class="sentence-target" data-keys="" tabindex="0" role="button">也许没有仪式更好。</span></p><p><span class="sentence-target" data-keys="" tabindex="0" role="button">她正准备在葬书之前致辞几句（这本书是初版，上面有作者和艺术家的签名），“我把这本书作为给大地的回赠和贡品，葬在此处，”她刚要说出口，可是，天哪！</span><span class="sentence-target" data-keys="" tabindex="0" role="button">人们一旦将词语大声说出口，听起来多么愚不可及啊！</span><span class="sentence-target" data-keys="" tabindex="0" role="button">她会想起，那天老格林站在讲台上，称她堪与弥尔顿相媲美（唯一不同的是，弥尔顿是盲人），并把一张二百几尼的支票递给她。</span><span class="sentence-target" data-keys="" tabindex="0" role="button">她当时脑海中就出现了山顶上这棵大橡树，她获得的称赞和奖金与这棵大橡树有何相干？</span><span class="sentence-target" data-keys="" tabindex="0" role="button">她心中困惑。</span><span class="sentence-target" data-keys="" tabindex="0" role="button">美誉和名望与诗歌有何相干？</span><span class="sentence-target" data-keys="time" tabindex="0" role="button">一本书出了七版与其本身的价值有何相干（她这本书至少已经出了七版）？</span><span class="sentence-target" data-keys="" tabindex="0" role="button">她穿过公园街，向柯曾街她的住宅走去。</span><span class="sentence-target" data-keys="" tabindex="0" role="button">路上看不到一辆马车经过，宽阔、漂亮的大街出奇地显得空空荡荡。</span></p></article><div class="case-controls"><button type="button" id="case-prev" disabled>← 上一部分</button><span id="case-page-indicator">I / III</span><button type="button" id="case-next">下一部分 →</button></div>
+    <div class="case-feedback" id="case-feedback" aria-live="polite"></div>
+    <div class="case-complete" id="case-complete" role="status"><span class="pixel-trophy" aria-hidden="true"><i></i><b></b></span><span><strong>阶段勘查完成</strong><small>橡树线索已全部收集 · 下一阶段：主题探索</small></span></div>
+   </div>
+  </div>
+ </div>
+</div></div></div></details>
+<details class="explore shelf-explore" id="bookshelf"><summary class="shelf-hotspot" data-hint-target="#room-bookshelf-art" data-hint-padding="7"><span class="shelf-enter-label">查看书架</span><span class="shelf-leave-label">回到书房</span></summary><div class="shelf-ui"><div class="shelf-view" aria-label="书架近景：书籍与植物标本"><svg class="shelf-art" viewBox="0 0 960 540" role="img" aria-label="伦敦书房的胡桃木书架，一半陈列旧书，一半陈列橡树、玫瑰、Judas tree 和虞美人标本" shape-rendering="crispEdges" preserveAspectRatio="xMidYMid slice">
+<defs><pattern id="shelfgrain" width="140" height="80" patternUnits="userSpaceOnUse"><rect width="140" height="80" fill="#513724"/><path d="M0 18h140v3H0zM10 49h83v2H10zM105 50h35v2h-35zM0 72h140v3H0z" fill="#704d31"/><path d="M31 0v80M112 0v80" stroke="#352319" stroke-width="2"/></pattern><linearGradient id="shelfshade" x2="0" y2="1"><stop stop-color="#493524"/><stop offset="1" stop-color="#1c1b15"/></linearGradient></defs>
+<rect width="960" height="540" fill="#1c211c"/><rect x="0" y="0" width="960" height="540" fill="url(#shelfgrain)" opacity=".75"/><rect x="33" y="24" width="894" height="492" fill="#201811" stroke="#b18a50" stroke-width="7"/><rect x="51" y="42" width="858" height="456" fill="#2b2118" stroke="#5a4028" stroke-width="7"/>
+<rect x="68" y="58" width="824" height="48" fill="#493421" stroke="#b39057" stroke-width="3"/><path d="M80 68h800v2H80zM80 94h800v2H80z" fill="#d0ad6e"/><text x="480" y="87" text-anchor="middle" fill="#d1b474" font-size="15" font-family="serif" letter-spacing="7">BOOKS  ·  HERBARIUM</text>
+<rect x="79" y="120" width="399" height="342" fill="#171712" stroke="#916d3e" stroke-width="4"/><rect x="490" y="120" width="390" height="342" fill="#1c211b" stroke="#916d3e" stroke-width="4"/>
+<g><rect x="91" y="322" width="375" height="13" fill="#ba9254"/><rect x="91" y="450" width="375" height="15" fill="#ba9254"/>
+<g stroke="#c4a468" stroke-width="2"><path d="M95 326H462M95 454H462"/></g>
+<g><path d="M101 187h38v134h-38z" fill="#873f36"/><path d="M145 155h34v166h-34z" fill="#526247"/><path d="M184 174h41v147h-41z" fill="#907044"/><path d="M231 139h36v182h-36z" fill="#473b31"/><path d="M273 168h40v153h-40z" fill="#7b4b39"/><path d="M319 149h33v172h-33z" fill="#4d604b"/><path d="M358 183h43v138h-43z" fill="#9b7547"/><path d="M407 158h48v163h-48z" fill="#684339"/>
+<g fill="#d1b477"><path d="M106 202h28v4h-28zM106 298h28v4h-28zM150 171h24v4h-24zM150 293h24v4h-24zM190 190h29v4h-29zM190 292h29v4h-29zM236 156h26v4h-26zM236 288h26v4h-26zM278 184h29v4h-29zM278 293h29v4h-29zM324 166h23v4h-23zM324 291h23v4h-23zM364 199h30v4h-30zM364 293h30v4h-30zM414 175h34v4h-34zM414 294h34v4h-34z"/></g>
+<g fill="#34271c"><path d="M111 212h4v79h-4zM154 181h4v100h-4zM195 201h4v79h-4zM241 166h4v112h-4zM283 194h4v85h-4zM328 176h4v104h-4zM370 209h4v70h-4zM420 184h4v94h-4z"/></g>
+<g fill="#b5915c"><path d="M95 330h371v6H95zM95 447h371v6H95zM108 343h22v3h-22zM155 343h30v3h-30zM208 343h26v3h-26zM280 343h28v3h-28zM360 343h35v3h-35z"/></g>
+<path d="M103 368h39v75h-39z" fill="#55634a"/><path d="M147 354h31v89h-31z" fill="#8a4939"/><path d="M183 376h47v67h-47z" fill="#6b5134"/><path d="M235 360h35v83h-35z" fill="#4a473c"/><path d="M276 370h41v73h-41z" fill="#955f3d"/><path d="M322 354h29v89h-29z" fill="#536648"/><path d="M357 378h44v65h-44z" fill="#9b7547"/><path d="M407 362h48v81h-48z" fill="#73463b"/><g fill="#c7a766"><path d="M107 374h31v3h-31zM151 362h23v3h-23zM189 383h35v3h-35zM240 368h26v3h-26zM281 378h31v3h-31zM327 362h19v3h-19zM363 385h32v3h-32zM413 370h34v3h-34z"/></g>
+</g></g>
+<g><rect x="501" y="130" width="368" height="318" fill="#17211b"/><path d="M501 287h368v9H501z" fill="#bb9456"/><path d="M501 444h368v10H501z" fill="#bb9456"/><path d="M507 136h356v304" fill="none" stroke="#516047" stroke-width="2"/>
+<g id="shelf-oak-art">
+<path d="M553 257h99v4h-99z" fill="#322a1b"/><rect x="553" y="249" width="99" height="9" fill="#a78347"/><path d="M556 250h93v2h-93z" fill="#ccb176"/><path d="M558 256h89" stroke="#70512f" stroke-width="1"/><path d="M558 253h2v2h-2zM645 253h2v2h-2z" fill="#e2c687"/><path d="M580 243h45v5h-45zM587 239h32v5h-32z" fill="#766344" /><path d="M597 242l2-21-1-22 5-16 5 2-3 17 2 21 7 19-8-3-3-11-2 12z" fill="#6b4c30" /><path d="M602 214l-17-17m19 9 18-20m-20 17-7-24" fill="none" stroke="#725336" stroke-width="4" stroke-linecap="square" stroke-linejoin="miter"/><path d="M602 216v17m3-30v14m-4-12 2-15" fill="none" stroke="#af8650" stroke-width="1" stroke-linecap="square" stroke-linejoin="miter"/><path d="M573 185h6v-10h12v-9h16v-6h13v10h10v12h7v18h-8v11h-14v4h-18v-6h-17v-8h-7z" fill="#425d3f" /><path d="M579 180h13v-9h13v-7h12v10h10v12h6v10h-15v12h-14v-7h-15v-8h-10z" fill="#61774b" /><path d="M589 175h10v-6h9v8h-6v7h-13zM615 180h9v9h-6v5h-8v-7h5zM580 191h10v8h-10z" fill="#849361" /><use href="#bot-oak-leaf" transform="translate(580 193) rotate(-44) scale(0.56)" color="#728753"/><use href="#bot-oak-leaf" transform="translate(592 180) rotate(-18) scale(0.58)" color="#8a9964"/><use href="#bot-oak-leaf" transform="translate(609 180) rotate(20) scale(0.52)" color="#7d9059"/><use href="#bot-oak-leaf" transform="translate(624 190) rotate(45) scale(0.6)" color="#7d8e56"/><use href="#bot-oak-leaf" transform="translate(588 205) rotate(-75) scale(0.56)" color="#526e43"/><use href="#bot-oak-leaf" transform="translate(606 201) rotate(-15) scale(0.57)" color="#6d8550"/><use href="#bot-oak-leaf" transform="translate(621 208) rotate(64) scale(0.45)" color="#627a47"/><path d="M618 205l8 4 2 8" fill="none" stroke="#887046" stroke-width="1" stroke-linecap="square" stroke-linejoin="miter"/><path d="M624 210h6v3h-6zM629 215h5v3h-5z" fill="#7d623b" /><path d="M625 213h4v5h-1v2h-2v-2h-1zM630 218h3v5h-1v1h-1z" fill="#bd9a5b" /><path d="M562 157q41-26 82 0v91h-82z" fill="#b0c5b7" fill-opacity=".035" stroke="#a3b5a2" stroke-opacity=".36" stroke-width="1.3"/>
+ <path d="M567 162v79M570 156l5-4" fill="none" stroke="#d3deca" stroke-opacity=".25" stroke-width="1.5"/>
+ <path d="M640 167v74" stroke="#8da490" stroke-width="1" opacity=".14"/>
+</g>
+<g id="shelf-rose-art">
+<path d="M724 257h96v4h-96z" fill="#322a1b"/><rect x="724" y="249" width="96" height="9" fill="#a78347"/><path d="M727 250h90v2h-90z" fill="#ccb176"/><path d="M729 256h86" stroke="#70512f" stroke-width="1"/><path d="M729 253h2v2h-2zM813 253h2v2h-2z" fill="#e2c687"/><path d="M751 226h42l-4 21h-34z" fill="#714439" /><path d="M749 224h46v5h-46z" fill="#b18c55" /><path d="M756 230h4v13h-4z" fill="#b07750" opacity=".5"/><path d="M772 225v-24l-3-20m3 27-18-12m18 2 12-12" fill="none" stroke="#6d7e4d" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/><path d="M771 213l-4-2m4-11 4-3m-4-12-3-2" fill="none" stroke="#a89b65" stroke-width="1" stroke-linecap="square" stroke-linejoin="miter"/><use href="#bot-rose-leaf" transform="translate(757 200) rotate(-62) scale(0.64)" color="#5f774b"/><use href="#bot-rose-leaf" transform="translate(751 194) rotate(-42) scale(0.54)" color="#7f9057"/><use href="#bot-rose-leaf" transform="translate(762 195) rotate(15) scale(0.51)" color="#6e8350"/><use href="#bot-rose-leaf" transform="translate(780 205) rotate(58) scale(0.63)" color="#5b7246"/><use href="#bot-rose-leaf" transform="translate(787 200) rotate(20) scale(0.52)" color="#81915b"/><use href="#bot-rose-bloom" transform="translate(770 172) scale(0.89)"/><use href="#bot-rose-bloom" transform="translate(787 188) scale(0.43)"/><path d="M765 185l4-5 5 4-5 3zM782 195l4-3 4 2-3 3z" fill="#61784a" /><path d="M734 151q39-26 78 0v97h-78z" fill="#b0c5b7" fill-opacity=".035" stroke="#a3b5a2" stroke-opacity=".36" stroke-width="1.3"/>
+ <path d="M739 156v85M742 150l5-4" fill="none" stroke="#d3deca" stroke-opacity=".25" stroke-width="1.5"/>
+ <path d="M808 161v80" stroke="#8da490" stroke-width="1" opacity=".14"/>
+</g>
+<g id="shelf-judas-art">
+<path d="M553 420h99v4h-99z" fill="#322a1b"/><rect x="553" y="412" width="99" height="9" fill="#a78347"/><path d="M556 413h93v2h-93z" fill="#ccb176"/><path d="M558 419h89" stroke="#70512f" stroke-width="1"/><path d="M558 416h2v2h-2zM645 416h2v2h-2z" fill="#e2c687"/><path d="M583 407h37v4h-37z" fill="#786243" /><path d="M600 407l2-23-5-21 2-25m1 36-17-19-7-13m24 30 17-21 8-9m-24 42 19-11 9-12m-29 28-16-7-8 4" fill="none" stroke="#72513b" stroke-width="4" stroke-linecap="square" stroke-linejoin="miter"/><path d="M600 403l3-17-3-13m-2-12 1-17m7 25 12-16" fill="none" stroke="#b18b62" stroke-width="1" stroke-linecap="square" stroke-linejoin="miter"/><g transform="translate(579 346) scale(0.9)"><path d="M-5-3h4v-3h4v3h4v5H4v4H0V3h-4z" fill="#904666" /><path d="M-4-4h4v3h3v3h-4v3h-3z" fill="#c36b8d" /><path d="M1-5h3v4H1zM3 2h3v2H3z" fill="#df9db0" /><path d="M-3-3h2v1h-2z" fill="#e7b3bc" /></g><g transform="translate(587 357) scale(0.85)"><path d="M-5-3h4v-3h4v3h4v5H4v4H0V3h-4z" fill="#904666" /><path d="M-4-4h4v3h3v3h-4v3h-3z" fill="#c36b8d" /><path d="M1-5h3v4H1zM3 2h3v2H3z" fill="#df9db0" /><path d="M-3-3h2v1h-2z" fill="#e7b3bc" /></g><g transform="translate(598 347) scale(0.8)"><path d="M-5-3h4v-3h4v3h4v5H4v4H0V3h-4z" fill="#904666" /><path d="M-4-4h4v3h3v3h-4v3h-3z" fill="#c36b8d" /><path d="M1-5h3v4H1zM3 2h3v2H3z" fill="#df9db0" /><path d="M-3-3h2v1h-2z" fill="#e7b3bc" /></g><g transform="translate(600 363) scale(0.9)"><path d="M-5-3h4v-3h4v3h4v5H4v4H0V3h-4z" fill="#904666" /><path d="M-4-4h4v3h3v3h-4v3h-3z" fill="#c36b8d" /><path d="M1-5h3v4H1zM3 2h3v2H3z" fill="#df9db0" /><path d="M-3-3h2v1h-2z" fill="#e7b3bc" /></g><g transform="translate(612 358) scale(0.9)"><path d="M-5-3h4v-3h4v3h4v5H4v4H0V3h-4z" fill="#904666" /><path d="M-4-4h4v3h3v3h-4v3h-3z" fill="#c36b8d" /><path d="M1-5h3v4H1zM3 2h3v2H3z" fill="#df9db0" /><path d="M-3-3h2v1h-2z" fill="#e7b3bc" /></g><g transform="translate(620 348) scale(0.75)"><path d="M-5-3h4v-3h4v3h4v5H4v4H0V3h-4z" fill="#904666" /><path d="M-4-4h4v3h3v3h-4v3h-3z" fill="#c36b8d" /><path d="M1-5h3v4H1zM3 2h3v2H3z" fill="#df9db0" /><path d="M-3-3h2v1h-2z" fill="#e7b3bc" /></g><g transform="translate(625 360) scale(0.8)"><path d="M-5-3h4v-3h4v3h4v5H4v4H0V3h-4z" fill="#904666" /><path d="M-4-4h4v3h3v3h-4v3h-3z" fill="#c36b8d" /><path d="M1-5h3v4H1zM3 2h3v2H3z" fill="#df9db0" /><path d="M-3-3h2v1h-2z" fill="#e7b3bc" /></g><g transform="translate(617 377) scale(0.8)"><path d="M-5-3h4v-3h4v3h4v5H4v4H0V3h-4z" fill="#904666" /><path d="M-4-4h4v3h3v3h-4v3h-3z" fill="#c36b8d" /><path d="M1-5h3v4H1zM3 2h3v2H3z" fill="#df9db0" /><path d="M-3-3h2v1h-2z" fill="#e7b3bc" /></g><g transform="translate(600 383) scale(0.85)"><path d="M-5-3h4v-3h4v3h4v5H4v4H0V3h-4z" fill="#904666" /><path d="M-4-4h4v3h3v3h-4v3h-3z" fill="#c36b8d" /><path d="M1-5h3v4H1zM3 2h3v2H3z" fill="#df9db0" /><path d="M-3-3h2v1h-2z" fill="#e7b3bc" /></g><g transform="translate(585 384) scale(0.7)"><path d="M-5-3h4v-3h4v3h4v5H4v4H0V3h-4z" fill="#904666" /><path d="M-4-4h4v3h3v3h-4v3h-3z" fill="#c36b8d" /><path d="M1-5h3v4H1zM3 2h3v2H3z" fill="#df9db0" /><path d="M-3-3h2v1h-2z" fill="#e7b3bc" /></g><use href="#bot-judas-leaf" transform="translate(579 375) rotate(-42) scale(0.55)" color="#71855b"/><use href="#bot-judas-leaf" transform="translate(626 391) rotate(50) scale(0.59)" color="#71845a"/><use href="#bot-judas-leaf" transform="translate(605 334) rotate(15) scale(0.45)" color="#8c9b6b"/><path d="M562 318q41-26 82 0v93h-82z" fill="#b0c5b7" fill-opacity=".035" stroke="#a3b5a2" stroke-opacity=".36" stroke-width="1.3"/>
+ <path d="M567 323v81M570 317l5-4" fill="none" stroke="#d3deca" stroke-opacity=".25" stroke-width="1.5"/>
+ <path d="M640 328v76" stroke="#8da490" stroke-width="1" opacity=".14"/>
+</g>
+<g id="shelf-poppy-art">
+<path d="M724 420h96v4h-96z" fill="#322a1b"/><rect x="724" y="412" width="96" height="9" fill="#a78347"/><path d="M727 413h90v2h-90z" fill="#ccb176"/><path d="M729 419h86" stroke="#70512f" stroke-width="1"/><path d="M729 416h2v2h-2zM813 416h2v2h-2z" fill="#e2c687"/><path d="M751 389h42l-5 21h-33z" fill="#744839" /><path d="M749 387h46v5h-46z" fill="#b19157" /><path d="M757 394h3v12h-3z" fill="#b48154" opacity=".5"/><path d="M770 388l2-20-3-20m2 29-13-12m14 5 12-17 9-4 4 7" fill="none" stroke="#758359" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/><path d="M757 371l-10-8 6-1-7-6 7 2-2-7 7 9 2 7zM777 381l9-10 5 1-3-7 7 2-6 8-7 5z" fill="#697e54" /><path d="M772 370l-3 12m-12-22 3 7m29 5-7 5" fill="none" stroke="#b2b887" stroke-width="0.7" stroke-linecap="square" stroke-linejoin="miter"/><path d="M792 354h6v3h3v6h-3v3h-6v-3h-2v-6h2z" fill="#6d7f50" /><path d="M792 356h2v6h-2z" fill="#a3ad76" /><use href="#bot-poppy-bloom" transform="translate(769 344) scale(0.88)"/><path d="M767 365h-2m7 9h3m12-20 2-2m-27 13-2 1" fill="none" stroke="#c1b78b" stroke-width="0.65" stroke-linecap="square" stroke-linejoin="miter"/><path d="M734 318q39-26 78 0v93h-78z" fill="#b0c5b7" fill-opacity=".035" stroke="#a3b5a2" stroke-opacity=".36" stroke-width="1.3"/>
+ <path d="M739 323v81M742 317l5-4" fill="none" stroke="#d3deca" stroke-opacity=".25" stroke-width="1.5"/>
+ <path d="M808 328v76" stroke="#8da490" stroke-width="1" opacity=".14"/>
+</g>
+</g>
+<g fill="#ddc17f" font-family="monospace" font-size="10" letter-spacing="2" text-anchor="middle"><text x="602" y="276">OAK TREE</text><text x="772" y="276">ROSE</text><text x="602" y="435">JUDAS TREE</text><text x="772" y="435">POPPY</text></g><path d="M487 118v344" stroke="#cfaa66" stroke-width="8"/><path d="M482 126v326" stroke="#34251a" stroke-width="3"/>
+</svg>
+<div class="plant-hover-tip" id="plant-tip" aria-live="polite"></div><div class="plant-select-dialog" id="plant-dialog" aria-live="polite"><b>植物目标已选定</b><span>橡树已登记入卷。您现在可以查看卷宗。<br>请退出书架后，回到书房点击书桌。</span><button type="button" id="confirm-plant">确认</button></div>
+<button class="plant-target oak-target" type="button" data-plant="oak" data-hint-target="#shelf-oak-art" data-hint-padding="7" aria-label="选择橡树目标"></button><button class="plant-target rose-target" type="button" data-plant="rose" data-hint-target="#shelf-rose-art" data-hint-padding="7" aria-label="玫瑰档案，待开放"></button><button class="plant-target judas-target" type="button" data-plant="judas" data-hint-target="#shelf-judas-art" data-hint-padding="7" aria-label="紫荆树档案，待开放"></button><button class="plant-target poppy-target" type="button" data-plant="poppy" data-hint-target="#shelf-poppy-art" data-hint-padding="7" aria-label="虞美人档案，待开放"></button>
+</div></div></details></section>
+</main>
+
+<div class="trophy-toast" id="trophy-modal" hidden aria-hidden="true">
+  <div class="trophy-toast-card" role="dialog" aria-labelledby="trophy-title">
+    <span class="trophy-frame" aria-hidden="true"></span>
+
+    <div class="trophy-badge" aria-hidden="true">
+      <svg class="trophy-seal" viewBox="0 0 72 72" shape-rendering="crispEdges" focusable="false">
+        <circle cx="36" cy="36" r="32" fill="none" stroke="#c9a45c" stroke-width="2" stroke-dasharray="2 4" opacity=".45"/>
+        <circle cx="36" cy="36" r="27" fill="#1b2721" stroke="#c9a45c" stroke-width="2.5"/>
+        <circle cx="36" cy="36" r="23" fill="none" stroke="#8a6f42" stroke-width="1" opacity=".85"/>
+        <g fill="#4d6a44">
+          <rect x="31" y="17" width="10" height="3"/>
+          <rect x="28" y="20" width="16" height="3"/>
+          <rect x="25" y="23" width="22" height="3"/>
+          <rect x="23" y="26" width="26" height="3"/>
+          <rect x="23" y="29" width="26" height="3"/>
+          <rect x="25" y="32" width="22" height="3"/>
+          <rect x="28" y="35" width="16" height="3"/>
+          <rect x="31" y="38" width="10" height="3"/>
+        </g>
+        <g fill="#7d9a63">
+          <rect x="31" y="20" width="7" height="3"/>
+          <rect x="28" y="23" width="7" height="3"/>
+          <rect x="26" y="26" width="8" height="3"/>
+          <rect x="26" y="29" width="6" height="3"/>
+        </g>
+        <g fill="#33472f">
+          <rect x="42" y="23" width="5" height="6"/>
+          <rect x="44" y="29" width="5" height="3"/>
+          <rect x="39" y="32" width="8" height="3"/>
+          <rect x="35" y="35" width="7" height="3"/>
+        </g>
+        <rect x="34" y="38" width="4" height="12" fill="#9c7b4a"/>
+        <rect x="31" y="47" width="10" height="3" fill="#9c7b4a"/>
+      </svg>
+    </div>
+
+    <p class="trophy-kicker">CASE FILE · NO. 01</p>
+    <h4 id="trophy-title">阶段勘查完成</h4>
+    <p class="trophy-sub">橡树线索已全部收集</p>
+
+    <ul class="trophy-chips" aria-label="已收集线索">
+      <li style="--i:0">树冠</li>
+      <li style="--i:1">树根</li>
+      <li style="--i:2">叶片</li>
+      <li style="--i:3">诗稿</li>
+      <li style="--i:4">时间</li>
+    </ul>
+
+    <p class="trophy-next">下一阶段 · <b>主题探索</b></p>
+
+    <button type="button" id="close-trophy">继续探索</button>
+  </div>
+</div>
+
+<script src="assets/game.js?v=20261023-aligned-hints"></script>
+
+
+</body></html>
