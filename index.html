@@ -266,8 +266,9 @@
   pointer-events: auto;
   color: #eadbb7;
   background:
-    repeating-linear-gradient(0deg, transparent 0 2px, rgba(255,255,255,.014) 2px 3px),
-    repeating-linear-gradient(90deg, transparent 0 46px, rgba(0,0,0,.16) 46px 48px),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cg fill='none' stroke='%23d8bc84' stroke-width='1.1' stroke-linecap='round' opacity='.055'%3E%3Cpath d='M70 116C66 96 74 82 70 62 67 48 71 38 70 28'/%3E%3Cpath d='M70 92C58 88 50 80 48 68'/%3E%3Cpath d='M70 78C82 74 90 66 92 54'/%3E%3Cpath d='M70 58C60 54 55 48 54 40'/%3E%3Cpath d='M70 44C79 41 84 35 85 28'/%3E%3C/g%3E%3Cg fill='%23d8bc84' opacity='.045'%3E%3Cpath d='M48 68q-10-8-8-18 12 4 8 18z'/%3E%3Cpath d='M92 54q10-8 8-18-12 4-8 18z'/%3E%3Cpath d='M54 40q-9-7-7-16 11 4 7 16z'/%3E%3Cpath d='M85 28q9-7 7-15-11 3-7 15z'/%3E%3Cpath d='M70 28q-6-9-2-16 8 4 2 16z'/%3E%3Cpath d='M63 104q-8-5-8-13 10 2 8 13z'/%3E%3Cpath d='M77 100q8-5 8-13-10 2-8 13z'/%3E%3C/g%3E%3Cg fill='%23d8bc84' opacity='.05'%3E%3Ccircle cx='70' cy='118' r='1.4'/%3E%3Ccircle cx='96' cy='84' r='1.1'/%3E%3Ccircle cx='44' cy='92' r='1.1'/%3E%3Ccircle cx='104' cy='36' r='1'/%3E%3C/g%3E%3C/svg%3E") center / 132px 132px repeat,
+    repeating-linear-gradient(0deg, transparent 0 2px, rgba(255,255,255,.012) 2px 3px),
+    radial-gradient(120% 90% at 50% 0%, rgba(88,108,84,.30), transparent 70%),
     linear-gradient(180deg, #2c3a30 0%, #222c26 46%, #17211c 100%);
   border: 2px solid #b99a5e;
   box-shadow:
@@ -391,57 +392,36 @@
 .trophy-toast-card button{
   position: relative;
   margin-top: 18px;
-  padding: 12px 48px;
-  border: 0;
-  color: #2d2214;
-  font: 13px/1 "Courier New", monospace;
-  letter-spacing: .26em;
-  text-indent: .26em;
+  padding: 11px 42px;
+  border: 1px solid rgba(201,164,92,.50);
+  background: linear-gradient(180deg, rgba(201,164,92,.10), rgba(201,164,92,.03));
+  color: #e6d5aa;
+  font: 12px/1 "Courier New", monospace;
+  letter-spacing: .24em;
+  text-indent: .24em;
   cursor: pointer;
-  background-image:
-    linear-gradient(115deg, transparent 34%, rgba(255,255,255,.62) 47%, transparent 60%),
-    linear-gradient(180deg, #f2dfae 0%, #dcc084 34%, #c09d59 64%, #a8853f 100%);
-  background-size: 240% 100%, 100% 100%;
-  background-position: -150% 0, 0 0;
-  background-repeat: no-repeat;
   box-shadow:
-    inset 0 0 0 1px #6b5226,
-    inset 0 0 0 3px #edd9a4,
-    inset 0 0 0 4px #9a793d,
-    0 3px 0 #5b4520,
-    0 8px 18px rgba(0,0,0,.48);
-  transition: transform .12s steps(2), filter .18s, box-shadow .12s;
+    inset 0 0 0 1px rgba(18,25,21,.75),
+    0 2px 0 rgba(10,14,11,.45);
+  transition: border-color .18s, color .18s, background .18s, box-shadow .18s, transform .1s;
 }
-.trophy-toast-card button::before,
-.trophy-toast-card button::after{
-  content: "";
-  position: absolute;
-  top: 50%;
-  width: 7px;
-  height: 7px;
-  background: #6b5226;
-  box-shadow: inset 0 0 0 1.5px #f2dfae;
-  transform: translateY(-50%) rotate(45deg);
-  pointer-events: none;
-}
-.trophy-toast-card button::before{ left: 16px; }
-.trophy-toast-card button::after{ right: 16px; }
-
 .trophy-toast-card button:hover{
-  filter: brightness(1.08);
-  animation: trophy-sheen 1.1s ease-out;
+  border-color: #d8bc84;
+  color: #f4e6c4;
+  background: linear-gradient(180deg, rgba(201,164,92,.18), rgba(201,164,92,.06));
+  box-shadow:
+    inset 0 0 0 1px rgba(18,25,21,.65),
+    0 2px 0 rgba(10,14,11,.45),
+    0 0 16px rgba(201,164,92,.13);
 }
 .trophy-toast-card button:active{
-  transform: translateY(2px);
+  transform: translateY(1px);
   box-shadow:
-    inset 0 0 0 1px #6b5226,
-    inset 0 0 0 3px #edd9a4,
-    inset 0 0 0 4px #9a793d,
-    0 1px 0 #5b4520,
-    0 3px 8px rgba(0,0,0,.45);
+    inset 0 0 0 1px rgba(18,25,21,.75),
+    0 1px 0 rgba(10,14,11,.45);
 }
 .trophy-toast-card button:focus-visible{
-  outline: 2px solid #f2dfae;
+  outline: 2px solid #d8bc84;
   outline-offset: 3px;
 }
 
@@ -464,9 +444,7 @@
   .trophy-toast-card{ padding: 24px 18px 20px; }
   .trophy-badge{ width: 112px; height: 112px; margin-bottom: 12px; }
   .trophy-toast-card h4{ font-size: 20px; }
-  .trophy-toast-card button{ padding: 11px 40px; font-size: 12px; }
-  .trophy-toast-card button::before{ left: 12px; }
-  .trophy-toast-card button::after{ right: 12px; }
+  .trophy-toast-card button{ padding: 10px 34px; font-size: 11px; }
 }
 @media (max-height: 560px){
   .trophy-toast-card{ padding: 16px 20px 14px; max-height: calc(100dvh - 16px); }
@@ -476,8 +454,9 @@
   .trophy-chips{ margin-top: 10px; gap: 4px; }
   .trophy-chips li{ padding: 3px 7px; font-size: 9px; }
   .trophy-next{ margin-top: 10px; }
-  .trophy-toast-card button{ margin-top: 12px; padding: 9px 34px; font-size: 11px; }
+  .trophy-toast-card button{ margin-top: 12px; padding: 9px 30px; font-size: 11px; }
 }
+
 @media (prefers-reduced-motion: reduce){
   .trophy-toast-card,
   .trophy-badge::before,
